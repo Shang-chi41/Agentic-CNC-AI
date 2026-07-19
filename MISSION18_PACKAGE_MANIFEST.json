@@ -1,0 +1,18 @@
+{
+  "mission": 18,
+  "title": "Operator acknowledgement and sync-only RUN blockers",
+  "source_baseline_sha256": "def0469d2b2e663ded3f65b4eff4a5898e38330ad8eeda32b6de9c344bc3cc0b",
+  "evidence_level": "L2 targeted/integration sandbox",
+  "machine_commands_sent": 0,
+  "checks": {
+    "python_compileall": "PASS",
+    "integration_tests": "318 PASS",
+    "frontend_js_syntax": "PASS",
+    "matlab_literal_newline_scan": "PASS"
+  },
+  "limitations": [
+    "No real browser session was executed",
+    "No real MATLAB/NX/FluidNC runtime was executed",
+    "No physical machine command was sent"
+  ]
+}

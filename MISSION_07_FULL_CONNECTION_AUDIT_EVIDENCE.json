@@ -1,0 +1,210 @@
+{
+  "created_at": "2026-07-11T09:32:28.210396+00:00",
+  "workflow": {
+    "plugin": "UNIVERSAL_AGENTIC_SELF_GOVERNING_PLUGIN_V1_2",
+    "skill": "FULL_AGENTIC_WORK_SKILL_V3_VI",
+    "steps_completed": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ]
+  },
+  "baseline": {
+    "created_at": "2026-07-11T09:25:34.957014+00:00",
+    "input_zip": "RTC_ex.zip",
+    "input_sha256": "fb8567020ce12a025f323889275c4a58af36188da764835d887447d40ee333de",
+    "input_size_bytes": 58166487,
+    "project_root": "RTC/CNC6 full/cnc_hmi_v18_A_3axis_CLEAN_READY",
+    "project_file_count_excluding_venv_cache": 547,
+    "env_key_count": 61,
+    "env_example_key_count": 61,
+    "env_key_parity": true,
+    "baseline_test_command": "python -m pytest integration_tests -q",
+    "baseline_test_result": "131 passed in 12.62s"
+  },
+  "verification": {
+    "static_audit": {
+      "generated_at": "2026-07-11T09:31:07.298434+00:00",
+      "mode": "static",
+      "profile": "all",
+      "counts": {
+        "PASS": 13,
+        "WARN": 2
+      },
+      "required_failure_count": 0,
+      "critical_or_blocker_count": 1,
+      "overall": "PASS"
+    },
+    "sandbox_safe_live": {
+      "generated_at": "2026-07-11T09:31:40.636664+00:00",
+      "mode": "safe-live",
+      "profile": "all",
+      "counts": {
+        "PASS": 13,
+        "WARN": 2,
+        "FAIL": 3,
+        "UNKNOWN": 6,
+        "SKIP": 1
+      },
+      "required_failure_count": 3,
+      "critical_or_blocker_count": 4,
+      "overall": "FAIL"
+    },
+    "pytest": {
+      "exit_code": 0,
+      "result": "137 passed in 16.64s"
+    },
+    "compile": {
+      "exit_code": 0,
+      "result": "PASS"
+    },
+    "mcp": {
+      "result": "PASS",
+      "tool_count": 8
+    }
+  },
+  "static_warnings": [
+    {
+      "check_id": "S005",
+      "layer": "safety",
+      "component": "direct_env_profile",
+      "verification_level": "static",
+      "status": "WARN",
+      "severity": "CRITICAL",
+      "required": false,
+      "summary": "Direct `python -m edge_backend.main` would inherit machine target with gate disabled; use RUN_70_MAIN_MACHINE.bat",
+      "evidence": {
+        "run_gcode_target": "machine",
+        "run_permission_gate": "0",
+        "effective_machine_launcher": "scripts/RUN_70_MAIN_MACHINE.ps1"
+      }
+    },
+    {
+      "check_id": "S015",
+      "layer": "deployment",
+      "component": "docker_contract",
+      "verification_level": "static",
+      "status": "WARN",
+      "severity": "MAJOR",
+      "required": false,
+      "summary": "Docker comments describe Atlas/Aura while current `.env` points to local services",
+      "evidence": {
+        "docker_ok": true,
+        "mongo_local": true,
+        "neo4j_local": true,
+        "docker_comments_cloud_mongo": true,
+        "docker_comments_cloud_neo4j": true
+      }
+    }
+  ],
+  "live_nonpass": [
+    {
+      "id": "S005",
+      "component": "direct_env_profile",
+      "status": "WARN",
+      "severity": "CRITICAL",
+      "summary": "Direct `python -m edge_backend.main` would inherit machine target with gate disabled; use RUN_70_MAIN_MACHINE.bat"
+    },
+    {
+      "id": "S015",
+      "component": "docker_contract",
+      "status": "WARN",
+      "severity": "MAJOR",
+      "summary": "Docker comments describe Atlas/Aura while current `.env` points to local services"
+    },
+    {
+      "id": "L001",
+      "component": "cloud_health",
+      "status": "FAIL",
+      "severity": "BLOCKER",
+      "summary": "Cloud health endpoint unreachable"
+    },
+    {
+      "id": "L002",
+      "component": "mongodb",
+      "status": "FAIL",
+      "severity": "BLOCKER",
+      "summary": "MongoDB ping raised an exception"
+    },
+    {
+      "id": "L003",
+      "component": "neo4j",
+      "status": "FAIL",
+      "severity": "BLOCKER",
+      "summary": "Neo4j connectivity failed"
+    },
+    {
+      "id": "P8000",
+      "component": "cloud_8000",
+      "status": "UNKNOWN",
+      "severity": "MAJOR",
+      "summary": "TCP listener not detected on port 8000"
+    },
+    {
+      "id": "P5000",
+      "component": "matlab_edge_in_5000",
+      "status": "UNKNOWN",
+      "severity": "MAJOR",
+      "summary": "TCP listener not detected on port 5000"
+    },
+    {
+      "id": "P5001",
+      "component": "edge_matlab_recv_5001",
+      "status": "UNKNOWN",
+      "severity": "MAJOR",
+      "summary": "TCP listener not detected on port 5001"
+    },
+    {
+      "id": "P5100",
+      "component": "simulink_gcode_5100",
+      "status": "UNKNOWN",
+      "severity": "MAJOR",
+      "summary": "TCP listener not detected on port 5100"
+    },
+    {
+      "id": "P5101",
+      "component": "simulink_frame_5101",
+      "status": "UNKNOWN",
+      "severity": "MAJOR",
+      "summary": "TCP listener not detected on port 5101"
+    },
+    {
+      "id": "P6001",
+      "component": "edge_nxmcd_6001",
+      "status": "UNKNOWN",
+      "severity": "MAJOR",
+      "summary": "TCP listener not detected on port 6001"
+    },
+    {
+      "id": "L004",
+      "component": "unified_system_status",
+      "status": "SKIP",
+      "severity": "NOTE",
+      "summary": "JWT not provided; device connection truth cannot be read from Cloud"
+    }
+  ],
+  "changed_files": [
+    "AGENTIC_RUN_FIRST.md",
+    "scripts/RUN_00_LOCAL_VERIFY.ps1",
+    "tools/full_connection_audit.py",
+    "RUN_99_FULL_CONNECTION_AUDIT.bat",
+    "scripts/RUN_99_FULL_CONNECTION_AUDIT.ps1",
+    "integration_tests/test_mission07_full_connection_audit.py",
+    "agentic_execution_kit/MISSION_07_FULL_CONNECTION_AUDIT/*",
+    "MISSION_07_FULL_CONNECTION_AUDIT_SUMMARY.md",
+    "MISSION_07_FULL_CONNECTION_AUDIT_EVIDENCE.json",
+    "MISSION_07_FULL_CONNECTION_AUDIT_CLEANUP.md"
+  ],
+  "production_runtime_files_changed": false,
+  "limitations": [
+    "No real Cloud/MongoDB/Neo4j/MATLAB/Simulink/NX MCD/FluidNC/MQTT/browser/LLM live verification in sandbox.",
+    "Authenticated unified status requires a JWT supplied only at runtime.",
+    "External LLM probe is disabled unless explicitly allowed."
+  ]
+}

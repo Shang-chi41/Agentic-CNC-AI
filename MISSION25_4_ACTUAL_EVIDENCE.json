@@ -1,0 +1,65 @@
+{
+  "evidence_level": "L2 sandbox",
+  "exact_browser_input": "Phôi nhôm 6061 kích thước 100 × 80 × 12 mm. Dao T1 END_MILL D6. Safe Z 3 mm. F1: ROUNDED_RECT_POCKET 50 × 35 mm, R5, tâm X0 Y0, sâu 3 mm. F2: CIRCULAR_POCKET Ø12, tâm X-20 Y0, sâu 2 mm. F3: CIRCULAR_POCKET Ø12, tâm X20 Y0, sâu 2 mm. F4: RECTANGULAR_CONTOUR_OUTSIDE 80 × 60 mm, sâu 4 mm.",
+  "feature_ids": [
+    "F1",
+    "F2",
+    "F3",
+    "F4"
+  ],
+  "operations": [
+    "ROUNDED_RECT_POCKET",
+    "CIRCULAR_POCKET",
+    "CIRCULAR_POCKET",
+    "RECTANGULAR_CONTOUR_OUTSIDE"
+  ],
+  "job_spec_sha256": "93a3c1da5cdcea4f28d7a45859a8e9828e6397434aa3dfd4d81939e872b95f34",
+  "broken_gcode_sha256": "c9b29f41dbe30b86968b9186113dd2df5f2aa97376afd25465dea7119e36be32",
+  "broken_contains_F550": true,
+  "before_static_valid": false,
+  "before_blockers": [
+    {
+      "code": "FEED_OUT_OF_RANGE",
+      "line": 11,
+      "message": "Dòng 11: F550 ngoài operating_range [600.0, 1500.0] mm/min"
+    },
+    {
+      "code": "FEED_OUT_OF_RANGE",
+      "line": 15,
+      "message": "Dòng 15: F550 ngoài operating_range [600.0, 1500.0] mm/min"
+    },
+    {
+      "code": "STEPDOWN_OUT_OF_RANGE",
+      "line": null,
+      "message": "Step-down 0.5mm tới Z-2 ngoài operating_range [1.0, 3.0] mm/pass"
+    }
+  ],
+  "repair_applied": true,
+  "repair_candidate_id": "C1",
+  "repaired_gcode_sha256": "29ba1310d536b66a4b3b53a8de2e213603b5a7ca835fd725abc9c3f3c90cdb42",
+  "repaired_contains_F550": false,
+  "after_static_valid": true,
+  "job_spec_hash_preserved": true,
+  "browser_e2e": {
+    "engine": "/usr/bin/chromium headless",
+    "tests": 2,
+    "result": "PASS",
+    "flow": [
+      "chat exact F1-F4",
+      "confirm original hash",
+      "CHECK broken F550/0.5 step",
+      "invalidate stale artifact",
+      "QUEUE before reconfirm blocked",
+      "reconfirm repaired hash",
+      "QUEUE repaired only",
+      "CHECK repaired approved by test double"
+    ],
+    "secure_context_note": "Sandbox blocks normal navigation; DOM/modules run in Chromium about:blank with exact digest mapping for the known payloads. Independent Node WebCrypto tests verify hash recomputation/tamper rejection."
+  },
+  "matlab_nx": {
+    "real_runtime": "NOT_RUN",
+    "transport_test_double": "PASS",
+    "only_repaired_gcode_sent": true,
+    "production_eligible_on_first_repair_check": false
+  }
+}

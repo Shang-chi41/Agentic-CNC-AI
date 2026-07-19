@@ -1,0 +1,39 @@
+{
+  "campaign": "Mission25.4 bounded auto-repair core dangerous mutations",
+  "mutants": [
+    {
+      "id": "M1_DROP_STEPDOWN_REPAIR",
+      "status": "KILLED",
+      "returncode": 1,
+      "terminal_tail": "from_dict(result[\"job_spec\"])).passed\n        repaired = regenerate_from_confirmed_contract(\n            original_gcode=broken,\n            original_static=before,\n            job_spec_canonical_json=result[\"job_spec_canonical_json\"],\n            job_spec_sha256=result[\"job_spec_sha256\"],\n            gcode_sha256=hashlib.sha256(broken.encode()).hexdigest(),\n            resolved_process_contract=result[\"resolved_process_contract\"],\n        )\n>       assert repaired[\"applied\"] is True, repaired\nE       AssertionError: {'applied': False, 'reason': 'static_failure_not_safely_repairable', 'repairable_codes': ['FEED_OUT_OF_RANGE', 'SPINDLE_OUT_OF_RANGE']}\nE       assert False is True\n\nintegration_tests/test_mission25_4_bounded_auto_repair_frontend_f1_f4.py:149: AssertionError\n=========================== short test summary info ============================\nFAILED integration_tests/test_mission25_4_bounded_auto_repair_frontend_f1_f4.py::test_deterministic_repair_removes_f550_and_invalid_half_mm_step - AssertionError: {'applied': False, 'reason': 'static_failure_not_safely_repairable', 'repairable_codes': ['FEED_OUT_OF_RANGE', 'SPINDLE_OUT_OF_RANGE']}\nassert False is True\n1 failed in 0.95s\n"
+    },
+    {
+      "id": "M2_SEND_ORIGINAL_TO_MATLAB",
+      "status": "KILLED",
+      "returncode": 1,
+      "terminal_tail": "        monkeypatch.setattr(mongo_client, \"get_collection\", lambda _name: _Collection())\n    \n        response = _handle_check_gcode_payload(check_command(result, broken))\n        contract = response[\"check_result\"]\n>       assert contract[\"repair\"][\"applied\"] is True, response\nE       AssertionError: {'check_result': {'approval_state': 'REJECTED', 'check_id': None, 'completion_source': 'static_validation', 'gcode_id'...m tới Z-2 ngoài operating_range [1.0, 3.0] mm/pass\nE         Tự sửa: KHÔNG ÁP DỤNG (repaired_artifact_failed_save_validation).'}\nE       assert False is True\n\nintegration_tests/test_mission25_4_bounded_auto_repair_frontend_f1_f4.py:228: AssertionError\n=========================== short test summary info ============================\nFAILED integration_tests/test_mission25_4_bounded_auto_repair_frontend_f1_f4.py::test_check_repairs_then_sends_only_repaired_artifact_to_matlab - AssertionError: {'check_result': {'approval_state': 'REJECTED', 'check_id': None, 'completion_source': 'static_validation', 'gcode_id'...m tới Z-2 ngoài operating_range [1.0, 3.0] mm/pass\n  Tự sửa: KHÔNG ÁP DỤNG (repaired_artifact_failed_save_validation).'}\nassert False is True\n1 failed in 1.01s\n"
+    },
+    {
+      "id": "M3_REPAIRED_PRODUCTION_ELIGIBLE",
+      "status": "KILLED",
+      "returncode": 1,
+      "terminal_tail": "alidator, \"send_to_matlab_for_check\", fake_send)\n        monkeypatch.setattr(mongo_client, \"get_collection\", lambda _name: _Collection())\n    \n        response = _handle_check_gcode_payload(check_command(result, broken))\n        contract = response[\"check_result\"]\n        assert contract[\"repair\"][\"applied\"] is True, response\n        assert contract[\"requires_interpretation_reconfirmation\"] is True\n        assert len(sent) == 1\n        assert \"F550\" not in sent[0][\"gcode\"]\n        assert sent[0][\"gcode\"] == contract[\"repair\"][\"repaired_gcode\"]\n>       assert sent[0][\"production_eligible\"] is False\nE       assert True is False\n\nintegration_tests/test_mission25_4_bounded_auto_repair_frontend_f1_f4.py:233: AssertionError\n----------------------------- Captured stderr call -----------------------------\n[2026-07-16 13:15:58,770] edge_backend.ai.gcode_validator INFO: validate_and_save: đã lưu G-code id=64b64b64b64b64b64b64b64b\n=========================== short test summary info ============================\nFAILED integration_tests/test_mission25_4_bounded_auto_repair_frontend_f1_f4.py::test_check_repairs_then_sends_only_repaired_artifact_to_matlab - assert True is False\n1 failed in 1.08s\n"
+    },
+    {
+      "id": "M4_KEEP_OLD_CONFIRMATION",
+      "status": "KILLED",
+      "returncode": 1,
+      "terminal_tail": "med.entry.payload.resolved_process_contract\" in chat\n        assert \"auto_repair: true\" in chat\n        assert \"if (typeof window.invalidateGCodeFromAI === 'function')\" in chat\n>       assert \"confirmed.entry.confirmed = false\" in chat\nE       AssertionError: assert 'confirmed.entry.confirmed = false' in '/**\\n * js/ai_chat.js\\n * Component AI Chat dung chung giua base.html (home), control.html, monitor.html,\\n * setting...chment, refreshProviderBadge, fetchProviderBadge: refreshProviderBadge };\\n}\\n\\n// Export riêng để dùng trong settings'\n\nintegration_tests/test_mission25_4_bounded_auto_repair_frontend_f1_f4.py:256: AssertionError\n=========================== short test summary info ============================\nFAILED integration_tests/test_mission25_4_bounded_auto_repair_frontend_f1_f4.py::test_frontend_wiring_invalidates_old_artifact_and_requires_reconfirmation - AssertionError: assert 'confirmed.entry.confirmed = false' in '/**\\n * js/ai_chat.js\\n * Component AI Chat dung chung giua base.html (home), control.html, monitor.html,\\n * setting...chment, refreshProviderBadge, fetchProviderBadge: refreshProviderBadge };\\n}\\n\\n// Export riêng để dùng trong settings'\n1 failed in 1.01s\n"
+    }
+  ],
+  "killed": 4,
+  "survived": 0,
+  "timeouts": 0,
+  "source_restored": true,
+  "source_hashes": {
+    "edge_backend/ai/gcode_auto_repair.py": "aa50f2196631e40684be1438e96d2bb9c6052ef33d9705cc676f94ac76687faf",
+    "edge_backend/workers/ai_worker.py": "620d019c5b5d20fc848a8925cd13f3c3f2e9aef814d91bb2ae7bd10c3b2480cc",
+    "frontend/js/ai_chat.js": "74c1c560ce3c8fc9ca6b919759e639352f0f86b2d66955eb038c859a3dcc4871"
+  },
+  "note": "Two browser mutation attempts were excluded because their harness did not terminate cleanly; direct Chromium E2E covers stale invalidation/reconfirmation behavior."
+}

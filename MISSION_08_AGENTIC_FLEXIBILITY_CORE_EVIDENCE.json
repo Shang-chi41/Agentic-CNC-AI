@@ -1,0 +1,195 @@
+{
+  "created_at": "2026-07-11T11:06:31.047127+00:00",
+  "workflow": {
+    "plugin": "UNIVERSAL_AGENTIC_SELF_GOVERNING_PLUGIN_V1_2",
+    "skill": "FULL_AGENTIC_WORK_SKILL_V3_VI",
+    "full_agentic_phases": [
+      "Goal",
+      "Freeze Baseline",
+      "Memory/Error Learning",
+      "Inventory",
+      "Evaluation Matrix",
+      "Source-of-Truth",
+      "Guardrails/Human Checkpoint",
+      "Multi-Agent Review",
+      "Surgical Patch",
+      "Test Matrix",
+      "Reflection/Memory",
+      "Package/Evidence/Handoff"
+    ]
+  },
+  "baseline": {
+    "zip": "Automaech.zip",
+    "sha256": "f8696fc3128303d7ac9ffa71801f95dd76b0a1434558f650c07bd907ce58078e",
+    "integration_tests": "137 passed in 17.61s"
+  },
+  "final_verification": {
+    "flexibility_eval": {
+      "scenario_count": 20,
+      "passed": 20,
+      "failed": 0,
+      "score": 1.0,
+      "metrics": {
+        "routing": {
+          "passed": 5,
+          "total": 5,
+          "score": 1.0
+        },
+        "intent": {
+          "passed": 3,
+          "total": 3,
+          "score": 1.0
+        },
+        "generation": {
+          "passed": 4,
+          "total": 4,
+          "score": 1.0
+        },
+        "semantics": {
+          "passed": 3,
+          "total": 3,
+          "score": 1.0
+        },
+        "tool_workflow": {
+          "passed": 2,
+          "total": 2,
+          "score": 1.0
+        },
+        "optimization": {
+          "passed": 1,
+          "total": 1,
+          "score": 1.0
+        },
+        "image": {
+          "passed": 1,
+          "total": 1,
+          "score": 1.0
+        },
+        "safety": {
+          "passed": 1,
+          "total": 1,
+          "score": 1.0
+        }
+      },
+      "scope": "sandbox/mock evaluation; not live LLM/hardware certification"
+    },
+    "mission_tests": "24 passed in 1.55s",
+    "full_integration": "161 passed in 17.41s",
+    "compileall": "PASS",
+    "mcp_smoke": {
+      "status": "PASS",
+      "tool_count": 8
+    },
+    "frontend_js": {
+      "checked": 15,
+      "failed": 0
+    }
+  },
+  "actual_entrypoint": {
+    "file": "edge_backend/workers/ai_worker.py",
+    "calls": "handle_agentic_request"
+  },
+  "source_changes": [
+    "AGENTIC_RUN_FIRST.md",
+    "scripts/RUN_00_LOCAL_VERIFY.ps1",
+    "RUN_92_AGENTIC_FLEXIBILITY_EVAL.bat",
+    "RUN_93_AGENTIC_LIVE_EVAL.bat",
+    "edge_backend/ai/agent_response_policy.py",
+    "edge_backend/ai/agentic_gcode_response.py",
+    "edge_backend/ai/agentic_response_harness.py",
+    "edge_backend/ai/gcode_semantics.py",
+    "edge_backend/ai/gcode_static_validator.py",
+    "edge_backend/ai/gcode_validator.py",
+    "edge_backend/ai/provider_manager.py",
+    "edge_backend/ai/providers/_system_prompt.py",
+    "edge_backend/ai/providers/base_provider.py",
+    "edge_backend/ai/providers/gemini_provider.py",
+    "edge_backend/ai/providers/ollama_provider.py",
+    "edge_backend/ai/providers/openrouter_provider.py",
+    "edge_backend/workers/ai_worker.py",
+    "eval/agentic_flexibility_eval.py",
+    "eval/agentic_flexibility_live_eval.py",
+    "eval/agentic_flexibility_scenarios.json",
+    "integration_tests/test_mission08_agentic_flexibility_core.py",
+    "integration_tests/test_mission08_agentic_flexibility_eval_harness.py"
+  ],
+  "manifest": {
+    "baseline_zip": "Automaech.zip",
+    "baseline_sha256": "f8696fc3128303d7ac9ffa71801f95dd76b0a1434558f650c07bd907ce58078e",
+    "changed": [
+      "AGENTIC_RUN_FIRST.md",
+      "edge_backend/ai/agent_response_policy.py",
+      "edge_backend/ai/agentic_gcode_response.py",
+      "edge_backend/ai/gcode_validator.py",
+      "edge_backend/ai/provider_manager.py",
+      "edge_backend/ai/providers/_system_prompt.py",
+      "edge_backend/ai/providers/base_provider.py",
+      "edge_backend/ai/providers/gemini_provider.py",
+      "edge_backend/ai/providers/ollama_provider.py",
+      "edge_backend/ai/providers/openrouter_provider.py",
+      "edge_backend/workers/ai_worker.py",
+      "scripts/RUN_00_LOCAL_VERIFY.ps1"
+    ],
+    "added": [
+      "RUN_92_AGENTIC_FLEXIBILITY_EVAL.bat",
+      "RUN_93_AGENTIC_LIVE_EVAL.bat",
+      "agentic_execution_kit/MISSION_08_AGENTIC_FLEXIBILITY_CORE/00_BASELINE_FREEZE.json",
+      "agentic_execution_kit/MISSION_08_AGENTIC_FLEXIBILITY_CORE/01_GOAL_SPEC.md",
+      "agentic_execution_kit/MISSION_08_AGENTIC_FLEXIBILITY_CORE/02_MEMORY_ERROR_LEARNING.md",
+      "agentic_execution_kit/MISSION_08_AGENTIC_FLEXIBILITY_CORE/03_ARCHITECTURE_INVENTORY.md",
+      "agentic_execution_kit/MISSION_08_AGENTIC_FLEXIBILITY_CORE/04_EVALUATION_MATRIX.md",
+      "agentic_execution_kit/MISSION_08_AGENTIC_FLEXIBILITY_CORE/05_SOURCE_OF_TRUTH_CONTRACT.md",
+      "agentic_execution_kit/MISSION_08_AGENTIC_FLEXIBILITY_CORE/06_GUARDRAILS_HUMAN_CHECKPOINT.md",
+      "agentic_execution_kit/MISSION_08_AGENTIC_FLEXIBILITY_CORE/07_TASK_ROUTING_PLAN.md",
+      "agentic_execution_kit/MISSION_08_AGENTIC_FLEXIBILITY_CORE/08_PRE_PATCH_MULTI_AGENT_REVIEW.md",
+      "agentic_execution_kit/MISSION_08_AGENTIC_FLEXIBILITY_CORE/09_COMMANDS_TEST_RESULTS.md",
+      "agentic_execution_kit/MISSION_08_AGENTIC_FLEXIBILITY_CORE/10_POST_PATCH_MULTI_AGENT_ULTRA_REVIEW.md",
+      "agentic_execution_kit/MISSION_08_AGENTIC_FLEXIBILITY_CORE/11_HERMES_MEMORY_UPDATE.md",
+      "agentic_execution_kit/MISSION_08_AGENTIC_FLEXIBILITY_CORE/12_SESSION_HANDOFF.md",
+      "agentic_execution_kit/MISSION_08_AGENTIC_FLEXIBILITY_CORE/13_LIMITATIONS_LIVE_TEST_PLAN.md",
+      "agentic_execution_kit/MISSION_08_AGENTIC_FLEXIBILITY_CORE/14_CHANGELOG.md",
+      "agentic_execution_kit/MISSION_08_AGENTIC_FLEXIBILITY_CORE/CONTEXT_STATE.md",
+      "edge_backend/ai/agentic_response_harness.py",
+      "edge_backend/ai/gcode_semantics.py",
+      "edge_backend/ai/gcode_static_validator.py",
+      "eval/agentic_flexibility_eval.py",
+      "eval/agentic_flexibility_live_eval.py",
+      "eval/agentic_flexibility_scenarios.json",
+      "integration_tests/test_mission08_agentic_flexibility_core.py",
+      "integration_tests/test_mission08_agentic_flexibility_eval_harness.py",
+      "reports/agentic_flexibility_eval.json",
+      "reports/mission08_logs/01_flexibility_eval.duration_seconds",
+      "reports/mission08_logs/01_flexibility_eval.exit_code",
+      "reports/mission08_logs/01_flexibility_eval.stderr.log",
+      "reports/mission08_logs/01_flexibility_eval.stdout.log",
+      "reports/mission08_logs/07_mission08_tests_after_live.exit_code",
+      "reports/mission08_logs/07_mission08_tests_after_live.stdout.log",
+      "reports/mission08_logs/08_full_integration_final.duration_seconds",
+      "reports/mission08_logs/08_full_integration_final.exit_code",
+      "reports/mission08_logs/08_full_integration_final.stderr.log",
+      "reports/mission08_logs/08_full_integration_final.stdout.log",
+      "reports/mission08_logs/09_compileall_final.exit_code",
+      "reports/mission08_logs/09_compileall_final.stderr.log",
+      "reports/mission08_logs/09_compileall_final.stdout.log",
+      "reports/mission08_logs/10_mcp_smoke_final.exit_code",
+      "reports/mission08_logs/10_mcp_smoke_final.stderr.log",
+      "reports/mission08_logs/10_mcp_smoke_final.stdout.log",
+      "reports/mission08_logs/11_frontend_js_final.exit_code",
+      "reports/mission08_logs/11_frontend_js_final.stderr.log",
+      "reports/mission08_logs/11_frontend_js_final.stdout.log"
+    ],
+    "deleted": []
+  },
+  "live_status": {
+    "configured_provider": "NOT RUN IN SANDBOX",
+    "real_neo4j": "NOT RUN IN SANDBOX",
+    "browser_end_to_end": "NOT RUN IN SANDBOX",
+    "matlab_nx_fluidnc": "NOT RUN IN SANDBOX"
+  },
+  "limitations": [
+    "Mock/sandbox evaluation does not certify live provider quality.",
+    "RUN_93 must be run on the operator machine for actual MCP/Neo4j/provider evidence.",
+    "Image geometric quality requires a real image/provider evaluation.",
+    "Physical machining still requires CHECK/Confirm and operator review."
+  ]
+}

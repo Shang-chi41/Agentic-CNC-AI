@@ -1,0 +1,3 @@
+This clean package intentionally excludes .env.
+Keep the .env already used on your machine, and compare it with .env.example.
+Do not invent production calibration flags or SHA-256 fingerprints.

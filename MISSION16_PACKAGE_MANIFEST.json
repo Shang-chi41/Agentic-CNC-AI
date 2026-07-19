@@ -1,0 +1,27 @@
+{
+  "mission": "Mission 16 — CHECK Pill + G-code Queue Terminal Sync",
+  "created_at": "2026-07-13",
+  "baseline": {
+    "artifact": "Automaech_Mission15_AI_CHECK_TERMINAL_CHAT_SYNC_CLEAN.zip",
+    "sha256": "c9c73fec1b5645920ab397e308343a89c8be4a06871b32aa7346b2795b5af149"
+  },
+  "files_changed": [
+    "edge_backend/runtime/dataflow_contract.py",
+    "edge_backend/ai/gcode_validator.py",
+    "frontend/js/ai_chat.js",
+    "integration_tests/test_mission16_check_ui_queue_terminal_sync.py"
+  ],
+  "verification": {
+    "compileall": "PASS",
+    "javascript_syntax": "PASS",
+    "targeted_tests": "17 passed",
+    "selected_regression": "115 passed",
+    "real_runtime": "NOT_RUN"
+  },
+  "safety": {
+    "auto_confirm_added": false,
+    "run_permission_bypass_added": false,
+    "machine_commands_sent": 0,
+    "sim_only_production_approval": false
+  }
+}

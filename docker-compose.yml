@@ -1,0 +1,57 @@
+# docker-compose.yml — CNC Digital Twin
+# Chạy toàn hệ thống: Cloud Backend + Edge Backend
+# MongoDB và Neo4j được cung cấp từ URI trong .env.
+# Có thể dùng service local hoặc managed cloud; compose không tự khởi tạo DB.
+#
+# Yêu cầu: Docker Desktop >= 4.x, docker compose v2
+#
+# Khởi động:
+#   # .env đã chứa cấu hình thật cục bộ; .env.example chỉ là mẫu không chứa secret
+#   docker compose up -d
+#
+# Dừng:
+#   docker compose down
+#
+# Xem log:
+#   docker compose logs -f cloud_backend
+#   docker compose logs -f edge_backend
+
+version: "3.9"
+
+services:
+
+  # MongoDB: cấu hình MONGO_URI trong .env (local hoặc managed service).
+
+  # Neo4j: cấu hình NEO4J_URI trong .env (local hoặc managed service).
+
+  # ── Cloud Backend (FastAPI, serve Frontend + API) ────────────────────────
+  cloud_backend:
+    build:
+      context: .
+      dockerfile: cloud_backend/Dockerfile
+    container_name: cnc_cloud
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    depends_on: []
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/ready', timeout=3).read()"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+
+  # ── Edge Backend (Python, kết nối FluidNC + MQTT + CNC vật lý) ──────────
+  edge_backend:
+    build:
+      context: .
+      dockerfile: edge_backend/Dockerfile
+    container_name: cnc_edge
+    restart: unless-stopped
+    network_mode: host        # cần truy cập FluidNC qua LAN (telnet :23)
+    env_file:
+      - .env
+    # MONGO_URI và NEO4J_URI đọc từ .env.
+    # Edge Backend không expose HTTP port — giao tiếp qua persistence + HTTP sync lên Cloud.
+

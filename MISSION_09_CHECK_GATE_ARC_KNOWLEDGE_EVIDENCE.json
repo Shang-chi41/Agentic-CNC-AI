@@ -1,0 +1,203 @@
+{
+  "created_at": "2026-07-11T15:41:34.940691+00:00",
+  "workflow": {
+    "plugin": "UNIVERSAL_AGENTIC_SELF_GOVERNING_PLUGIN_V1_2",
+    "skill": "FULL_AGENTIC_WORK_SKILL_V3_VI",
+    "phases_completed": [
+      "goal",
+      "freeze baseline",
+      "memory",
+      "inventory",
+      "evaluation",
+      "source-of-truth",
+      "guardrails/human checkpoint",
+      "pre-review",
+      "surgical patch",
+      "test matrix",
+      "post-review",
+      "Hermes learning",
+      "package/handoff"
+    ]
+  },
+  "baseline": {
+    "created_at": "2026-07-11T15:07:22.836606+00:00",
+    "baseline_zip": "AUTOMAECH_MISSION_08_AGENTIC_FLEXIBILITY_CORE_READY_SANITIZED.zip",
+    "sha256": "ad78d2ea5fffe7182b83b25c75a17b3c40cb184180cb0d57a3fcd1d684ce2ebd",
+    "actual_entrypoints": [
+      "edge_backend/main.py",
+      "edge_backend/main_sim_only.py",
+      "edge_backend/workers/ai_worker.py"
+    ],
+    "temporary_test_env": "copied from .env.example with sandbox placeholders; excluded from package",
+    "baseline_test_observation": "155 passed, 6 failed only because sanitized ZIP intentionally excluded .env; temporary test .env restores static test prerequisites"
+  },
+  "verification": {
+    "mission09_eval": {
+      "scenario_count": 10,
+      "passed": 10,
+      "failed": 0,
+      "score": 1.0,
+      "scope": "sandbox/static/mock; no real MATLAB/NX/FluidNC/provider certification",
+      "results": [
+        {
+          "scenario": "dispatch_100_percent_is_not_motion_done",
+          "passed": true,
+          "evidence": {}
+        },
+        {
+          "scenario": "wrong_check_id_is_not_done",
+          "passed": true,
+          "evidence": {}
+        },
+        {
+          "scenario": "exact_motion_complete_is_done",
+          "passed": true,
+          "evidence": {}
+        },
+        {
+          "scenario": "g2_g3_arc_preview",
+          "passed": true,
+          "evidence": {
+            "stdout": "{\"circle_points\":76,\"helix_points\":63,\"status\":\"PASS\"}",
+            "stderr": ""
+          }
+        },
+        {
+          "scenario": "center_origin_t1_al6061",
+          "passed": true,
+          "evidence": {
+            "response_tail": "m.\n- Tổng sâu: 3 mm; các mức sâu: Z-3.\n- WCS: G55; gốc: center; safe Z=6 mm.\n- Tool workflow: Neo4j → generator → validator.\n- Validate nhanh: PASS. MATLAB/NX CHECK chưa chạy; chạy máy thật vẫn phải qua CHECK/Confirm.\n\n```gcode\n(RECTANGULAR POCKET 36x36 MM - Nhôm 6061 - T1)\n(ORIGIN: G55 AT CENTER, Z0 = STOCK TOP)\n(TOOL DIAMETER: D6 MM)\n(TOTAL DEPTH: 3 MM; STEP-DOWN MAX: 3 MM)\n(NEO4J RANGE: OR1; F1050; S17000)\nG21\nG90\nG17\nG40\nG49\nG80\nG55\nT1 M6\nS17000 M3\nG0 Z6\nG0 X-15 Y-15\n(PASS 1 - Z-3)\nG1 Z-3 F1050\nG1 X15 Y-15 F1050\nG1 X-15 Y-11.4 F1050\nG1 X15 Y-7.8 F1050\nG1 X-15 Y-4.2 F1050\nG1 X15 Y-0.6 F1050\nG1 X-15 Y3 F1050\nG1 X15 Y6.6 F1050\nG1 X-15 Y10.2 F1050\nG1 X15 Y13.8 F1050\nG1 X-15 Y15 F1050\nG1 X15 Y-15 F1050\nG1 X15 Y15 F1050\nG1 X-15 Y15 F1050\nG1 X-15 Y-15 F1050\nG0 Z6\nG0 X-15 Y-15\nM5\nG0 Z6\nM30\n```"
+          }
+        },
+        {
+          "scenario": "ambiguous_rectangle_asks_pocket_or_contour",
+          "passed": true,
+          "evidence": {}
+        },
+        {
+          "scenario": "verified_pattern_rag_retrieval",
+          "passed": true,
+          "evidence": {
+            "pattern_ids": [
+              "P_CIRCULAR_POCKET_CONCENTRIC",
+              "P_MIXED_OPERATION_SEQUENCE"
+            ]
+          }
+        },
+        {
+          "scenario": "unverified_gcode_cannot_teach_agent",
+          "passed": true,
+          "evidence": {}
+        },
+        {
+          "scenario": "verified_candidate_is_structural_not_numeric",
+          "passed": true,
+          "evidence": {
+            "candidate_id": "cand-545dcedf87078162"
+          }
+        },
+        {
+          "scenario": "sim_only_connectivity_is_not_check_or_machine_run",
+          "passed": true,
+          "evidence": {}
+        }
+      ]
+    },
+    "targeted_tests": "13 passed, clean exit",
+    "full_collection": {
+      "terminal_summary": "174 passed in 33.10s",
+      "clean_exit": false,
+      "note": "process remained alive after terminal summary in sandbox"
+    },
+    "frontend_js": "16 checked, 0 failed",
+    "arc_node": "{\"circle_points\":76,\"helix_points\":63,\"status\":\"PASS\"}",
+    "mcp": "8 tools PASS",
+    "compile": "PASS"
+  },
+  "source_of_truth": {
+    "check_completion": "exact check_id + CNC3 motion_complete + terminal success + no collision",
+    "dataflow": "Control Selector/runtime heartbeat",
+    "machine_run": "main.py + FluidNC + SyncState readiness + enabled gate",
+    "cutting_parameters": "Neo4j OperatingRange T1 + Aluminum 6061",
+    "verified_examples": "human-reviewed structural pattern library"
+  },
+  "manifest": {
+    "baseline_zip": "AUTOMAECH_MISSION_08_AGENTIC_FLEXIBILITY_CORE_READY_SANITIZED.zip",
+    "baseline_sha256": "ad78d2ea5fffe7182b83b25c75a17b3c40cb184180cb0d57a3fcd1d684ce2ebd",
+    "changed": [
+      "AGENTIC_RUN_FIRST.md",
+      "edge_backend/ai/agentic_gcode_response.py",
+      "edge_backend/ai/agentic_response_harness.py",
+      "edge_backend/ai/gcode_semantics.py",
+      "edge_backend/ai/gcode_validator.py",
+      "edge_backend/main.py",
+      "edge_backend/main_sim_only.py",
+      "edge_backend/simulation/control_selector.py",
+      "edge_backend/simulation/matlab_receiver.py",
+      "edge_backend/simulation/nxmcd_client.py",
+      "frontend/css/monitor.css",
+      "frontend/js/control.js",
+      "frontend/js/monitor.js",
+      "frontend/pages/monitor.html",
+      "matlab_bridge/run_edge_matlab_bridge_R2023b_CNC3_quiet_FIXED.m",
+      "reports/mission3_architecture/mission3_architecture_manifest.json",
+      "reports/mission3_architecture/mission3_architecture_manifest.md",
+      "scripts/RUN_00_LOCAL_VERIFY.ps1"
+    ],
+    "added": [
+      "MISSION_09_CHECK_GATE_ARC_KNOWLEDGE_CLEANUP.md",
+      "MISSION_09_CHECK_GATE_ARC_KNOWLEDGE_EVIDENCE.json",
+      "MISSION_09_CHECK_GATE_ARC_KNOWLEDGE_SUMMARY.md",
+      "RUN_94_MISSION09_CHECK_GATE_ARC_KNOWLEDGE_EVAL.bat",
+      "agent_client_knowledge/verified_gcode_patterns_v1.json",
+      "agentic_execution_kit/MISSION_09_CHECK_GATE_ARC_KNOWLEDGE/00_BASELINE_FREEZE.json",
+      "agentic_execution_kit/MISSION_09_CHECK_GATE_ARC_KNOWLEDGE/01_GOAL_SPEC.md",
+      "agentic_execution_kit/MISSION_09_CHECK_GATE_ARC_KNOWLEDGE/02_MEMORY_ERROR_LEARNING.md",
+      "agentic_execution_kit/MISSION_09_CHECK_GATE_ARC_KNOWLEDGE/03_ARCHITECTURE_INVENTORY.md",
+      "agentic_execution_kit/MISSION_09_CHECK_GATE_ARC_KNOWLEDGE/04_EVALUATION_MATRIX.md",
+      "agentic_execution_kit/MISSION_09_CHECK_GATE_ARC_KNOWLEDGE/05_SOURCE_OF_TRUTH_CONTRACT.md",
+      "agentic_execution_kit/MISSION_09_CHECK_GATE_ARC_KNOWLEDGE/06_GUARDRAILS_HUMAN_CHECKPOINT.md",
+      "agentic_execution_kit/MISSION_09_CHECK_GATE_ARC_KNOWLEDGE/07_TASK_ROUTING_PLAN.md",
+      "agentic_execution_kit/MISSION_09_CHECK_GATE_ARC_KNOWLEDGE/08_PRE_PATCH_MULTI_AGENT_REVIEW.md",
+      "agentic_execution_kit/MISSION_09_CHECK_GATE_ARC_KNOWLEDGE/09_COMMANDS_VERIFICATION.md",
+      "agentic_execution_kit/MISSION_09_CHECK_GATE_ARC_KNOWLEDGE/10_POST_PATCH_MULTI_AGENT_ULTRA_REVIEW.md",
+      "agentic_execution_kit/MISSION_09_CHECK_GATE_ARC_KNOWLEDGE/11_HERMES_LEARNING.md",
+      "agentic_execution_kit/MISSION_09_CHECK_GATE_ARC_KNOWLEDGE/12_RUNTIME_HANDOFF.md",
+      "agentic_execution_kit/MISSION_09_CHECK_GATE_ARC_KNOWLEDGE/13_LIMITATIONS.md",
+      "agentic_execution_kit/MISSION_09_CHECK_GATE_ARC_KNOWLEDGE/14_CHANGELOG.md",
+      "agentic_execution_kit/MISSION_09_CHECK_GATE_ARC_KNOWLEDGE/CHANGE_MANIFEST.json",
+      "agentic_execution_kit/MISSION_09_CHECK_GATE_ARC_KNOWLEDGE/EVIDENCE_INDEX.md",
+      "edge_backend/ai/check_completion.py",
+      "edge_backend/ai/gcode_pattern_learning.py",
+      "edge_backend/ai/gcode_pattern_retriever.py",
+      "edge_backend/logs/app.log",
+      "eval/mission09_check_gate_arc_knowledge_eval.py",
+      "frontend/js/gcode_toolpath_parser.js",
+      "integration_tests/mission09_toolpath_parser_test.mjs",
+      "integration_tests/test_mission09_check_gate_arc_knowledge.py",
+      "integration_tests/test_mission09_toolpath_parser_node.py",
+      "reports/mission09_check_gate_arc_knowledge_eval.json",
+      "reports/mission09_logs/01_mission09_eval.exit",
+      "reports/mission09_logs/01_mission09_eval.log",
+      "reports/mission09_logs/02_mission09_targeted_tests.exit",
+      "reports/mission09_logs/02_mission09_targeted_tests.log",
+      "reports/mission09_logs/03_compileall.exit",
+      "reports/mission09_logs/03_compileall.log",
+      "reports/mission09_logs/04_frontend_js.exit",
+      "reports/mission09_logs/04_frontend_js.log",
+      "reports/mission09_logs/05_mcp_smoke.exit",
+      "reports/mission09_logs/05_mcp_smoke.log",
+      "reports/mission09_logs/06_arc_parser_node.exit",
+      "reports/mission09_logs/06_arc_parser_node.log",
+      "reports/mission09_logs/07_full_integration_note.txt",
+      "reports/mission09_logs/07_full_integration_terminal.log",
+      "tools/promote_verified_gcode_pattern.py"
+    ],
+    "deleted": []
+  },
+  "limitations": [
+    "No live MATLAB/NX/FluidNC verification",
+    "No deployed-browser visual verification",
+    "Full pytest terminal summary reached but sandbox process did not shut down cleanly"
+  ]
+}

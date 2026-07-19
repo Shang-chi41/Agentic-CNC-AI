@@ -1,0 +1,237 @@
+{
+  "status": "VALIDATED_DRAFT",
+  "errors": [],
+  "pipeline_status": {
+    "semantic": "BOUND",
+    "context": "FOUND",
+    "validation": "PASSED",
+    "draft": "GENERATED",
+    "authorization": "BLOCKED"
+  },
+  "features": [
+    {
+      "id": "F1",
+      "type": "rounded_rect_pocket",
+      "operation": "ROUNDED_RECT_POCKET",
+      "depth_mm": 3.0,
+      "x_bounds": [
+        -25.0,
+        25.0
+      ],
+      "y_bounds": [
+        -17.5,
+        17.5
+      ],
+      "center_mm": [
+        0.0,
+        0.0
+      ],
+      "width_mm": null,
+      "diameter_mm": null,
+      "corner_radius_mm": 5.0,
+      "role": "",
+      "breakout_allowance_mm": null,
+      "spoilboard_clearance_mm": null,
+      "fixture_clearance_confirmed": false,
+      "part_retention_strategy": "",
+      "predecessor_ids": [],
+      "provenance": [
+        "F1: ROUNDED_RECT_POCKET 50 × 35 mm, R5, tâm X0 Y0, sâu 3 mm"
+      ]
+    },
+    {
+      "id": "F2",
+      "type": "circular_feature",
+      "operation": "CIRCULAR_POCKET",
+      "depth_mm": 2.0,
+      "x_bounds": null,
+      "y_bounds": null,
+      "center_mm": [
+        -20.0,
+        0.0
+      ],
+      "width_mm": null,
+      "diameter_mm": 12.0,
+      "corner_radius_mm": null,
+      "role": "pocket_inside",
+      "breakout_allowance_mm": null,
+      "spoilboard_clearance_mm": null,
+      "fixture_clearance_confirmed": false,
+      "part_retention_strategy": "",
+      "predecessor_ids": [],
+      "provenance": [
+        "F2: CIRCULAR_POCKET Ø12, tâm X-20 Y0, sâu 2 mm"
+      ]
+    },
+    {
+      "id": "F3",
+      "type": "circular_feature",
+      "operation": "CIRCULAR_POCKET",
+      "depth_mm": 2.0,
+      "x_bounds": null,
+      "y_bounds": null,
+      "center_mm": [
+        20.0,
+        0.0
+      ],
+      "width_mm": null,
+      "diameter_mm": 12.0,
+      "corner_radius_mm": null,
+      "role": "pocket_inside",
+      "breakout_allowance_mm": null,
+      "spoilboard_clearance_mm": null,
+      "fixture_clearance_confirmed": false,
+      "part_retention_strategy": "",
+      "predecessor_ids": [],
+      "provenance": [
+        "F3: CIRCULAR_POCKET Ø12, tâm X20 Y0, sâu 2 mm"
+      ]
+    },
+    {
+      "id": "F4",
+      "type": "rectangular_contour",
+      "operation": "RECTANGULAR_CONTOUR_OUTSIDE",
+      "depth_mm": 4.0,
+      "x_bounds": [
+        -40.0,
+        40.0
+      ],
+      "y_bounds": [
+        -30.0,
+        30.0
+      ],
+      "center_mm": [
+        0.0,
+        0.0
+      ],
+      "width_mm": null,
+      "diameter_mm": null,
+      "corner_radius_mm": null,
+      "role": "contour_outside",
+      "breakout_allowance_mm": null,
+      "spoilboard_clearance_mm": null,
+      "fixture_clearance_confirmed": false,
+      "part_retention_strategy": "EXTERNAL_FIXTURE",
+      "predecessor_ids": [
+        "F1",
+        "F2",
+        "F3"
+      ],
+      "provenance": [
+        "F4: RECTANGULAR_CONTOUR_OUTSIDE 80 × 60 mm, tâm X0 Y0, sâu 4 mm"
+      ]
+    }
+  ],
+  "semantic_clause_accounting": [
+    {
+      "clause_id": "C001",
+      "text": "Phôi nhôm 6061 kích thước 100 × 80 × 12 mm",
+      "disposition": "BOUND",
+      "binding": "stock.dimensions,stock.material",
+      "reason": "Clause is represented by canonical JobSpec fields.",
+      "safety_relevant": true
+    },
+    {
+      "clause_id": "C002",
+      "text": "G54 tại tâm mặt trên phôi",
+      "disposition": "BOUND",
+      "binding": "work_coordinate.wcs,work_coordinate.origin",
+      "reason": "Clause is represented by canonical JobSpec fields.",
+      "safety_relevant": true
+    },
+    {
+      "clause_id": "C003",
+      "text": "X0 Y0 tại tâm phôi",
+      "disposition": "BOUND",
+      "binding": "work_coordinate.origin",
+      "reason": "Clause is represented by canonical JobSpec fields.",
+      "safety_relevant": true
+    },
+    {
+      "clause_id": "C004",
+      "text": "Z0 tại mặt trên phôi",
+      "disposition": "BOUND",
+      "binding": "work_coordinate.z0",
+      "reason": "Clause is represented by canonical JobSpec fields.",
+      "safety_relevant": true
+    },
+    {
+      "clause_id": "C005",
+      "text": "Safe Z 3 mm",
+      "disposition": "BOUND",
+      "binding": "safe_z_mm",
+      "reason": "Clause is represented by canonical JobSpec fields.",
+      "safety_relevant": true
+    },
+    {
+      "clause_id": "C006",
+      "text": "Dao T1 END_MILL D6",
+      "disposition": "BOUND",
+      "binding": "tool",
+      "reason": "Clause is represented by canonical JobSpec fields.",
+      "safety_relevant": true
+    },
+    {
+      "clause_id": "C007",
+      "text": "F1: ROUNDED_RECT_POCKET 50 × 35 mm, R5, tâm X0 Y0, sâu 3 mm",
+      "disposition": "BOUND",
+      "binding": "feature:F1",
+      "reason": "Clause is represented by canonical JobSpec fields.",
+      "safety_relevant": true
+    },
+    {
+      "clause_id": "C008",
+      "text": "F2: CIRCULAR_POCKET Ø12, tâm X-20 Y0, sâu 2 mm",
+      "disposition": "BOUND",
+      "binding": "feature:F2",
+      "reason": "Clause is represented by canonical JobSpec fields.",
+      "safety_relevant": true
+    },
+    {
+      "clause_id": "C009",
+      "text": "F3: CIRCULAR_POCKET Ø12, tâm X20 Y0, sâu 2 mm",
+      "disposition": "BOUND",
+      "binding": "feature:F3",
+      "reason": "Clause is represented by canonical JobSpec fields.",
+      "safety_relevant": true
+    },
+    {
+      "clause_id": "C010",
+      "text": "F4: RECTANGULAR_CONTOUR_OUTSIDE 80 × 60 mm, tâm X0 Y0, sâu 4 mm",
+      "disposition": "BOUND",
+      "binding": "feature:F4",
+      "reason": "Clause is represented by canonical JobSpec fields.",
+      "safety_relevant": true
+    },
+    {
+      "clause_id": "C011",
+      "text": "F4 được gia công sau F1, F2 và F3",
+      "disposition": "BOUND",
+      "binding": "feature_order:F4<-F1,F2,F3",
+      "reason": "Clause is represented by canonical JobSpec fields.",
+      "safety_relevant": true
+    },
+    {
+      "clause_id": "C012",
+      "text": "Chi tiết được gá giữ bên ngoài trong toàn bộ quá trình",
+      "disposition": "BOUND",
+      "binding": "part.retention",
+      "reason": "Clause is represented by canonical JobSpec fields.",
+      "safety_relevant": false
+    }
+  ],
+  "gcode_order": [
+    "F2",
+    "F3",
+    "F1",
+    "F4"
+  ],
+  "job_spec_sha256": "b7dd3b6746261d5f2f0eb33a5af6f1dc0fb1c3fdedf22edacc8f80caceedec22",
+  "gcode_sha256": "76386b247fd36cb79add6a57568be7a8e50968a3a3afbcf54fecab712d54e0b1",
+  "verification": {
+    "exact_contract_tests": "5 passed",
+    "focused_backend_frontend_browser": "15 passed",
+    "mission24_25_relevant_regression": "102 passed",
+    "full_repository_suite": "NOT_CLAIMED; legacy process teardown did not terminate cleanly"
+  }
+}
