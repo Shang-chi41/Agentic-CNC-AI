@@ -1,0 +1,235 @@
+/* ai.css
+ * Shared chrome used on every HMI page: left Sidebar nav + right AI Panel (chat).
+ * Previously duplicated inline/per-page (dashboard.css, monitor.css, control.css,
+ * history.css, settings.css). Centralized here so it only needs to be edited once.
+ * Depends on CSS variables defined in isa101.css.
+ */
+
+/* ── Sidebar ── */
+.sidebar {
+    width:110px; flex-shrink:0; background:var(--gray-sidebar);
+    border-right:1px solid var(--gray-border);
+    display:flex; flex-direction:column; overflow:hidden;
+}
+.sidebar-nav { flex:1; display:flex; flex-direction:column; }
+.nav-item {
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    gap:5px; padding:14px 6px; cursor:pointer; text-decoration:none;
+    border-left:3px solid transparent; transition:var(--transition);
+    border-bottom:1px solid var(--gray-border);
+}
+.nav-item:hover  { background:var(--gray-hover); border-left-color:var(--cyan-portal); }
+.nav-item.active { background:var(--gray-card);  border-left-color:var(--cyan-portal); }
+.nav-item svg { width:22px; height:22px; opacity:0.65; }
+.nav-item.active svg { opacity:1; }
+.nav-label {
+    font-family:'Be Vietnam Pro',sans-serif; font-size:8.5px; font-weight:600;
+    letter-spacing:0.8px; color:var(--text-secondary); text-align:center; text-transform:uppercase;
+}
+.nav-item.active .nav-label { color:var(--cyan-portal); }
+.sidebar-status {
+    padding:10px 8px; border-top:1px solid var(--gray-border);
+    display:flex; flex-direction:column; gap:6px;
+}
+.sdot-row { display:flex; align-items:center; gap:6px; font-size:9px; color:var(--text-muted); }
+.sdot { width:7px; height:7px; border-radius:50%; flex-shrink:0; }
+.sdot.on  { background:var(--status-active);  animation:pulse 2s infinite; }
+.sdot.off { background:var(--status-alarm); }
+.sdot.warn{ background:var(--status-warning); animation:pulse 1.5s infinite; }
+.sdot.idle{ background:var(--gray-border); }
+
+/* ── AI Panel ── */
+.ai-panel {
+    width:215px; flex-shrink:0; background:var(--gray-card);
+    border-left:1px solid var(--gray-border); display:flex; flex-direction:column; overflow:hidden;
+}
+.ai-header {
+    padding:10px 12px; background:var(--cyan-portal);
+    display:flex; align-items:center; justify-content:space-between; flex-shrink:0;
+}
+.ai-header-title { font-family:'Be Vietnam Pro',sans-serif; font-size:10px; font-weight:600; color:white; letter-spacing:1.5px; }
+.ai-prov-badge {
+    font-size:9px; background:rgba(255,255,255,0.2); color:white;
+    padding:2px 8px; border-radius:10px; border:1px solid rgba(255,255,255,0.3); cursor:pointer; transition:var(--transition);
+}
+.ai-prov-badge:hover { background:rgba(255,255,255,0.35); }
+.ai-user-bar {
+    display:flex; align-items:center; gap:6px; font-size:10px; color:var(--text-muted);
+    padding:5px 10px; border-bottom:1px solid var(--gray-border); flex-shrink:0;
+}
+.ai-user-dot { width:7px; height:7px; border-radius:50%; background:var(--status-active); animation:pulse 2s infinite; }
+.ai-logout-btn {
+    margin-left:auto; background:transparent; border:1px solid rgba(204,0,0,0.35);
+    color:var(--status-alarm); font-size:9px; padding:2px 7px;
+    border-radius:8px; cursor:pointer; transition:var(--transition);
+}
+.ai-logout-btn:hover { background:var(--status-alarm); color:white; }
+.ai-ctx-bar {
+    padding:5px 10px; background:var(--gray-sidebar); border-bottom:1px solid var(--gray-border);
+    font-size:9px; color:var(--cyan-portal); font-family:'Be Vietnam Pro',sans-serif;
+    letter-spacing:0.5px; flex-shrink:0; display:flex; align-items:center; gap:6px;
+}
+.ai-ctx-dot { width:5px; height:5px; border-radius:50%; background:var(--cyan-portal); animation:pulse 2s infinite; }
+
+/* Messages */
+.ai-msgs { flex:1; overflow-y:auto; padding:8px; display:flex; flex-direction:column; gap:7px; }
+.ai-msg { max-width:92%; padding:7px 9px; border-radius:8px; font-size:11px; line-height:1.5; word-break:break-word; }
+.ai-msg.ai   { background:var(--gray-sidebar); border:1px solid var(--gray-border); color:var(--text-secondary); align-self:flex-start; border-radius:2px 8px 8px 8px; }
+.ai-msg.user { background:var(--cyan-portal); color:white; align-self:flex-end; border-radius:8px 2px 8px 8px; }
+.ai-msg.sys  { background:transparent; color:var(--text-muted); font-size:9px; font-style:italic; align-self:center; text-align:center; border:none; padding:2px; }
+.ai-msg pre  { font-family:monospace; font-size:9px; background:var(--gray-bg); padding:5px; border-radius:4px; overflow-x:auto; margin-top:4px; white-space:pre-wrap; }
+.typing-dots span { animation:blink 1.4s infinite; display:inline-block; }
+.typing-dots span:nth-child(2) { animation-delay:0.2s; }
+.typing-dots span:nth-child(3) { animation-delay:0.4s; }
+@keyframes blink { 0%,80%,100%{opacity:0} 40%{opacity:1} }
+
+/* Input area */
+.ai-input-area {
+    flex-shrink:0; border-top:1px solid var(--gray-border);
+    padding:8px; display:flex; flex-direction:column; gap:5px; background:var(--gray-sidebar);
+}
+.ai-input-row { display:flex; gap:5px; }
+.ai-textarea {
+    flex:1; background:var(--white-pure); border:1px solid var(--gray-border);
+    border-radius:4px; padding:6px 8px; font-size:11px; color:var(--text-primary);
+    resize:none; height:36px; outline:none; transition:var(--transition);
+    font-family:'Be Vietnam Pro',sans-serif;
+}
+.ai-textarea:focus { border-color:var(--cyan-portal); box-shadow:0 0 0 2px var(--cyan-glow); }
+.ai-send { background:var(--cyan-portal); color:white; border:none; border-radius:4px; padding:0 10px; font-size:14px; cursor:pointer; transition:var(--transition); }
+.ai-send:hover { background:var(--cyan-dark); }
+.ai-send:disabled { opacity:0.5; cursor:not-allowed; }
+.ai-tools { display:flex; align-items:center; justify-content:space-between; }
+.ai-upload-btn {
+    background:transparent; border:1px solid var(--gray-border); border-radius:4px;
+    padding:2px 7px; font-size:9px; color:var(--text-muted); cursor:pointer; transition:var(--transition);
+}
+.ai-upload-btn:hover { border-color:var(--cyan-portal); color:var(--cyan-portal); }
+.ai-tier-lbl { font-size:9px; color:var(--text-muted); cursor:pointer; }
+.ai-tier-lbl:hover { color:var(--cyan-portal); }
+/* ── Mission 23.8: continuous conversation and readable wide mode ── */
+.ai-panel { width:260px; }
+.ai-header { gap:6px; }
+.ai-header-title { white-space:nowrap; }
+.ai-new-chat-btn,
+.ai-expand-btn {
+    width:28px; min-width:28px; height:28px; border-radius:6px;
+    border:1px solid rgba(255,255,255,.28); background:rgba(255,255,255,.13);
+    color:#fff; cursor:pointer; font-size:15px; line-height:1;
+}
+.ai-new-chat-btn:hover,
+.ai-expand-btn:hover { background:rgba(255,255,255,.30); }
+.ai-msgs { padding:11px; gap:9px; }
+.ai-msg {
+    max-width:96%; padding:9px 11px; font-size:12.5px; line-height:1.65;
+    overflow-wrap:anywhere; word-break:normal;
+}
+.ai-msg pre { font-size:11px; line-height:1.55; padding:9px; }
+.ai-textarea { min-height:52px; height:auto; max-height:150px; font-size:13px; line-height:1.5; }
+.ai-send { min-width:42px; font-size:17px; }
+.ai-tools { gap:5px; flex-wrap:wrap; justify-content:flex-start; }
+.ai-tools .ai-tier-lbl { margin-left:auto; }
+.ai-coach-btn { font-weight:700; border-color:var(--cyan-portal); color:var(--cyan-portal); }
+.ai-coach-card {
+    border:1px solid color-mix(in srgb, var(--cyan-portal) 55%, var(--gray-border));
+    background:color-mix(in srgb, var(--cyan-portal) 8%, var(--gray-card));
+    border-radius:8px; padding:10px; color:var(--text-primary); line-height:1.55;
+}
+.ai-coach-card.blocking { border-color:var(--status-warning); }
+.ai-coach-title { font-weight:700; color:var(--cyan-portal); margin-bottom:6px; }
+.ai-coach-suggestion { background:var(--white-pure); border-radius:6px; padding:8px; white-space:pre-wrap; }
+.ai-coach-missing { margin-top:7px; color:var(--status-warning); }
+.ai-coach-notes { margin-top:7px; color:var(--text-secondary); font-size:11px; }
+.ai-coach-apply {
+    margin-top:8px; padding:5px 10px; border:1px solid var(--cyan-portal);
+    background:transparent; color:var(--cyan-portal); border-radius:5px; cursor:pointer; font-weight:700;
+}
+
+body.ai-expanded::before {
+    content:""; position:fixed; inset:0; background:rgba(7,18,31,.52); z-index:4790;
+    backdrop-filter:blur(2px);
+}
+body.ai-expanded .ai-panel {
+    display:flex !important; position:fixed; top:24px; right:24px; bottom:24px;
+    width:min(980px, calc(100vw - 48px)); max-width:none; z-index:4800;
+    border:1px solid var(--gray-border); border-radius:12px; overflow:hidden;
+    box-shadow:0 22px 70px rgba(0,0,0,.48);
+}
+body.ai-expanded .ai-msgs { padding:18px 24px; gap:13px; }
+body.ai-expanded .ai-msg { max-width:82%; font-size:14px; line-height:1.75; padding:12px 15px; }
+body.ai-expanded .ai-msg pre { font-size:12px; max-height:380px; }
+body.ai-expanded .ai-input-area { padding:14px 20px; }
+body.ai-expanded .ai-textarea { min-height:74px; font-size:14px; }
+body.ai-expanded .ai-header-title { font-size:12px; }
+body.ai-expanded .ai-collapse-btn { display:none; }
+
+@media (max-width:700px) {
+  body.ai-expanded .ai-panel { inset:8px; width:auto; }
+  body.ai-expanded .ai-msg { max-width:94%; }
+  .ai-panel { width:240px; }
+}
+
+/* ── Mission 23.9: contextual action conversation ── */
+.ai-context-actions { display:flex; flex-wrap:wrap; gap:5px; align-items:center; }
+.ai-context-action-btn { font-weight:650; border-color:color-mix(in srgb, var(--cyan-portal) 45%, var(--gray-border)); }
+.ai-context-action-btn:hover { background:color-mix(in srgb, var(--cyan-portal) 10%, transparent); }
+.ai-action-card {
+    min-width:min(520px, 100%); border:1px solid color-mix(in srgb, var(--cyan-portal) 48%, var(--gray-border));
+    background:color-mix(in srgb, var(--cyan-portal) 6%, var(--gray-card)); border-radius:9px;
+    padding:11px 12px; color:var(--text-primary); line-height:1.58;
+}
+.ai-action-answer { font-weight:600; white-space:pre-wrap; }
+.ai-action-section { margin-top:10px; padding-top:8px; border-top:1px solid var(--gray-border); }
+.ai-action-section b { display:block; margin-bottom:4px; color:var(--cyan-portal); }
+.ai-action-section.remaining b { color:var(--status-warning); }
+.ai-action-item { padding:2px 0; color:var(--text-secondary); }
+.ai-action-question {
+    margin-top:10px; padding:9px 10px; border-left:3px solid var(--status-warning);
+    background:color-mix(in srgb, var(--status-warning) 8%, transparent); font-weight:650;
+}
+.ai-technical-details { margin-top:9px; color:var(--text-muted); }
+.ai-technical-details summary { cursor:pointer; font-size:11px; }
+.ai-technical-details pre { max-height:240px; font-size:10px; white-space:pre-wrap; }
+body.ai-expanded .ai-action-card { min-width:min(700px, 100%); }
+body.ai-expanded .ai-context-action-btn { font-size:11px; padding:5px 9px; }
+
+/* ── Mission 23.12: one pipeline, two presentation views ── */
+.ai-presentation-mode {
+    display:flex; align-items:center; gap:5px; padding:6px 8px;
+    border-bottom:1px solid var(--gray-border); background:var(--gray-card); flex-shrink:0;
+}
+.ai-presentation-label {
+    margin-right:auto; font-size:8.5px; letter-spacing:.7px; color:var(--text-muted); font-weight:700;
+}
+.ai-presentation-btn {
+    border:1px solid var(--gray-border); background:transparent; color:var(--text-muted);
+    border-radius:999px; padding:3px 8px; font-size:9px; cursor:pointer; font-weight:650;
+}
+.ai-presentation-btn.active {
+    color:var(--cyan-portal); border-color:var(--cyan-portal);
+    background:color-mix(in srgb, var(--cyan-portal) 9%, transparent);
+}
+.customer-collaboration-card {
+    border:1px solid color-mix(in srgb, var(--cyan-portal) 48%, var(--gray-border));
+    border-radius:10px; padding:11px; background:color-mix(in srgb, var(--cyan-portal) 5%, var(--gray-card));
+    color:var(--text-primary);
+}
+.customer-collaboration-title { font-weight:750; color:var(--cyan-portal); margin-bottom:7px; }
+.customer-understood { line-height:1.6; }
+.customer-feature-list { display:flex; flex-direction:column; gap:7px; margin-top:8px; }
+.customer-feature-item { padding:8px; border-radius:7px; background:var(--white-pure); border:1px solid var(--gray-border); }
+.customer-feature-name { font-weight:700; color:var(--text-primary); }
+.customer-feature-meta { margin-top:3px; color:var(--text-secondary); font-size:11px; }
+.customer-next-question {
+    margin-top:9px; padding:9px 10px; border-left:3px solid var(--status-warning);
+    background:color-mix(in srgb, var(--status-warning) 8%, transparent); font-weight:650; line-height:1.55;
+}
+.customer-system-action { margin-top:8px; color:var(--text-secondary); font-size:11px; }
+.customer-status-good { color:var(--status-active); font-weight:700; }
+.customer-status-warn { color:var(--status-warning); font-weight:700; }
+.customer-status-block { color:var(--status-alarm); font-weight:700; }
+.ai-technical-view { margin-top:9px; }
+body:not(.ai-presentation-technical) .ai-technical-view { display:none !important; }
+body.ai-presentation-technical .customer-plain-only { display:none !important; }
+body.ai-presentation-technical .ai-technical-view { display:block; }
+body.ai-expanded .customer-collaboration-card { min-width:min(720px, 100%); }

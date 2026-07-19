@@ -1,0 +1,144 @@
+[
+  {
+    "id": "A01",
+    "category": "ambiguity",
+    "description": "rounded pocket missing Y",
+    "request": "Stock 80 x 60 x 17 mm, Aluminum 6061. G54 at center, Z0 stock top. Tool T1 end mill D6. F1 rounded rectangular pocket R10, X -34 to 34, depth 10.",
+    "expect_status": "NEEDS_CLARIFICATION",
+    "expect_ambiguity": "F1.y_bounds"
+  },
+  {
+    "id": "A02",
+    "category": "ambiguity",
+    "description": "circle role missing",
+    "request": "Stock 80 x 60 x 17 mm, Aluminum 6061. G54 at center, Z0 stock top. Tool T1 end mill D6. F1 central circle diameter 30 at X0 Y0.",
+    "expect_status": "NEEDS_CLARIFICATION",
+    "expect_ambiguity": "F1.role"
+  },
+  {
+    "id": "A03",
+    "category": "ambiguity",
+    "description": "cross slot extent missing",
+    "request": "Stock 80 x 60 x 17 mm, Aluminum 6061. G54 at center, Z0 stock top. Tool T1 end mill D6. F1 cross slot width 8, depth 5.",
+    "expect_status": "NEEDS_CLARIFICATION",
+    "expect_ambiguity": "F1.extent"
+  },
+  {
+    "id": "G01",
+    "category": "guardrail",
+    "description": "rectangle violates 2R",
+    "request": "Stock 40 x 40 x 8 mm, Aluminum 6061. G54 at center, Z0 stock top. Tool T1 end mill D6. F1 rounded rectangular pocket 18x30 R10, depth 3.",
+    "expect_status": "INVALID_JOB_SPEC",
+    "expect_error": "rounded_rect_requires_width_height_gt_2R"
+  },
+  {
+    "id": "G02",
+    "category": "guardrail",
+    "description": "tool radius exceeds corner radius",
+    "request": "Stock 40 x 40 x 8 mm, Aluminum 6061. G54 at center, Z0 stock top. Tool T1 end mill D6. F1 rounded rectangular pocket 30x30 R2, depth 3.",
+    "expect_status": "INVALID_JOB_SPEC",
+    "expect_error": "tool_radius_exceeds_internal_corner_radius"
+  },
+  {
+    "id": "G03",
+    "category": "guardrail",
+    "description": "slot narrower than tool",
+    "request": "Stock 40 x 40 x 8 mm, Aluminum 6061. G54 at center, Z0 stock top. Tool T1 end mill D6. F1 slot width 5, X -10 to 10, Y0, depth 3.",
+    "expect_status": "INVALID_JOB_SPEC",
+    "expect_error": "tool_diameter_exceeds_slot_width"
+  },
+  {
+    "id": "G04",
+    "category": "guardrail",
+    "kind": "forbidden_gcode",
+    "gcode": "G21\nG90\nG81 X0 Y0 Z-5 R2 F100\nM30",
+    "expect_code": "CANNED_DRILL_CYCLE_FORBIDDEN"
+  },
+  {
+    "id": "C01",
+    "category": "completion",
+    "description": "rect pocket",
+    "request": "Stock 60 x 40 x 8 mm, Aluminum 6061. G54 at center, Z0 stock top. Tool T1 end mill D6, safe Z 3. F1 rectangular pocket 30x20, depth 4.",
+    "expect_status": "VALIDATED_DRAFT",
+    "expect_features": [
+      "F1"
+    ]
+  },
+  {
+    "id": "C02",
+    "category": "completion",
+    "description": "straight slot",
+    "request": "Stock 60 x 40 x 8 mm, Aluminum 6061. G54 at center, Z0 stock top. Tool T1 end mill D6, safe Z 3. F1 slot width 8, X -20 to 20, Y0, depth 3.",
+    "expect_status": "VALIDATED_DRAFT",
+    "expect_features": [
+      "F1"
+    ]
+  },
+  {
+    "id": "C03",
+    "category": "completion",
+    "description": "outside rectangular contour",
+    "request": "Stock 50 x 40 x 6 mm, Aluminum 6061. G54 at center, Z0 stock top. Tool T1 end mill D6, safe Z 3. F1 rectangular contour outside X -15 to 15, Y -10 to 10, depth 4.",
+    "expect_status": "VALIDATED_DRAFT",
+    "expect_features": [
+      "F1"
+    ]
+  },
+  {
+    "id": "C04",
+    "category": "completion",
+    "description": "circular through mill",
+    "request": "Stock 40 x 40 x 8 mm, Aluminum 6061. G54 at center, Z0 stock top. Tool T1 end mill D6, safe Z 3. F1 circular through mill diameter 12 at X0 Y0, depth 8; bottom breakout allowance 0.2 mm; spoilboard clearance 2 mm; clamps outside cutter envelope.",
+    "expect_status": "VALIDATED_DRAFT",
+    "expect_features": [
+      "F1"
+    ]
+  },
+  {
+    "id": "C05",
+    "category": "completion",
+    "description": "multi-feature with island",
+    "request": "Stock 80 x 60 x 17 mm, Aluminum 6061. G54 at center, Z0 stock top. Tool T1 end mill D6. Rounded rectangular pocket X -34 to 34, Y -24 to 24, R10, depth 10. Keep circular island diameter 30 at X0 Y0. Circular through mill diameter 10 at X0 Y0, depth 17; bottom breakout allowance 0.2 mm; spoilboard clearance 2 mm; clamps outside cutter envelope. Cross slot width 8, X -30 to 30, Y -20 to 20, depth 5; it may cut through the center island. Safe Z 3.",
+    "expect_status": "VALIDATED_DRAFT",
+    "expect_features": [
+      "F1",
+      "F2",
+      "F3",
+      "F4"
+    ]
+  },
+  {
+    "id": "R01",
+    "category": "reference",
+    "kind": "reference_seed",
+    "gcode": "(SLOT 80x60)\nG21\nG90\nS17000 M3\nG0 Z3\nG1 Z-17 F600\nG1 X37 Y27 F1050\nM30",
+    "forbid_seed_fields": [
+      "geometry",
+      "x_bounds",
+      "y_bounds",
+      "feature_depths",
+      "topology"
+    ]
+  },
+  {
+    "id": "I01",
+    "category": "identity",
+    "kind": "attachment",
+    "gcode": "G21\nG90\nM30\n",
+    "filename": "part.nc"
+  },
+  {
+    "id": "O01",
+    "category": "optimization",
+    "description": "multiple candidates and best score",
+    "request": "Stock 60 x 40 x 8 mm, Aluminum 6061. G54 at center, Z0 stock top. Tool T1 end mill D6, safe Z 3. F1 rectangular pocket 30x20, depth 4.",
+    "expect_min_candidates": 2
+  },
+  {
+    "id": "P01",
+    "category": "provenance",
+    "description": "operation ranges only",
+    "request": "Stock 60 x 40 x 8 mm, Aluminum 6061. G54 at center, Z0 stock top. Tool T1 end mill D6, safe Z 3. F1 slot width 8, X -20 to 20, Y0, depth 3.",
+    "expect_range": "OR_SLOT"
+  }
+]

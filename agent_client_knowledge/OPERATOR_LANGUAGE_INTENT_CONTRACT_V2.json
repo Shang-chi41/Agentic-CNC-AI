@@ -1,0 +1,13 @@
+{
+  "version": "2.0.0",
+  "terminal_output": ["VALIDATED_DRAFT", "NEEDS_CLARIFICATION", "REJECTED_OR_BLOCKED"],
+  "priority": ["current_turn", "chat_history", "neo4j_active_context", "explicit_project_defaults", "clarification"],
+  "shorthand": {
+    "A×B×C": ["width_mm", "height_mm", "total_depth_mm"],
+    "exclusion": "explicit G-code/XYZ coordinate syntax"
+  },
+  "required_provenance": true,
+  "machine_side_effects": false,
+  "approval_authority": false,
+  "max_student_repairs": 5
+}

@@ -1,0 +1,61 @@
+{
+  "session_count": 3,
+  "generate_session_count": 2,
+  "metrics": {
+    "C1_tool_ordering": {
+      "passed": 2,
+      "total": 2,
+      "score": 1.0,
+      "threshold": 1.0,
+      "failures": []
+    },
+    "C2_first_pass_range_compliance": {
+      "passed": 1,
+      "total": 2,
+      "score": 0.5,
+      "threshold": 0.9,
+      "failures": [
+        {
+          "scenario_id": "S09",
+          "issues": [
+            {
+              "code": "FEED_OUT_OF_RANGE",
+              "actual": 2000.0,
+              "allowed": [
+                600.0,
+                1500.0
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "C3_self_correction": {
+      "passed": 1,
+      "total": 1,
+      "score": 1.0,
+      "threshold": 0.95,
+      "note": "If total is 0, no first-pass failures occurred; C3 is not applicable for this run.",
+      "failures": []
+    },
+    "C4_style_match": {
+      "passed": 3,
+      "total": 3,
+      "score": 1.0,
+      "threshold": 0.9
+    },
+    "C4_dangerous_missing_fields": {
+      "passed": 1,
+      "total": 1,
+      "score": 1.0,
+      "threshold": 1.0
+    },
+    "C4_safety_invariant": {
+      "passed": 2,
+      "total": 2,
+      "score": 1.0,
+      "threshold": 1.0
+    }
+  },
+  "c4_failures": []
+}

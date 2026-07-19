@@ -1,0 +1,161 @@
+[
+  {
+    "id": "F01",
+    "metric": "routing",
+    "kind": "classify",
+    "question": "Phay túi chữ nhật 20x10 mm, nhôm 6061, dao T1, sâu 5 mm, gốc G54 tại góc trái dưới, safe Z=5 mm.",
+    "expected": "generate_gcode"
+  },
+  {
+    "id": "F02",
+    "metric": "routing",
+    "kind": "classify",
+    "question": "Phay tui hinh tron ban kinh 15 mm, nhom 6061, dao T1, sau 5 mm, goc G54 tai goc trai duoi, safe Z5.",
+    "expected": "generate_gcode"
+  },
+  {
+    "id": "F03",
+    "metric": "routing",
+    "kind": "classify",
+    "question": "Tối ưu G-code này",
+    "gcode": "G21\nG90\nG17\nG54\nG0 X0 Y0\nM30",
+    "expected": "optimize_gcode"
+  },
+  {
+    "id": "F04",
+    "metric": "routing",
+    "kind": "classify",
+    "question": "Mô phỏng MATLAB/NX G-code này",
+    "gcode": "G21\nG90\nG17\nG54\nG0 X0 Y0\nM30",
+    "expected": "simulate_gcode"
+  },
+  {
+    "id": "F05",
+    "metric": "routing",
+    "kind": "classify",
+    "question": "Xin chào, hôm nay máy thế nào?",
+    "expected": "general"
+  },
+  {
+    "id": "F06",
+    "metric": "intent",
+    "kind": "parse",
+    "question": "Phay rãnh 50x10 mm, nhôm 6061, dao T1, sâu 3 mm, gốc G54 tại góc trái dưới, safe Z5.",
+    "expect": {
+      "geometry": "slot",
+      "width_mm": 50,
+      "height_mm": 10
+    }
+  },
+  {
+    "id": "F07",
+    "metric": "intent",
+    "kind": "parse",
+    "question": "Khoan tại X10 Y20 và X30 Y20, nhôm 6061, dao T1, sâu 5, gốc G54 tại góc trái dưới, safe Z5.",
+    "expect": {
+      "geometry": "circular_through_mill",
+      "hole_count_parsed": 2
+    }
+  },
+  {
+    "id": "F08",
+    "metric": "intent",
+    "kind": "multi_turn",
+    "question": "Đổi sang G55 nhé.",
+    "context": "=== LỊCH SỬ CHAT ===\n[user] Phay rãnh 50x10 mm trên nhôm 6061.\n[user] Dùng T1, sâu 3 mm.\n[user] Gốc G54 tại góc trái dưới, safe Z 5 mm.\n=== KNOWLEDGE GRAPH ===\nwork_volume=400x300x100",
+    "expect": {
+      "geometry": "slot",
+      "wcs": "G55",
+      "width_mm": 50
+    }
+  },
+  {
+    "id": "F09",
+    "metric": "generation",
+    "kind": "deterministic_generate",
+    "question": "Phay túi chữ nhật 20x10 mm, nhôm 6061, dao T1, sâu 5 mm, gốc G54 tại góc trái dưới, safe Z=5 mm.",
+    "contains": [
+      "RECTANGULAR POCKET 20x10",
+      "X17",
+      "Validate nhanh: PASS"
+    ]
+  },
+  {
+    "id": "F10",
+    "metric": "generation",
+    "kind": "deterministic_generate",
+    "question": "Phay túi tròn bán kính 15 mm, nhôm 6061, dao T1, sâu 5 mm, gốc G54 tại góc trái dưới, safe Z=5 mm.",
+    "contains": [
+      "CIRCULAR POCKET R15",
+      "G2",
+      "X27"
+    ]
+  },
+  {
+    "id": "F11",
+    "metric": "generation",
+    "kind": "deterministic_generate",
+    "question": "Phay rãnh 50x10 mm, nhôm 6061, dao T1, sâu 3 mm, gốc G54 tại góc trái dưới, safe Z=5 mm.",
+    "contains": [
+      "SLOT 50x10",
+      "X47"
+    ]
+  },
+  {
+    "id": "F12",
+    "metric": "generation",
+    "kind": "clarification",
+    "question": "Phay túi nhôm 6061, dao T1, sâu 5 mm, G54, gốc trái dưới, safe Z5.",
+    "contains": [
+      "hình dạng túi"
+    ]
+  },
+  {
+    "id": "F13",
+    "metric": "semantics",
+    "kind": "percent",
+    "gcode": "%\nG21\nG90\nG17\nG0 X0 Y0 Z5\nM30\n%"
+  },
+  {
+    "id": "F14",
+    "metric": "semantics",
+    "kind": "swept_envelope",
+    "gcode": "(RECTANGULAR POCKET 50x50 MM)\n(TOOL DIAMETER: D6 MM)\nG21\nG90\nG17\nG54\nG0 X3 Y3\nG1 Z-3 F1050\nG1 X47 Y3 F1050\nG1 X47 Y47 F1050\nG1 X3 Y47 F1050\nG1 X3 Y3 F1050\nM30"
+  },
+  {
+    "id": "F15",
+    "metric": "semantics",
+    "kind": "multiple_faults",
+    "gcode": "M112\nG21\nG17\nG0 X999\nS500\nG1 Z-10 F50"
+  },
+  {
+    "id": "F16",
+    "metric": "tool_workflow",
+    "kind": "repair_once",
+    "question": "Phay freeform path, nhôm 6061, dao T1, sâu 3 mm, gốc G54 tại góc trái dưới, safe Z5."
+  },
+  {
+    "id": "F17",
+    "metric": "tool_workflow",
+    "kind": "repair_limit",
+    "question": "Phay freeform path, nhôm 6061, dao T1, sâu 3 mm, gốc G54 tại góc trái dưới, safe Z5."
+  },
+  {
+    "id": "F18",
+    "metric": "optimization",
+    "kind": "geometry_drift",
+    "gcode": "(RECTANGULAR POCKET 20x10 MM)\n(TOOL DIAMETER: D6 MM)\nG21\nG90\nG17\nG54\nT1 M6\nG0 X3 Y3\nG1 Z-3 F1050\nG1 X17 Y3 F1050\nG1 X17 Y7 F1050\nG1 X3 Y7 F1050\nG1 X3 Y3 F1050\nM30"
+  },
+  {
+    "id": "F19",
+    "metric": "image",
+    "kind": "image_route",
+    "question": "Từ ảnh sinh G-code nhôm 6061, dao T1, sâu 5 mm, G54, safe Z5."
+  },
+  {
+    "id": "F20",
+    "metric": "safety",
+    "kind": "no_auto_check",
+    "question": "Phay túi chữ nhật 20x10 mm, nhôm 6061, dao T1, sâu 5 mm, gốc G54 tại góc trái dưới, safe Z5."
+  }
+]

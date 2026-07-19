@@ -1,0 +1,1299 @@
+[
+  {
+    "id": "OL001",
+    "kind": "parse",
+    "question": "phay contour ngoài 60x60x6",
+    "expect": {
+      "operation": "milling",
+      "geometry": "rectangular_contour",
+      "contour_side": "outside",
+      "width_mm": 60,
+      "height_mm": 60,
+      "total_depth_mm": 6
+    }
+  },
+  {
+    "id": "OL002",
+    "kind": "parse",
+    "question": "phay biên ngoài 60×60 xuống 6",
+    "expect": {
+      "operation": "milling",
+      "geometry": "rectangular_contour",
+      "contour_side": "outside",
+      "width_mm": 60,
+      "height_mm": 60,
+      "total_depth_mm": 6
+    }
+  },
+  {
+    "id": "OL003",
+    "kind": "parse",
+    "question": "profile OD 60 60 sâu 6",
+    "expect": {
+      "operation": "milling",
+      "geometry": "rectangular_contour",
+      "contour_side": "outside",
+      "width_mm": 60,
+      "height_mm": 60,
+      "total_depth_mm": 6
+    }
+  },
+  {
+    "id": "OL004",
+    "kind": "parse",
+    "question": "chạy bao ngoài 60x60x6",
+    "expect": {
+      "operation": "milling",
+      "geometry": "rectangular_contour",
+      "contour_side": "outside",
+      "width_mm": 60,
+      "height_mm": 60,
+      "total_depth_mm": 6
+    }
+  },
+  {
+    "id": "OL005",
+    "kind": "parse",
+    "question": "phay ngoài chữ nhật 60x60 sâu 6",
+    "expect": {
+      "operation": "milling",
+      "geometry": "rectangular_contour",
+      "contour_side": "outside",
+      "width_mm": 60,
+      "height_mm": 60,
+      "total_depth_mm": 6
+    }
+  },
+  {
+    "id": "OL006",
+    "kind": "parse",
+    "question": "mill outside profile 60x60x6",
+    "expect": {
+      "operation": "milling",
+      "geometry": "rectangular_contour",
+      "contour_side": "outside",
+      "width_mm": 60,
+      "height_mm": 60,
+      "total_depth_mm": 6
+    }
+  },
+  {
+    "id": "OL007",
+    "kind": "parse",
+    "question": "phay contour ngoài 40x20x4",
+    "expect": {
+      "operation": "milling",
+      "geometry": "rectangular_contour",
+      "contour_side": "outside",
+      "width_mm": 40,
+      "height_mm": 20,
+      "total_depth_mm": 4
+    }
+  },
+  {
+    "id": "OL008",
+    "kind": "parse",
+    "question": "phay biên ngoài 40×20 xuống 4",
+    "expect": {
+      "operation": "milling",
+      "geometry": "rectangular_contour",
+      "contour_side": "outside",
+      "width_mm": 40,
+      "height_mm": 20,
+      "total_depth_mm": 4
+    }
+  },
+  {
+    "id": "OL009",
+    "kind": "parse",
+    "question": "profile OD 40 20 sâu 4",
+    "expect": {
+      "operation": "milling",
+      "geometry": "rectangular_contour",
+      "contour_side": "outside",
+      "width_mm": 40,
+      "height_mm": 20,
+      "total_depth_mm": 4
+    }
+  },
+  {
+    "id": "OL010",
+    "kind": "parse",
+    "question": "chạy bao ngoài 40x20x4",
+    "expect": {
+      "operation": "milling",
+      "geometry": "rectangular_contour",
+      "contour_side": "outside",
+      "width_mm": 40,
+      "height_mm": 20,
+      "total_depth_mm": 4
+    }
+  },
+  {
+    "id": "OL011",
+    "kind": "parse",
+    "question": "phay ngoài chữ nhật 40x20 sâu 4",
+    "expect": {
+      "operation": "milling",
+      "geometry": "rectangular_contour",
+      "contour_side": "outside",
+      "width_mm": 40,
+      "height_mm": 20,
+      "total_depth_mm": 4
+    }
+  },
+  {
+    "id": "OL012",
+    "kind": "parse",
+    "question": "mill outside profile 40x20x4",
+    "expect": {
+      "operation": "milling",
+      "geometry": "rectangular_contour",
+      "contour_side": "outside",
+      "width_mm": 40,
+      "height_mm": 20,
+      "total_depth_mm": 4
+    }
+  },
+  {
+    "id": "OL013",
+    "kind": "parse",
+    "question": "phay contour ngoài 80x50x5",
+    "expect": {
+      "operation": "milling",
+      "geometry": "rectangular_contour",
+      "contour_side": "outside",
+      "width_mm": 80,
+      "height_mm": 50,
+      "total_depth_mm": 5
+    }
+  },
+  {
+    "id": "OL014",
+    "kind": "parse",
+    "question": "phay biên ngoài 80×50 xuống 5",
+    "expect": {
+      "operation": "milling",
+      "geometry": "rectangular_contour",
+      "contour_side": "outside",
+      "width_mm": 80,
+      "height_mm": 50,
+      "total_depth_mm": 5
+    }
+  },
+  {
+    "id": "OL015",
+    "kind": "parse",
+    "question": "profile OD 80 50 sâu 5",
+    "expect": {
+      "operation": "milling",
+      "geometry": "rectangular_contour",
+      "contour_side": "outside",
+      "width_mm": 80,
+      "height_mm": 50,
+      "total_depth_mm": 5
+    }
+  },
+  {
+    "id": "OL016",
+    "kind": "parse",
+    "question": "chạy bao ngoài 80x50x5",
+    "expect": {
+      "operation": "milling",
+      "geometry": "rectangular_contour",
+      "contour_side": "outside",
+      "width_mm": 80,
+      "height_mm": 50,
+      "total_depth_mm": 5
+    }
+  },
+  {
+    "id": "OL017",
+    "kind": "parse",
+    "question": "phay ngoài chữ nhật 80x50 sâu 5",
+    "expect": {
+      "operation": "milling",
+      "geometry": "rectangular_contour",
+      "contour_side": "outside",
+      "width_mm": 80,
+      "height_mm": 50,
+      "total_depth_mm": 5
+    }
+  },
+  {
+    "id": "OL018",
+    "kind": "parse",
+    "question": "mill outside profile 80x50x5",
+    "expect": {
+      "operation": "milling",
+      "geometry": "rectangular_contour",
+      "contour_side": "outside",
+      "width_mm": 80,
+      "height_mm": 50,
+      "total_depth_mm": 5
+    }
+  },
+  {
+    "id": "OL019",
+    "kind": "parse",
+    "question": "phay contour ngoài 25x15x2",
+    "expect": {
+      "operation": "milling",
+      "geometry": "rectangular_contour",
+      "contour_side": "outside",
+      "width_mm": 25,
+      "height_mm": 15,
+      "total_depth_mm": 2
+    }
+  },
+  {
+    "id": "OL020",
+    "kind": "parse",
+    "question": "phay biên ngoài 25×15 xuống 2",
+    "expect": {
+      "operation": "milling",
+      "geometry": "rectangular_contour",
+      "contour_side": "outside",
+      "width_mm": 25,
+      "height_mm": 15,
+      "total_depth_mm": 2
+    }
+  },
+  {
+    "id": "OL021",
+    "kind": "parse",
+    "question": "profile OD 25 15 sâu 2",
+    "expect": {
+      "operation": "milling",
+      "geometry": "rectangular_contour",
+      "contour_side": "outside",
+      "width_mm": 25,
+      "height_mm": 15,
+      "total_depth_mm": 2
+    }
+  },
+  {
+    "id": "OL022",
+    "kind": "parse",
+    "question": "chạy bao ngoài 25x15x2",
+    "expect": {
+      "operation": "milling",
+      "geometry": "rectangular_contour",
+      "contour_side": "outside",
+      "width_mm": 25,
+      "height_mm": 15,
+      "total_depth_mm": 2
+    }
+  },
+  {
+    "id": "OL023",
+    "kind": "parse",
+    "question": "phay ngoài chữ nhật 25x15 sâu 2",
+    "expect": {
+      "operation": "milling",
+      "geometry": "rectangular_contour",
+      "contour_side": "outside",
+      "width_mm": 25,
+      "height_mm": 15,
+      "total_depth_mm": 2
+    }
+  },
+  {
+    "id": "OL024",
+    "kind": "parse",
+    "question": "mill outside profile 25x15x2",
+    "expect": {
+      "operation": "milling",
+      "geometry": "rectangular_contour",
+      "contour_side": "outside",
+      "width_mm": 25,
+      "height_mm": 15,
+      "total_depth_mm": 2
+    }
+  },
+  {
+    "id": "OL025",
+    "kind": "parse",
+    "question": "phay contour trong 40x30x3",
+    "expect": {
+      "geometry": "rectangular_contour",
+      "contour_side": "inside",
+      "width_mm": 40,
+      "height_mm": 30,
+      "total_depth_mm": 3
+    }
+  },
+  {
+    "id": "OL026",
+    "kind": "parse",
+    "question": "profile inside 40x30 depth 3",
+    "expect": {
+      "geometry": "rectangular_contour",
+      "contour_side": "inside",
+      "width_mm": 40,
+      "height_mm": 30,
+      "total_depth_mm": 3
+    }
+  },
+  {
+    "id": "OL027",
+    "kind": "parse",
+    "question": "phay biên trong chữ nhật 40×30 sâu 3",
+    "expect": {
+      "geometry": "rectangular_contour",
+      "contour_side": "inside",
+      "width_mm": 40,
+      "height_mm": 30,
+      "total_depth_mm": 3
+    }
+  },
+  {
+    "id": "OL028",
+    "kind": "parse",
+    "question": "chạy bao trong 40 30 sâu 3",
+    "expect": {
+      "geometry": "rectangular_contour",
+      "contour_side": "inside",
+      "width_mm": 40,
+      "height_mm": 30,
+      "total_depth_mm": 3
+    }
+  },
+  {
+    "id": "OL029",
+    "kind": "parse",
+    "question": "phay contour trong 70x45x6",
+    "expect": {
+      "geometry": "rectangular_contour",
+      "contour_side": "inside",
+      "width_mm": 70,
+      "height_mm": 45,
+      "total_depth_mm": 6
+    }
+  },
+  {
+    "id": "OL030",
+    "kind": "parse",
+    "question": "profile inside 70x45 depth 6",
+    "expect": {
+      "geometry": "rectangular_contour",
+      "contour_side": "inside",
+      "width_mm": 70,
+      "height_mm": 45,
+      "total_depth_mm": 6
+    }
+  },
+  {
+    "id": "OL031",
+    "kind": "parse",
+    "question": "phay biên trong chữ nhật 70×45 sâu 6",
+    "expect": {
+      "geometry": "rectangular_contour",
+      "contour_side": "inside",
+      "width_mm": 70,
+      "height_mm": 45,
+      "total_depth_mm": 6
+    }
+  },
+  {
+    "id": "OL032",
+    "kind": "parse",
+    "question": "chạy bao trong 70 45 sâu 6",
+    "expect": {
+      "geometry": "rectangular_contour",
+      "contour_side": "inside",
+      "width_mm": 70,
+      "height_mm": 45,
+      "total_depth_mm": 6
+    }
+  },
+  {
+    "id": "OL033",
+    "kind": "parse",
+    "question": "phay contour trong 20x20x2",
+    "expect": {
+      "geometry": "rectangular_contour",
+      "contour_side": "inside",
+      "width_mm": 20,
+      "height_mm": 20,
+      "total_depth_mm": 2
+    }
+  },
+  {
+    "id": "OL034",
+    "kind": "parse",
+    "question": "profile inside 20x20 depth 2",
+    "expect": {
+      "geometry": "rectangular_contour",
+      "contour_side": "inside",
+      "width_mm": 20,
+      "height_mm": 20,
+      "total_depth_mm": 2
+    }
+  },
+  {
+    "id": "OL035",
+    "kind": "parse",
+    "question": "phay biên trong chữ nhật 20×20 sâu 2",
+    "expect": {
+      "geometry": "rectangular_contour",
+      "contour_side": "inside",
+      "width_mm": 20,
+      "height_mm": 20,
+      "total_depth_mm": 2
+    }
+  },
+  {
+    "id": "OL036",
+    "kind": "parse",
+    "question": "chạy bao trong 20 20 sâu 2",
+    "expect": {
+      "geometry": "rectangular_contour",
+      "contour_side": "inside",
+      "width_mm": 20,
+      "height_mm": 20,
+      "total_depth_mm": 2
+    }
+  },
+  {
+    "id": "OL037",
+    "kind": "parse",
+    "question": "phay túi 20x10x5",
+    "expect": {
+      "geometry": "rectangular_pocket",
+      "width_mm": 20,
+      "height_mm": 10,
+      "total_depth_mm": 5
+    }
+  },
+  {
+    "id": "OL038",
+    "kind": "parse",
+    "question": "phay tui chu nhat 20x10 sau 5",
+    "expect": {
+      "geometry": "rectangular_pocket",
+      "width_mm": 20,
+      "height_mm": 10,
+      "total_depth_mm": 5
+    }
+  },
+  {
+    "id": "OL039",
+    "kind": "parse",
+    "question": "rectangular pocket 20x10 depth 5",
+    "expect": {
+      "geometry": "rectangular_pocket",
+      "width_mm": 20,
+      "height_mm": 10,
+      "total_depth_mm": 5
+    }
+  },
+  {
+    "id": "OL040",
+    "kind": "parse",
+    "question": "làm hốc 20×10 xuống 5",
+    "expect": {
+      "geometry": "rectangular_pocket",
+      "width_mm": 20,
+      "height_mm": 10,
+      "total_depth_mm": 5
+    }
+  },
+  {
+    "id": "OL041",
+    "kind": "parse",
+    "question": "phay túi 40x30x6",
+    "expect": {
+      "geometry": "rectangular_pocket",
+      "width_mm": 40,
+      "height_mm": 30,
+      "total_depth_mm": 6
+    }
+  },
+  {
+    "id": "OL042",
+    "kind": "parse",
+    "question": "phay tui chu nhat 40x30 sau 6",
+    "expect": {
+      "geometry": "rectangular_pocket",
+      "width_mm": 40,
+      "height_mm": 30,
+      "total_depth_mm": 6
+    }
+  },
+  {
+    "id": "OL043",
+    "kind": "parse",
+    "question": "rectangular pocket 40x30 depth 6",
+    "expect": {
+      "geometry": "rectangular_pocket",
+      "width_mm": 40,
+      "height_mm": 30,
+      "total_depth_mm": 6
+    }
+  },
+  {
+    "id": "OL044",
+    "kind": "parse",
+    "question": "làm hốc 40×30 xuống 6",
+    "expect": {
+      "geometry": "rectangular_pocket",
+      "width_mm": 40,
+      "height_mm": 30,
+      "total_depth_mm": 6
+    }
+  },
+  {
+    "id": "OL045",
+    "kind": "parse",
+    "question": "phay túi 15x12x2",
+    "expect": {
+      "geometry": "rectangular_pocket",
+      "width_mm": 15,
+      "height_mm": 12,
+      "total_depth_mm": 2
+    }
+  },
+  {
+    "id": "OL046",
+    "kind": "parse",
+    "question": "phay tui chu nhat 15x12 sau 2",
+    "expect": {
+      "geometry": "rectangular_pocket",
+      "width_mm": 15,
+      "height_mm": 12,
+      "total_depth_mm": 2
+    }
+  },
+  {
+    "id": "OL047",
+    "kind": "parse",
+    "question": "rectangular pocket 15x12 depth 2",
+    "expect": {
+      "geometry": "rectangular_pocket",
+      "width_mm": 15,
+      "height_mm": 12,
+      "total_depth_mm": 2
+    }
+  },
+  {
+    "id": "OL048",
+    "kind": "parse",
+    "question": "làm hốc 15×12 xuống 2",
+    "expect": {
+      "geometry": "rectangular_pocket",
+      "width_mm": 15,
+      "height_mm": 12,
+      "total_depth_mm": 2
+    }
+  },
+  {
+    "id": "OL049",
+    "kind": "parse",
+    "question": "phay rãnh 50x10x3",
+    "expect": {
+      "geometry": "slot",
+      "width_mm": 50,
+      "height_mm": 10,
+      "total_depth_mm": 3
+    }
+  },
+  {
+    "id": "OL050",
+    "kind": "parse",
+    "question": "phay ranh 50x10 sau 3",
+    "expect": {
+      "geometry": "slot",
+      "width_mm": 50,
+      "height_mm": 10,
+      "total_depth_mm": 3
+    }
+  },
+  {
+    "id": "OL051",
+    "kind": "parse",
+    "question": "slot milling 50x10 depth 3",
+    "expect": {
+      "geometry": "slot",
+      "width_mm": 50,
+      "height_mm": 10,
+      "total_depth_mm": 3
+    }
+  },
+  {
+    "id": "OL052",
+    "kind": "parse",
+    "question": "làm slot 50×10 xuống 3",
+    "expect": {
+      "geometry": "slot",
+      "width_mm": 50,
+      "height_mm": 10,
+      "total_depth_mm": 3
+    }
+  },
+  {
+    "id": "OL053",
+    "kind": "parse",
+    "question": "phay rãnh 30x6x2",
+    "expect": {
+      "geometry": "slot",
+      "width_mm": 30,
+      "height_mm": 6,
+      "total_depth_mm": 2
+    }
+  },
+  {
+    "id": "OL054",
+    "kind": "parse",
+    "question": "phay ranh 30x6 sau 2",
+    "expect": {
+      "geometry": "slot",
+      "width_mm": 30,
+      "height_mm": 6,
+      "total_depth_mm": 2
+    }
+  },
+  {
+    "id": "OL055",
+    "kind": "parse",
+    "question": "slot milling 30x6 depth 2",
+    "expect": {
+      "geometry": "slot",
+      "width_mm": 30,
+      "height_mm": 6,
+      "total_depth_mm": 2
+    }
+  },
+  {
+    "id": "OL056",
+    "kind": "parse",
+    "question": "làm slot 30×6 xuống 2",
+    "expect": {
+      "geometry": "slot",
+      "width_mm": 30,
+      "height_mm": 6,
+      "total_depth_mm": 2
+    }
+  },
+  {
+    "id": "OL057",
+    "kind": "parse",
+    "question": "phay rãnh 80x12x4",
+    "expect": {
+      "geometry": "slot",
+      "width_mm": 80,
+      "height_mm": 12,
+      "total_depth_mm": 4
+    }
+  },
+  {
+    "id": "OL058",
+    "kind": "parse",
+    "question": "phay ranh 80x12 sau 4",
+    "expect": {
+      "geometry": "slot",
+      "width_mm": 80,
+      "height_mm": 12,
+      "total_depth_mm": 4
+    }
+  },
+  {
+    "id": "OL059",
+    "kind": "parse",
+    "question": "slot milling 80x12 depth 4",
+    "expect": {
+      "geometry": "slot",
+      "width_mm": 80,
+      "height_mm": 12,
+      "total_depth_mm": 4
+    }
+  },
+  {
+    "id": "OL060",
+    "kind": "parse",
+    "question": "làm slot 80×12 xuống 4",
+    "expect": {
+      "geometry": "slot",
+      "width_mm": 80,
+      "height_mm": 12,
+      "total_depth_mm": 4
+    }
+  },
+  {
+    "id": "OL061",
+    "kind": "parse",
+    "question": "phay mặt 80x50x0.5",
+    "expect": {
+      "geometry": "rectangular_face",
+      "width_mm": 80,
+      "height_mm": 50,
+      "total_depth_mm": 0.5
+    }
+  },
+  {
+    "id": "OL062",
+    "kind": "parse",
+    "question": "phay mat 80x50 sau 0.5",
+    "expect": {
+      "geometry": "rectangular_face",
+      "width_mm": 80,
+      "height_mm": 50,
+      "total_depth_mm": 0.5
+    }
+  },
+  {
+    "id": "OL063",
+    "kind": "parse",
+    "question": "face milling 80x50 depth 0.5",
+    "expect": {
+      "geometry": "rectangular_face",
+      "width_mm": 80,
+      "height_mm": 50,
+      "total_depth_mm": 0.5
+    }
+  },
+  {
+    "id": "OL064",
+    "kind": "parse",
+    "question": "khỏa mặt 80×50 xuống 0.5",
+    "expect": {
+      "geometry": "rectangular_face",
+      "width_mm": 80,
+      "height_mm": 50,
+      "total_depth_mm": 0.5
+    }
+  },
+  {
+    "id": "OL065",
+    "kind": "parse",
+    "question": "phay mặt 100x60x1",
+    "expect": {
+      "geometry": "rectangular_face",
+      "width_mm": 100,
+      "height_mm": 60,
+      "total_depth_mm": 1
+    }
+  },
+  {
+    "id": "OL066",
+    "kind": "parse",
+    "question": "phay mat 100x60 sau 1",
+    "expect": {
+      "geometry": "rectangular_face",
+      "width_mm": 100,
+      "height_mm": 60,
+      "total_depth_mm": 1
+    }
+  },
+  {
+    "id": "OL067",
+    "kind": "parse",
+    "question": "face milling 100x60 depth 1",
+    "expect": {
+      "geometry": "rectangular_face",
+      "width_mm": 100,
+      "height_mm": 60,
+      "total_depth_mm": 1
+    }
+  },
+  {
+    "id": "OL068",
+    "kind": "parse",
+    "question": "khỏa mặt 100×60 xuống 1",
+    "expect": {
+      "geometry": "rectangular_face",
+      "width_mm": 100,
+      "height_mm": 60,
+      "total_depth_mm": 1
+    }
+  },
+  {
+    "id": "OL069",
+    "kind": "parse",
+    "question": "phay contour ngoài tròn phi 40 sâu 2",
+    "expect": {
+      "geometry": "circular_contour",
+      "contour_side": "outside",
+      "diameter_mm": 40,
+      "radius_mm": 20.0,
+      "total_depth_mm": 2
+    }
+  },
+  {
+    "id": "OL070",
+    "kind": "parse",
+    "question": "outside circular profile diameter 40 depth 2",
+    "expect": {
+      "geometry": "circular_contour",
+      "contour_side": "outside",
+      "diameter_mm": 40,
+      "radius_mm": 20.0,
+      "total_depth_mm": 2
+    }
+  },
+  {
+    "id": "OL071",
+    "kind": "parse",
+    "question": "phay biên ngoài hình tròn đường kính 40 xuống 2",
+    "expect": {
+      "geometry": "circular_contour",
+      "contour_side": "outside",
+      "diameter_mm": 40,
+      "radius_mm": 20.0,
+      "total_depth_mm": 2
+    }
+  },
+  {
+    "id": "OL072",
+    "kind": "parse",
+    "question": "contour outside circle phi 40 Z-2",
+    "expect": {
+      "geometry": "circular_contour",
+      "contour_side": "outside",
+      "diameter_mm": 40,
+      "radius_mm": 20.0,
+      "total_depth_mm": 2
+    }
+  },
+  {
+    "id": "OL073",
+    "kind": "parse",
+    "question": "phay contour ngoài tròn phi 60 sâu 3",
+    "expect": {
+      "geometry": "circular_contour",
+      "contour_side": "outside",
+      "diameter_mm": 60,
+      "radius_mm": 30.0,
+      "total_depth_mm": 3
+    }
+  },
+  {
+    "id": "OL074",
+    "kind": "parse",
+    "question": "outside circular profile diameter 60 depth 3",
+    "expect": {
+      "geometry": "circular_contour",
+      "contour_side": "outside",
+      "diameter_mm": 60,
+      "radius_mm": 30.0,
+      "total_depth_mm": 3
+    }
+  },
+  {
+    "id": "OL075",
+    "kind": "parse",
+    "question": "phay biên ngoài hình tròn đường kính 60 xuống 3",
+    "expect": {
+      "geometry": "circular_contour",
+      "contour_side": "outside",
+      "diameter_mm": 60,
+      "radius_mm": 30.0,
+      "total_depth_mm": 3
+    }
+  },
+  {
+    "id": "OL076",
+    "kind": "parse",
+    "question": "contour outside circle phi 60 Z-3",
+    "expect": {
+      "geometry": "circular_contour",
+      "contour_side": "outside",
+      "diameter_mm": 60,
+      "radius_mm": 30.0,
+      "total_depth_mm": 3
+    }
+  },
+  {
+    "id": "OL077",
+    "kind": "parse",
+    "question": "phay contour ngoài 60x60x6 safe 10",
+    "expect": {
+      "geometry": "rectangular_contour",
+      "safe_z_mm": 10,
+      "total_depth_mm": 6
+    }
+  },
+  {
+    "id": "OL078",
+    "kind": "parse",
+    "question": "phay contour ngoài 60x60x6 safe=10",
+    "expect": {
+      "geometry": "rectangular_contour",
+      "safe_z_mm": 10,
+      "total_depth_mm": 6
+    }
+  },
+  {
+    "id": "OL079",
+    "kind": "parse",
+    "question": "phay contour ngoài 60x60x6 safe Z 10",
+    "expect": {
+      "geometry": "rectangular_contour",
+      "safe_z_mm": 10,
+      "total_depth_mm": 6
+    }
+  },
+  {
+    "id": "OL080",
+    "kind": "parse",
+    "question": "phay contour ngoài 60x60x6 Z an toàn 10",
+    "expect": {
+      "geometry": "rectangular_contour",
+      "safe_z_mm": 10,
+      "total_depth_mm": 6
+    }
+  },
+  {
+    "id": "OL081",
+    "kind": "parse",
+    "question": "phay contour ngoài 60x60x6 độ cao an toàn 10",
+    "expect": {
+      "geometry": "rectangular_contour",
+      "safe_z_mm": 10,
+      "total_depth_mm": 6
+    }
+  },
+  {
+    "id": "OL082",
+    "kind": "parse",
+    "question": "phay contour ngoài 60x60x6 retract height 10",
+    "expect": {
+      "geometry": "rectangular_contour",
+      "safe_z_mm": 10,
+      "total_depth_mm": 6
+    }
+  },
+  {
+    "id": "OL083",
+    "kind": "parse",
+    "question": "phay contour ngoài 60x60x6 retract Z 10",
+    "expect": {
+      "geometry": "rectangular_contour",
+      "safe_z_mm": 10,
+      "total_depth_mm": 6
+    }
+  },
+  {
+    "id": "OL084",
+    "kind": "parse",
+    "question": "phay contour ngoài 60x60x6 clearance Z 10",
+    "expect": {
+      "geometry": "rectangular_contour",
+      "safe_z_mm": 10,
+      "total_depth_mm": 6
+    }
+  },
+  {
+    "id": "OL085",
+    "kind": "parse",
+    "question": "mill outside contour 2x2x0.25 inch",
+    "expect": {
+      "geometry": "rectangular_contour",
+      "width_mm": 50.8,
+      "height_mm": 50.8,
+      "total_depth_mm": 6.35,
+      "unit_system": "inch"
+    }
+  },
+  {
+    "id": "OL086",
+    "kind": "parse",
+    "question": "outside profile 1.5x1x0.1 inches",
+    "expect": {
+      "geometry": "rectangular_contour",
+      "width_mm": 38.1,
+      "height_mm": 25.4,
+      "total_depth_mm": 2.54,
+      "unit_system": "inch"
+    }
+  },
+  {
+    "id": "OL087",
+    "kind": "parse",
+    "question": "rectangular pocket 2x1x0.2 in",
+    "expect": {
+      "geometry": "rectangular_pocket",
+      "width_mm": 50.8,
+      "height_mm": 25.4,
+      "total_depth_mm": 5.08,
+      "unit_system": "inch"
+    }
+  },
+  {
+    "id": "OL088",
+    "kind": "parse",
+    "question": "slot milling 3x0.5x0.125 inch",
+    "expect": {
+      "geometry": "slot",
+      "width_mm": 76.2,
+      "height_mm": 12.7,
+      "total_depth_mm": 3.175,
+      "unit_system": "inch"
+    }
+  },
+  {
+    "id": "OL089",
+    "kind": "parse",
+    "question": "face milling 4x2x0.05 inches",
+    "expect": {
+      "geometry": "rectangular_face",
+      "width_mm": 101.6,
+      "height_mm": 50.8,
+      "total_depth_mm": 1.27,
+      "unit_system": "inch"
+    }
+  },
+  {
+    "id": "OL090",
+    "kind": "parse",
+    "question": "phay contour ngoài 2x1x0.25 inch",
+    "expect": {
+      "geometry": "rectangular_contour",
+      "width_mm": 50.8,
+      "height_mm": 25.4,
+      "total_depth_mm": 6.35,
+      "unit_system": "inch"
+    }
+  },
+  {
+    "id": "OL091",
+    "kind": "parse",
+    "question": "profile inside 2.5x2x0.1 in",
+    "expect": {
+      "geometry": "rectangular_contour",
+      "width_mm": 63.5,
+      "height_mm": 50.8,
+      "total_depth_mm": 2.54,
+      "unit_system": "inch"
+    }
+  },
+  {
+    "id": "OL092",
+    "kind": "parse",
+    "question": "phay túi 1x1x0.1 inch",
+    "expect": {
+      "geometry": "rectangular_pocket",
+      "width_mm": 25.4,
+      "height_mm": 25.4,
+      "total_depth_mm": 2.54,
+      "unit_system": "inch"
+    }
+  },
+  {
+    "id": "OL093",
+    "kind": "parse",
+    "question": "đổi sang G55",
+    "context": "=== LỊCH SỬ CHAT ===\n[user] Phay contour ngoài 60x60x6, G54, gốc trái dưới, safe Z 10.\n[user] Vật liệu nhôm 6061, dao T1.\n",
+    "expect": {
+      "geometry": "rectangular_contour",
+      "width_mm": 60,
+      "height_mm": 60,
+      "total_depth_mm": 6,
+      "wcs": "G55",
+      "origin": "lower_left",
+      "safe_z_mm": 10
+    }
+  },
+  {
+    "id": "OL094",
+    "kind": "parse",
+    "question": "dùng G56",
+    "context": "=== LỊCH SỬ CHAT ===\n[user] Phay contour ngoài 60x60x6, G54, gốc trái dưới, safe Z 10.\n[user] Vật liệu nhôm 6061, dao T1.\n",
+    "expect": {
+      "geometry": "rectangular_contour",
+      "width_mm": 60,
+      "height_mm": 60,
+      "total_depth_mm": 6,
+      "wcs": "G56",
+      "origin": "lower_left",
+      "safe_z_mm": 10
+    }
+  },
+  {
+    "id": "OL095",
+    "kind": "parse",
+    "question": "chuyển G57",
+    "context": "=== LỊCH SỬ CHAT ===\n[user] Phay contour ngoài 60x60x6, G54, gốc trái dưới, safe Z 10.\n[user] Vật liệu nhôm 6061, dao T1.\n",
+    "expect": {
+      "geometry": "rectangular_contour",
+      "width_mm": 60,
+      "height_mm": 60,
+      "total_depth_mm": 6,
+      "wcs": "G57",
+      "origin": "lower_left",
+      "safe_z_mm": 10
+    }
+  },
+  {
+    "id": "OL096",
+    "kind": "parse",
+    "question": "G58 nhé",
+    "context": "=== LỊCH SỬ CHAT ===\n[user] Phay contour ngoài 60x60x6, G54, gốc trái dưới, safe Z 10.\n[user] Vật liệu nhôm 6061, dao T1.\n",
+    "expect": {
+      "geometry": "rectangular_contour",
+      "width_mm": 60,
+      "height_mm": 60,
+      "total_depth_mm": 6,
+      "wcs": "G58",
+      "origin": "lower_left",
+      "safe_z_mm": 10
+    }
+  },
+  {
+    "id": "OL097",
+    "kind": "parse",
+    "question": "giữ nguyên nhưng phay tinh",
+    "context": "=== LỊCH SỬ CHAT ===\n[user] Phay contour ngoài 60x60x6, G54, gốc trái dưới, safe Z 10.\n[user] Vật liệu nhôm 6061, dao T1.\n",
+    "expect": {
+      "geometry": "rectangular_contour",
+      "width_mm": 60,
+      "height_mm": 60,
+      "total_depth_mm": 6,
+      "strategy": "finishing"
+    }
+  },
+  {
+    "id": "OL098",
+    "kind": "parse",
+    "question": "đổi sang phay thô",
+    "context": "=== LỊCH SỬ CHAT ===\n[user] Phay contour ngoài 60x60x6, G54, gốc trái dưới, safe Z 10.\n[user] Vật liệu nhôm 6061, dao T1.\n",
+    "expect": {
+      "geometry": "rectangular_contour",
+      "width_mm": 60,
+      "height_mm": 60,
+      "total_depth_mm": 6,
+      "strategy": "roughing"
+    }
+  },
+  {
+    "id": "OL099",
+    "kind": "parse",
+    "question": "dùng climb",
+    "context": "=== LỊCH SỬ CHAT ===\n[user] Phay contour ngoài 60x60x6, G54, gốc trái dưới, safe Z 10.\n[user] Vật liệu nhôm 6061, dao T1.\n",
+    "expect": {
+      "geometry": "rectangular_contour",
+      "width_mm": 60,
+      "height_mm": 60,
+      "total_depth_mm": 6,
+      "direction": "climb"
+    }
+  },
+  {
+    "id": "OL100",
+    "kind": "parse",
+    "question": "chạy nghịch chiều",
+    "context": "=== LỊCH SỬ CHAT ===\n[user] Phay contour ngoài 60x60x6, G54, gốc trái dưới, safe Z 10.\n[user] Vật liệu nhôm 6061, dao T1.\n",
+    "expect": {
+      "geometry": "rectangular_contour",
+      "width_mm": 60,
+      "height_mm": 60,
+      "total_depth_mm": 6,
+      "direction": "conventional"
+    }
+  },
+  {
+    "id": "OL101",
+    "kind": "must_not_infer",
+    "question": "G1 X60 Y60 Z-6",
+    "must_not": [
+      "width_mm",
+      "height_mm",
+      "total_depth_mm"
+    ]
+  },
+  {
+    "id": "OL102",
+    "kind": "missing",
+    "question": "phay ngoài 60",
+    "missing_contains": [
+      "kiểu gia công/hình dạng hoặc đường chạy dao",
+      "độ sâu cắt"
+    ]
+  },
+  {
+    "id": "OL103",
+    "kind": "missing",
+    "question": "phay contour ngoài 60x60",
+    "missing_contains": [
+      "độ sâu cắt"
+    ]
+  },
+  {
+    "id": "OL104",
+    "kind": "missing",
+    "question": "phay túi sâu 5",
+    "missing_contains": [
+      "hình dạng túi"
+    ]
+  },
+  {
+    "id": "OL105",
+    "kind": "missing",
+    "question": "phay contour 60x60x6",
+    "missing_contains": [
+      "phía bù dao contour: trong hoặc ngoài"
+    ]
+  },
+  {
+    "id": "OL106",
+    "kind": "missing",
+    "question": "phay contour ngoài 60x60x6",
+    "missing_contains": [
+      "hệ tọa độ làm việc G54-G59",
+      "vị trí gốc phôi/điểm zero",
+      "safe Z"
+    ]
+  },
+  {
+    "id": "OL107",
+    "kind": "parse",
+    "question": "phay contour ngoài 60x60x6 dao D6",
+    "expect": {
+      "tool_diameter_mm": 6,
+      "total_depth_mm": 6
+    }
+  },
+  {
+    "id": "OL108",
+    "kind": "parse",
+    "question": "phay thô contour ngoài 60x60x6",
+    "expect": {
+      "strategy": "roughing",
+      "geometry": "rectangular_contour"
+    }
+  },
+  {
+    "id": "OL109",
+    "kind": "parse",
+    "question": "phay tinh contour ngoài 60x60x6",
+    "expect": {
+      "strategy": "finishing",
+      "geometry": "rectangular_contour"
+    }
+  },
+  {
+    "id": "OL110",
+    "kind": "parse",
+    "question": "phay contour ngoài 60x60x6 thuận chiều",
+    "expect": {
+      "direction": "climb"
+    }
+  },
+  {
+    "id": "OL111",
+    "kind": "parse",
+    "question": "phay contour ngoài 60x60x6 nghịch chiều",
+    "expect": {
+      "direction": "conventional"
+    }
+  },
+  {
+    "id": "OL112",
+    "kind": "missing",
+    "question": "phay contour ngoài",
+    "missing_contains": [
+      "hình học contour cụ thể",
+      "độ sâu cắt"
+    ]
+  }
+]

@@ -1,0 +1,415 @@
+{
+  "version": "1.0",
+  "mission": "06A — Agent Client Knowledge Base Foundation",
+  "language": "vi-VN",
+  "created_at": "2026-07-10T16:04:39.800946+00:00",
+  "status": "DRAFT_BASELINE",
+  "purpose": "Standalone memory/contract file pair for building an AI Agentic Client that generates CNC G-code from user context without changing the existing project structure.",
+  "frozen_inputs": [
+    {
+      "name": "FULL_AGENTIC_WORK_SKILL_V3_VI(1).md",
+      "path": "/mnt/data/FULL_AGENTIC_WORK_SKILL_V3_VI(1).md",
+      "exists": true,
+      "sha256": "812a4c26eaad8fa690533f139f285f960482d909932ccaafa972c95d1dfd68ee",
+      "size_bytes": 34772
+    },
+    {
+      "name": "SPEC_mcp_agent_gcode_v1.md",
+      "path": "/mnt/data/SPEC_mcp_agent_gcode_v1.md",
+      "exists": true,
+      "sha256": "c277bd294607a1fc3174bd2e2ab1885fd74b4cd3fbffd22007b93a5d75a9fe70",
+      "size_bytes": 8610
+    },
+    {
+      "name": "cnc_knowledge_graph_seed.cypher",
+      "path": "/mnt/data/cnc_knowledge_graph_seed.cypher",
+      "exists": true,
+      "sha256": "a9cdc45110cb4e97b5ed033590f582da2f2af5f85e21dec79e92ee3705ac413c",
+      "size_bytes": 12319
+    },
+    {
+      "name": "image(91).png",
+      "path": "/mnt/data/image(91).png",
+      "exists": true,
+      "sha256": "6d48158eee496f8d34bce72b503dcdae17469233340bcf5e2b8d08e6d4d98515",
+      "size_bytes": 802431
+    }
+  ],
+  "architecture": {
+    "principle": "Build and understand the Neo4j Knowledge Graph and user-level prompt layer before MCP/Agent Client implementation.",
+    "pipeline": [
+      "User natural language / image",
+      "User-Level Adapter",
+      "Intent Clarifier",
+      "get_neo4j_context",
+      "Neo4j Context Contract",
+      "G-code generation",
+      "validate_gcode",
+      "self-correction loop",
+      "final G-code + explanation by user level",
+      "simulation/check",
+      "operator approval",
+      "machine-run gate"
+    ],
+    "non_intrusive_rule": "This mission creates standalone knowledge artifacts only; it must not modify frontend, cloud_backend, edge_backend, runtime files, .env, or RUN scripts."
+  },
+  "neo4j_graph": {
+    "labels": {
+      "Machine": [
+        "name",
+        "axes_count",
+        "work_volume_mm",
+        "spindle_power_kW",
+        "max_workpiece_mm",
+        "max_workpiece_kg",
+        "max_hardness_HB",
+        "note"
+      ],
+      "Axis": [
+        "name",
+        "travel_mm",
+        "max_feed",
+        "home_offset"
+      ],
+      "Tool": [
+        "tool_id",
+        "type",
+        "diameter_mm",
+        "material",
+        "max_rpm"
+      ],
+      "Operation": [
+        "op_id",
+        "type",
+        "name"
+      ],
+      "Material": [
+        "name",
+        "hardness",
+        "recommended_feed_ratio"
+      ],
+      "OperatingRange": [
+        "range_id",
+        "current_min_A",
+        "current_rms_A",
+        "current_max_A",
+        "feed_min",
+        "feed_max",
+        "spindle_min",
+        "spindle_max",
+        "depth_min",
+        "depth_max"
+      ],
+      "AlarmPattern": [
+        "label",
+        "symptoms"
+      ],
+      "MaintenanceRule": [
+        "rule_id",
+        "trigger",
+        "action",
+        "severity"
+      ]
+    },
+    "relationships": [
+      "(:Machine)-[:HAS_AXIS]->(:Axis)",
+      "(:Machine)-[:HAS_TOOL]->(:Tool)",
+      "(:Machine)-[:PERFORMS]->(:Operation)",
+      "(:Tool)-[:USED_FOR]->(:Operation)",
+      "(:Operation)-[:APPLIED_ON]->(:Material)",
+      "(:Tool)-[:HAS_RANGE]->(:OperatingRange)",
+      "(:Operation)-[:HAS_RANGE]->(:OperatingRange)",
+      "(:Material)-[:HAS_RANGE]->(:OperatingRange)",
+      "(:OperatingRange)-[:MAY_TRIGGER]->(:AlarmPattern)",
+      "(:AlarmPattern)-[:RECOMMENDS]->(:MaintenanceRule)",
+      "(:OperatingRange)-[:RECOMMENDS]->(:MaintenanceRule)"
+    ],
+    "machine": {
+      "name": "CNC_VerticalMill_Mini_01",
+      "axes_count": 3,
+      "work_volume_mm": "400x300x100",
+      "spindle_power_kW": 1.5,
+      "max_workpiece_mm": "100x100x60",
+      "max_workpiece_kg": 20,
+      "max_hardness_HB": 550,
+      "note": "Phay đứng CNC cỡ nhỏ; dao chủ yếu là dao phay ngón"
+    },
+    "axes": {
+      "X": {
+        "travel_mm": 400,
+        "max_feed_mm_min": 3000,
+        "home_offset_mm": -5
+      },
+      "Y": {
+        "travel_mm": 300,
+        "max_feed_mm_min": 3000,
+        "home_offset_mm": -5
+      },
+      "Z": {
+        "travel_mm": 100,
+        "max_feed_mm_min": 1500,
+        "home_offset_mm": -2
+      }
+    },
+    "tools": {
+      "T1": {
+        "type": "Dao phay ngón 2 me (Flat End Mill)",
+        "diameter_mm": 6,
+        "material": "Carbide (WC-Co)",
+        "max_rpm": 24000
+      },
+      "T2": {
+        "type": "Dao phay ngón 4 me (Flat End Mill)",
+        "diameter_mm": 10,
+        "material": "Carbide (WC-Co)",
+        "max_rpm": 18000
+      },
+      "T3": {
+        "type": "Dao phay ngón mini 2 me",
+        "diameter_mm": 3,
+        "material": "Carbide (WC-Co)",
+        "max_rpm": 24000
+      }
+    },
+    "operations": {
+      "OP1": {
+        "type": "milling",
+        "name": "Phay thô (Roughing)"
+      },
+      "OP2": {
+        "type": "milling",
+        "name": "Phay tinh (Finishing)"
+      },
+      "OP3": {
+        "type": "milling",
+        "name": "Phay rãnh (Slot milling)"
+      }
+    },
+    "materials": {
+      "Nhôm 6061": {
+        "hardness_HB": 95,
+        "recommended_feed_ratio": 1.6
+      },
+      "Thép C45 (thường hóa)": {
+        "hardness_HB": 200,
+        "recommended_feed_ratio": 1.0
+      },
+      "Thép 40Cr (đã tôi)": {
+        "hardness_HB": 350,
+        "recommended_feed_ratio": 0.65
+      },
+      "Thép SKD11 (tôi cứng)": {
+        "hardness_HB": 550,
+        "recommended_feed_ratio": 0.35
+      }
+    },
+    "operating_ranges": {
+      "OR1": {
+        "tool_id": "T1",
+        "operation_id": "OP1",
+        "material": "Nhôm 6061",
+        "current_min_A": 1.0,
+        "current_rms_A": 1.6,
+        "current_max_A": 2.3,
+        "feed_min_mm_min": 600,
+        "feed_max_mm_min": 1500,
+        "spindle_min_rpm": 14000,
+        "spindle_max_rpm": 20000,
+        "depth_min_mm": 1.0,
+        "depth_max_mm": 3.0
+      },
+      "OR2": {
+        "tool_id": "T2",
+        "operation_id": "OP1",
+        "material": "Thép C45 (thường hóa)",
+        "current_min_A": 1.4,
+        "current_rms_A": 2.36,
+        "current_max_A": 3.0,
+        "feed_min_mm_min": 250,
+        "feed_max_mm_min": 700,
+        "spindle_min_rpm": 6000,
+        "spindle_max_rpm": 10000,
+        "depth_min_mm": 0.5,
+        "depth_max_mm": 1.5
+      },
+      "OR3": {
+        "tool_id": "T1",
+        "operation_id": "OP2",
+        "material": "Thép 40Cr (đã tôi)",
+        "current_min_A": 1.2,
+        "current_rms_A": 1.9,
+        "current_max_A": 2.6,
+        "feed_min_mm_min": 100,
+        "feed_max_mm_min": 350,
+        "spindle_min_rpm": 4000,
+        "spindle_max_rpm": 7000,
+        "depth_min_mm": 0.1,
+        "depth_max_mm": 0.5
+      },
+      "OR4": {
+        "tool_id": "T3",
+        "operation_id": "OP3",
+        "material": "Thép SKD11 (tôi cứng)",
+        "current_min_A": 2.0,
+        "current_rms_A": 2.9,
+        "current_max_A": 3.61,
+        "feed_min_mm_min": 40,
+        "feed_max_mm_min": 150,
+        "spindle_min_rpm": 2500,
+        "spindle_max_rpm": 5000,
+        "depth_min_mm": 0.05,
+        "depth_max_mm": 0.3
+      }
+    }
+  },
+  "user_level_adapter": {
+    "levels": {
+      "beginner": {
+        "response_mode": "guided",
+        "behavior": [
+          "Ask short guided questions for missing safety-critical fields.",
+          "Explain selected tool/material/operation in simple terms.",
+          "Do not overwhelm with raw G-code before confirming intent."
+        ]
+      },
+      "intermediate": {
+        "response_mode": "assisted",
+        "behavior": [
+          "Show selected F/S/Z and concise rationale.",
+          "Allow user to edit parameters within Neo4j operating range.",
+          "Show validation report after generation."
+        ]
+      },
+      "expert": {
+        "response_mode": "direct",
+        "behavior": [
+          "Return G-code, Neo4j context, and validation report directly.",
+          "Keep explanation minimal.",
+          "Do not ask unnecessary clarification if all required fields are present."
+        ]
+      },
+      "unknown": {
+        "response_mode": "safe_default",
+        "behavior": [
+          "Use beginner/intermediate hybrid style.",
+          "Ask for missing material/tool/depth/origin when needed.",
+          "Never infer unsafe parameters."
+        ]
+      }
+    },
+    "required_intent_fields": [
+      "material",
+      "operation",
+      "geometry",
+      "depth",
+      "origin_or_coordinate_frame",
+      "tool_preference_or_auto_select"
+    ],
+    "dangerous_missing_fields": [
+      "material",
+      "depth",
+      "origin_or_coordinate_frame"
+    ]
+  },
+  "tool_contracts": {
+    "get_neo4j_context": {
+      "must_call_before_final_gcode": true,
+      "input": [
+        "user_request",
+        "user_level",
+        "material?",
+        "operation?",
+        "tool?",
+        "geometry?",
+        "depth?"
+      ],
+      "output_required": [
+        "machine",
+        "axis_limits",
+        "selected_tool",
+        "selected_operation",
+        "selected_material",
+        "operating_range",
+        "source"
+      ],
+      "source_of_truth": "Neo4j Knowledge Graph"
+    },
+    "validate_gcode": {
+      "must_call_before_final_response": true,
+      "checks": [
+        "F within operating_range.feed_min/feed_max",
+        "S within operating_range.spindle_min/spindle_max",
+        "Z stepdown/depth within operating_range.depth_min/depth_max",
+        "X/Y/Z within Axis travel",
+        "safe header includes G21/G90/G17 or project-standard equivalent",
+        "no machine run unless later CHECK/gate approves"
+      ]
+    },
+    "generate_gcode": {
+      "allowed_after": [
+        "get_neo4j_context"
+      ],
+      "must_use": [
+        "operating_range",
+        "axis_limits",
+        "user_level_adapter"
+      ]
+    }
+  },
+  "evaluation_matrix": {
+    "C1_tool_ordering": {
+      "measure": "Tool call log per session: get_neo4j_context appears before final G-code generation.",
+      "threshold": "100% sessions",
+      "status": "required"
+    },
+    "C2_first_pass_range_compliance": {
+      "measure": "Parse F/S in first generated G-code and compare with Neo4j operating_range.",
+      "threshold": ">=90% first generations pass without correction",
+      "status": "required"
+    },
+    "C3_self_correction": {
+      "measure": "If first generation violates range, agent calls validate_gcode and fixes within <=2 additional rounds, max_tool_rounds=5.",
+      "threshold": ">=95% of first-pass failures corrected",
+      "status": "required"
+    },
+    "C4_user_level_adaptation": {
+      "measure": "Agent response style matches beginner/intermediate/expert/unknown user level without changing safety constraints.",
+      "threshold": ">=90% style match; 100% safety-critical missing-info cases ask/stop",
+      "status": "added_in_06A"
+    }
+  },
+  "source_of_truth_contract": {
+    "feed_spindle_depth": "Neo4j OperatingRange returned by get_neo4j_context",
+    "axis_limits": "Neo4j Axis/Machine data",
+    "tool_max_rpm": "Neo4j Tool.max_rpm",
+    "user_interaction_style": "User-Level Adapter section in this knowledge base",
+    "gcode_validity": "validate_gcode result using Neo4j context",
+    "machine_run_permission": "Existing machine gate/CHECK/Confirm flow, not Agent Client alone",
+    "mcp_transport": "Future MCP layer only changes how tools are called, not the meaning or logic of tools"
+  },
+  "guardrails": [
+    "Do not output final G-code before get_neo4j_context.",
+    "Do not use LLM internal knowledge as source for F/S/depth when Neo4j operating_range exists.",
+    "Do not exceed feed/spindle/depth/axis limits.",
+    "Do not skip validate_gcode before final answer.",
+    "Do not run the real machine directly from Agent Client; machine run remains behind CHECK/Confirm gate.",
+    "Do not use one generic prompt style for all skill levels.",
+    "Do not update Neo4j schema without updating this knowledge base and evaluation matrix.",
+    "Do not implement MCP before Neo4j context and validation contracts are stable."
+  ],
+  "update_protocol": [
+    "Edit this JSON and the Markdown knowledge base together.",
+    "If changing Neo4j data, update operating_ranges and source_of_truth_contract.",
+    "If adding a new operation/material/tool, add at least one evaluation scenario.",
+    "If changing prompt behavior, update C4 tests.",
+    "After any update, rerun C1/C2/C3/C4 eval harness when available."
+  ],
+  "roadmap": [
+    "06A — Knowledge Base + Contract Foundation",
+    "06B — Neo4j Context Builder + Query Contract",
+    "06C — User-Level Prompt + Intent Clarifier",
+    "06D — Validator Contract + Eval Harness C1/C2/C3/C4",
+    "06E — MCP Tool Server wrapper",
+    "06F — Agent Client integration"
+  ]
+}

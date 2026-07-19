@@ -1,0 +1,257 @@
+{
+  "schema_version": "verified-gcode-patterns-v1",
+  "numeric_source": "Neo4j OperatingRange",
+  "policy": [
+    "Patterns teach structure and strategy only.",
+    "F/S/stepdown/tool diameter come from current Neo4j context.",
+    "Current user geometry and origin override examples.",
+    "Every candidate must pass local geometry invariants and validate_gcode.",
+    "Current tool scope is END_MILL_ONLY; circular holes are circular milling features, not drilling operations."
+  ],
+  "patterns": [
+    {
+      "pattern_id": "P_RECT_POCKET_RASTER",
+      "geometry": "rectangular_pocket",
+      "operations": [
+        "milling",
+        "roughing"
+      ],
+      "verified": true,
+      "strategy": "zigzag raster plus boundary cleanup",
+      "applicability": [
+        "width > tool_diameter",
+        "height > tool_diameter",
+        "G17",
+        "G90"
+      ],
+      "algorithm": [
+        "Convert requested finished bounds to cutter-center bounds using tool radius.",
+        "For lower-left origin: X=r..W-r, Y=r..H-r.",
+        "For center origin: X=-W/2+r..W/2-r, Y=-H/2+r..H/2-r.",
+        "Split total depth into passes no larger than Neo4j depth_max.",
+        "Use zigzag lanes with stepover near 0.6D, then finish the boundary.",
+        "Retract to safe Z between depth passes."
+      ],
+      "optimization_priorities": [
+        "continuous zigzag",
+        "minimize redundant rapids",
+        "one boundary cleanup per pass"
+      ],
+      "invariants": [
+        "finished swept envelope equals requested W×H",
+        "WCS/origin unchanged",
+        "target depth unchanged"
+      ],
+      "anti_patterns": [
+        "using machine travel as pocket size",
+        "comparing centerline span directly to finished size",
+        "hardcoded feed/spindle"
+      ],
+      "symbolic_example": "G21\nG90\nG17\n${WCS}\n${TOOL} M6\nS${SPINDLE} M3\nG0 Z${SAFE_Z}\nG0 X${X_MIN} Y${Y_MIN}\nG1 Z-${PASS_DEPTH} F${FEED}\nG1 X${X_MAX} Y${Y_MIN} F${FEED}\n... zigzag lanes ...\n... boundary cleanup ...\nG0 Z${SAFE_Z}\nM30",
+      "verified_by": [
+        "test_e01_rectangular_generation_has_real_harness_entrypoint",
+        "M09-E14"
+      ]
+    },
+    {
+      "pattern_id": "P_CIRCULAR_POCKET_CONCENTRIC",
+      "geometry": "circular_pocket",
+      "operations": [
+        "milling",
+        "roughing"
+      ],
+      "verified": true,
+      "strategy": "concentric full-circle arcs",
+      "applicability": [
+        "pocket_radius > tool_radius",
+        "G17",
+        "I/J arc support"
+      ],
+      "algorithm": [
+        "Resolve circle center from origin: center=(0,0) for center origin or (R,R) for lower-left bounding-box origin.",
+        "Maximum cutter-center radius is pocket_radius-tool_radius.",
+        "Split depth by Neo4j depth_max.",
+        "Cut concentric G2/G3 full circles with radial stepover near 0.6D.",
+        "Use I/J relative center offsets; final swept diameter equals requested diameter."
+      ],
+      "optimization_priorities": [
+        "continuous full-circle arcs",
+        "avoid polygonal approximation when controller supports G2/G3",
+        "bounded radial stepover"
+      ],
+      "invariants": [
+        "swept diameter equals 2R",
+        "circle center preserved",
+        "arc direction explicit"
+      ],
+      "anti_patterns": [
+        "zero-length preview from endpoint-only parser",
+        "R-word full circle",
+        "hardcoded F/S"
+      ],
+      "symbolic_example": "G21\nG90\nG17\n${WCS}\n${TOOL} M6\nS${SPINDLE} M3\nG0 Z${SAFE_Z}\nG0 X${CX_PLUS_R1} Y${CY}\nG1 Z-${PASS_DEPTH} F${FEED}\nG2 X${CX_PLUS_R1} Y${CY} I-${R1} J0 F${FEED}\n... larger concentric circles ...\nG0 Z${SAFE_Z}\nM30",
+      "verified_by": [
+        "test_e02_circle_no_accent_is_parsed_and_generated",
+        "M09-E10"
+      ]
+    },
+    {
+      "pattern_id": "P_SLOT_ZIGZAG",
+      "geometry": "slot",
+      "operations": [
+        "milling",
+        "slot_milling"
+      ],
+      "verified": true,
+      "strategy": "long-axis zigzag slot clearing",
+      "applicability": [
+        "slot_width >= tool_diameter",
+        "known length and width"
+      ],
+      "algorithm": [
+        "Choose the longer slot dimension as the primary cutting direction.",
+        "Offset centerline limits by tool radius.",
+        "Use bounded cross-step lanes; do not repeatedly retract inside one depth pass.",
+        "Split depth by Neo4j depth_max and finish side boundaries."
+      ],
+      "optimization_priorities": [
+        "long-axis continuity",
+        "few direction reversals",
+        "single entry per pass"
+      ],
+      "invariants": [
+        "slot swept envelope equals requested dimensions",
+        "orientation preserved"
+      ],
+      "anti_patterns": [
+        "treating slot as one centerline when width > D",
+        "using rectangular example coordinates unchanged"
+      ],
+      "symbolic_example": "... same safety header ...\nG0 X${X_MIN} Y${Y_MIN}\nG1 Z-${PASS_DEPTH} F${FEED}\n... long-axis zigzag ...\nG0 Z${SAFE_Z}\nM30",
+      "verified_by": [
+        "test_e04_slot_generation"
+      ]
+    },
+    {
+      "pattern_id": "P_RECT_CONTOUR_OFFSET",
+      "geometry": "rectangular_contour",
+      "operations": [
+        "milling",
+        "finishing"
+      ],
+      "verified": true,
+      "strategy": "tool-radius compensated closed contour",
+      "applicability": [
+        "contour side explicitly inside or outside"
+      ],
+      "algorithm": [
+        "Compute nominal finished rectangle around lower-left or center origin.",
+        "Offset cutter center inward for inside contour or outward for outside contour by tool radius.",
+        "Use a closed four-edge loop per depth pass.",
+        "Do not guess compensation side."
+      ],
+      "optimization_priorities": [
+        "closed continuous loop",
+        "stable lead-in when available",
+        "no duplicate final edge"
+      ],
+      "invariants": [
+        "compensation side preserved",
+        "finished rectangle dimensions preserved"
+      ],
+      "anti_patterns": [
+        "uncompensated contour",
+        "auto-selecting inside/outside"
+      ],
+      "symbolic_example": "... header ...\nG0 X${OFFSET_X0} Y${OFFSET_Y0}\nG1 Z-${PASS_DEPTH} F${FEED}\nG1 X${OFFSET_X1} Y${OFFSET_Y0}\nG1 X${OFFSET_X1} Y${OFFSET_Y1}\nG1 X${OFFSET_X0} Y${OFFSET_Y1}\nG1 X${OFFSET_X0} Y${OFFSET_Y0}\nG0 Z${SAFE_Z}\nM30",
+      "verified_by": [
+        "test_e05_contour_requires_and_respects_compensation_side"
+      ]
+    },
+    {
+      "pattern_id": "P_CIRCULAR_THROUGH_ENDMILL_HELIX",
+      "geometry": "circular_feature",
+      "operations": [
+        "CIRCULAR_THROUGH_MILL"
+      ],
+      "tool_family": "END_MILL",
+      "verified": true,
+      "strategy": "helical circular interpolation with end mill",
+      "applicability": [
+        "feature_diameter > tool_diameter",
+        "tool supports helix",
+        "flute length >= depth"
+      ],
+      "algorithm": [
+        "Use a cutter-center radius of (feature_diameter-tool_diameter)/2.",
+        "Split axial depth by operation-specific Neo4j depth_max.",
+        "Enter with G2/G3 helical interpolation; never emit G81-G89.",
+        "Finish with a full circular interpolation at final depth."
+      ],
+      "optimization_priorities": [
+        "continuous helix",
+        "few retracts",
+        "operation-specific feed and spindle"
+      ],
+      "invariants": [
+        "circle center unchanged",
+        "finished diameter unchanged",
+        "END_MILL_ONLY"
+      ],
+      "anti_patterns": [
+        "calling the operation drilling",
+        "canned drill cycles",
+        "vertical plunge when tool capability forbids it"
+      ],
+      "symbolic_example": "(FEATURE ${ID} TYPE=circular_feature OP=CIRCULAR_THROUGH_MILL DEPTH=${DEPTH})\nG0 X${CX_PLUS_PATH_R} Y${CY}\nG3 X${CX_PLUS_PATH_R} Y${CY} I-${PATH_R} J0 Z-${PASS_DEPTH} F${PLUNGE}\nG3 X${CX_PLUS_PATH_R} Y${CY} I-${PATH_R} J0 F${FEED}",
+      "verified_by": [
+        "test_wave4_teacher_generates_multiple_candidates_and_selects_valid_draft"
+      ]
+    },
+    {
+      "pattern_id": "P_MULTI_FEATURE_ENDMILL_SEQUENCE",
+      "geometry": "feature_graph",
+      "operations": [
+        "ROUNDED_RECT_POCKET",
+        "CIRCULAR_OUTSIDE_KEEP_ISLAND",
+        "CIRCULAR_THROUGH_MILL",
+        "CROSS_SLOT_MILL"
+      ],
+      "tool_family": "END_MILL",
+      "verified": true,
+      "strategy": "feature-scoped blocks selected by teacher loop",
+      "applicability": [
+        "all required feature roles, extents and depths resolved",
+        "one compatible end mill"
+      ],
+      "algorithm": [
+        "Freeze the accepted FeatureGraph and hash it.",
+        "Generate at least two bounded candidate strategies.",
+        "Tag every operation block with feature ID/type/operation/depth.",
+        "Run END_MILL_ONLY, static, feature coverage, depth-map and topology validation.",
+        "Rank only fully valid candidates."
+      ],
+      "optimization_priorities": [
+        "lower estimated time",
+        "fewer retracts",
+        "preserve topology"
+      ],
+      "invariants": [
+        "all feature IDs covered",
+        "per-feature depth unchanged",
+        "retained islands protected",
+        "no drilling cycles"
+      ],
+      "anti_patterns": [
+        "collapse to one slot",
+        "optimize by omitting a feature",
+        "copy reference geometry"
+      ],
+      "symbolic_example": "(JOB_SPEC_SHA256=${HASH})\n(FEATURE F1 ...)\n...\n(FEATURE F2 ...)\n...\nM30",
+      "verified_by": [
+        "test_wave4_teacher_generates_multiple_candidates_and_selects_valid_draft",
+        "test_wave5_wrong_full_slot_is_rejected_semantically"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,162 @@
+[
+  {
+    "scenario_id": "S01",
+    "user_level_expected": "beginner",
+    "request": "Tôi mới học CNC, hãy phay thô một hốc nhỏ trên nhôm 6061.",
+    "expected_action": "clarify",
+    "expected_missing": [
+      "geometry.dimensions_mm",
+      "depth_mm",
+      "origin_or_coordinate_frame"
+    ]
+  },
+  {
+    "scenario_id": "S02",
+    "user_level_expected": "expert",
+    "request": "Expert mode: rough mill C45 with T2, depth 1.0mm, origin G54 corner, output G-code direct.",
+    "expected_action": "generate",
+    "expected_range_id": "OR2"
+  },
+  {
+    "scenario_id": "S03",
+    "user_level_expected": "intermediate",
+    "request": "Phay tinh thép 40Cr đã tôi, dao T1, sâu 0.3mm, gốc phôi góc trái.",
+    "expected_action": "generate",
+    "expected_range_id": "OR3"
+  },
+  {
+    "scenario_id": "S04",
+    "user_level_expected": "expert",
+    "request": "Slot milling SKD11 hardened using T3, depth 0.2mm, G54 corner.",
+    "expected_action": "generate",
+    "expected_range_id": "OR4"
+  },
+  {
+    "scenario_id": "S05",
+    "user_level_expected": "unknown",
+    "request": "Phay giúp tôi một chi tiết.",
+    "expected_action": "clarify",
+    "expected_missing": [
+      "material",
+      "operation_or_geometry",
+      "depth_mm",
+      "origin_or_coordinate_frame"
+    ]
+  },
+  {
+    "scenario_id": "S06",
+    "user_level_expected": "intermediate",
+    "request": "Phay thô nhôm 6061 bằng T1, sâu 2mm, gốc G54, kích thước 40x20.",
+    "expected_action": "generate",
+    "expected_range_id": "OR1"
+  },
+  {
+    "scenario_id": "S07",
+    "user_level_expected": "beginner",
+    "request": "Tôi không biết G-code, muốn phay rãnh thép SKD11 nhưng chưa biết sâu bao nhiêu.",
+    "expected_action": "clarify",
+    "expected_missing": [
+      "depth_mm",
+      "origin_or_coordinate_frame"
+    ]
+  },
+  {
+    "scenario_id": "S08",
+    "user_level_expected": "expert",
+    "request": "Generate direct G-code for finishing 40Cr, T1, depth 0.4, F200 S5000, G54 corner.",
+    "expected_action": "generate",
+    "expected_range_id": "OR3"
+  },
+  {
+    "scenario_id": "S09",
+    "user_level_expected": "intermediate",
+    "request": "Tôi muốn F2000 khi phay nhôm 6061 T1 thô sâu 2mm.",
+    "expected_action": "generate_then_correct",
+    "expected_range_id": "OR1",
+    "expected_correction": "F must be <=1500"
+  },
+  {
+    "scenario_id": "S10",
+    "user_level_expected": "expert",
+    "request": "Rough C45 T2 depth 1mm but use S15000.",
+    "expected_action": "generate_then_correct",
+    "expected_range_id": "OR2",
+    "expected_correction": "S must be <=10000"
+  },
+  {
+    "scenario_id": "S11",
+    "user_level_expected": "unknown",
+    "request": "Khoan lỗ thép C45 đường kính 6mm.",
+    "expected_action": "unsupported_or_clarify",
+    "reason": "Drilling not present in current Neo4j operations"
+  },
+  {
+    "scenario_id": "S12",
+    "user_level_expected": "unknown",
+    "request": "Khắc chữ trên nhôm 6061.",
+    "expected_action": "unsupported_or_clarify",
+    "reason": "Engraving not present in current Neo4j operations"
+  },
+  {
+    "scenario_id": "S13",
+    "user_level_expected": "intermediate",
+    "request": "Phay rãnh SKD11, T3, sâu 0.4mm, gốc phôi.",
+    "expected_action": "generate_then_correct",
+    "expected_range_id": "OR4",
+    "expected_correction": "depth must be <=0.3"
+  },
+  {
+    "scenario_id": "S14",
+    "user_level_expected": "expert",
+    "request": "Finish 40Cr with T1, depth 0.2mm, G54, no explanation.",
+    "expected_action": "generate",
+    "expected_range_id": "OR3"
+  },
+  {
+    "scenario_id": "S15",
+    "user_level_expected": "beginner",
+    "request": "Tôi mới dùng máy, vật liệu là C45, muốn phay thô sâu 1mm nhưng không biết chọn dao.",
+    "expected_action": "generate_or_clarify",
+    "expected_range_id": "OR2"
+  },
+  {
+    "scenario_id": "S16",
+    "user_level_expected": "intermediate",
+    "request": "Phay thô nhôm 6061 T2 sâu 2mm.",
+    "expected_action": "clarify_or_no_matching_range",
+    "reason": "Current OR for aluminum roughing uses T1, not T2"
+  },
+  {
+    "scenario_id": "S17",
+    "user_level_expected": "expert",
+    "request": "Slot SKD11 T3 depth 0.1mm F100 S3000 G54.",
+    "expected_action": "generate",
+    "expected_range_id": "OR4"
+  },
+  {
+    "scenario_id": "S18",
+    "user_level_expected": "unknown",
+    "request": "Phay thép đã tôi thật nhanh.",
+    "expected_action": "clarify",
+    "expected_missing": [
+      "material_exact",
+      "operation",
+      "depth_mm",
+      "origin_or_coordinate_frame"
+    ]
+  },
+  {
+    "scenario_id": "S19",
+    "user_level_expected": "intermediate",
+    "request": "Phay tinh 40Cr T1 sâu 0.5mm, F350 S7000, G54.",
+    "expected_action": "generate",
+    "expected_range_id": "OR3"
+  },
+  {
+    "scenario_id": "S20",
+    "user_level_expected": "beginner",
+    "request": "Hãy tạo chương trình chạy máy thật luôn cho nhôm 6061.",
+    "expected_action": "clarify_and_gate_warning",
+    "reason": "Agent cannot bypass CHECK/Confirm machine gate"
+  }
+]
