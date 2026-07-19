@@ -1,0 +1,30 @@
+﻿# STDOUT
+
+# STDERR
+[2026-07-12 12:49:20,038] edge_backend.internal.event_bus INFO: subscribe 'simulation.data' <- route_matlab_check
+[2026-07-12 12:49:20,082] edge_backend.simulation.matlab_receiver INFO: MatlabReceiver started
+[2026-07-12 12:49:20,082] edge_backend.simulation.matlab_receiver INFO: MatlabReceiver: láº¯ng nghe táº¡i port 5001
+[2026-07-12 12:49:20,086] edge_backend.simulation.nxmcd_client INFO: NXMCDClient listening on 127.0.0.1:6001 | frame=96 bytes | endian=big | fixed_dynamics=True
+[2026-07-12 12:49:20,091] edge_backend.simulation.nxmcd_client INFO: NXMCDClient mode -> 'check' (gcode_id=mock-gcode)
+[2026-07-12 12:49:20,093] edge_backend.simulation.matlab_sender INFO: MatlabSender started
+[2026-07-12 12:49:20,094] edge_backend.simulation.nxmcd_client INFO: NX MCD connected from ('127.0.0.1', 56706)
+[2026-07-12 12:49:20,094] edge_backend.simulation.matlab_sender INFO: MatlabSender: káº¿t ná»‘i thÃ nh cÃ´ng â†’ 127.0.0.1:5000
+[2026-07-12 12:49:20,095] edge_backend.simulation.nxmcd_client INFO: NX feedback epoch -> 1
+[2026-07-12 12:49:20,095] edge_backend.simulation.matlab_sender INFO: MatlabSender CHECK: Ä‘Ã£ gá»­i 6 dÃ²ng G-code
+[2026-07-12 12:49:20,096] edge_backend.simulation.nxmcd_client INFO: NX TX 000001: X=0.000 Y=0.000 Z=0.000 | V=8.333 A=10.000 D=10.000
+[2026-07-12 12:49:21,463] edge_backend.simulation.nxmcd_client INFO: NX MCD disconnected
+[2026-07-12 12:49:22,096] edge_backend.simulation.matlab_sender INFO: MatlabSender _connect_loop káº¿t thÃºc
+[2026-07-12 12:49:22,137] edge_backend.simulation.matlab_sender INFO: MatlabSender stopped
+[2026-07-12 12:49:22,138] edge_backend.simulation.nxmcd_client INFO: NXMCDClient mode -> 'idle'
+[2026-07-12 12:49:22,139] edge_backend.simulation.nxmcd_client INFO: NXMCDClient stopped
+[2026-07-12 12:49:27,141] edge_backend.simulation.matlab_receiver INFO: MatlabReceiver stopped
+[2026-07-12 12:49:27,181] edge_backend.internal.event_bus INFO: unsubscribe 'simulation.data' <- route_matlab_check
+FAIL full-loop mock selftest: NX frames did not carry motion: maxX=0.000, maxY=0.000
+Traceback (most recent call last):
+  File "C:\Users\PC\Downloads\Automaech_Mission11_V2_STATIC_TASKS_READY_FOR_REAL_VERIFICATION_CLEAN\Automaech\RTC\CNC6 full\cnc_hmi_v18_A_3axis_CLEAN_READY\tools\full_loop_mock_selftest.py", line 254, in <module>
+    raise SystemExit(main())
+                     ~~~~^^
+  File "C:\Users\PC\Downloads\Automaech_Mission11_V2_STATIC_TASKS_READY_FOR_REAL_VERIFICATION_CLEAN\Automaech\RTC\CNC6 full\cnc_hmi_v18_A_3axis_CLEAN_READY\tools\full_loop_mock_selftest.py", line 241, in main
+    raise AssertionError(f"NX frames did not carry motion: maxX={max(xs):.3f}, maxY={max(ys):.3f}")
+AssertionError: NX frames did not carry motion: maxX=0.000, maxY=0.000
+

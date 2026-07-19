@@ -1,0 +1,10 @@
+﻿# STDOUT
+FULL CONNECTION AUDIT
+Mode: static
+Overall: PASS
+Counts: {'PASS': 16}
+JSON: C:\cnc\Viettel\CNC19\CNC190\reports\full_connection_audit\CONNECTION_AUDIT_REPORT.json
+Summary: C:\cnc\Viettel\CNC19\CNC190\reports\full_connection_audit\CONNECTION_AUDIT_SUMMARY.md
+
+
+# STDERR

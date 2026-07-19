@@ -1,0 +1,11 @@
+﻿# STDOUT
+PASS 01_line_X30_Y10.nc: endpoint_error=0.000000000 mm, frames=164
+PASS 02_square_20mm.nc: endpoint_error=0.000000000 mm, frames=441
+PASS 03_diagonal_X50_Y50.nc: endpoint_error=0.000000000 mm, frames=281
+PASS 04_zigzag_path.nc: endpoint_error=0.000000000 mm, frames=285
+PASS 05_multi_feed_path.nc: endpoint_error=0.000000000 mm, frames=339
+PASS 06_xyz_move.nc: endpoint_error=0.000000000 mm, frames=299
+DONE Mission 02 virtual benchmark: reports\mission2_benchmark
+
+
+# STDERR

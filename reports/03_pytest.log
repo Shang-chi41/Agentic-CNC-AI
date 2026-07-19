@@ -1,0 +1,70 @@
+﻿# STDOUT
+============================= test session starts =============================
+platform win32 -- Python 3.13.3, pytest-9.1.1, pluggy-1.6.0 -- C:\cnc\Viettel\CNC19\CNC190\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: C:\cnc\Viettel\CNC19\CNC190
+plugins: anyio-4.14.2
+collecting ... collected 881 items / 5 errors
+
+=================================== ERRORS ====================================
+_ ERROR collecting integration_tests/test_mission23_17_browser_clarification_options.py _
+ImportError while importing test module 'C:\cnc\Viettel\CNC19\CNC190\integration_tests\test_mission23_17_browser_clarification_options.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+C:\Users\PC\AppData\Local\Programs\Python\Python313\Lib\importlib\__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+integration_tests\test_mission23_17_browser_clarification_options.py:7: in <module>
+    from playwright.sync_api import sync_playwright
+E   ModuleNotFoundError: No module named 'playwright'
+_ ERROR collecting integration_tests/test_mission23_7_25_6_browser_paste_review_collision_repair.py _
+ImportError while importing test module 'C:\cnc\Viettel\CNC19\CNC190\integration_tests\test_mission23_7_25_6_browser_paste_review_collision_repair.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+C:\Users\PC\AppData\Local\Programs\Python\Python313\Lib\importlib\__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+integration_tests\test_mission23_7_25_6_browser_paste_review_collision_repair.py:9: in <module>
+    from playwright.sync_api import sync_playwright
+E   ModuleNotFoundError: No module named 'playwright'
+_ ERROR collecting integration_tests/test_mission23_8_continuous_chat_frontend.py _
+ImportError while importing test module 'C:\cnc\Viettel\CNC19\CNC190\integration_tests\test_mission23_8_continuous_chat_frontend.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+C:\Users\PC\AppData\Local\Programs\Python\Python313\Lib\importlib\__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+integration_tests\test_mission23_8_continuous_chat_frontend.py:7: in <module>
+    from playwright.sync_api import sync_playwright
+E   ModuleNotFoundError: No module named 'playwright'
+_ ERROR collecting integration_tests/test_mission23_9_browser_contextual_action_conversation.py _
+ImportError while importing test module 'C:\cnc\Viettel\CNC19\CNC190\integration_tests\test_mission23_9_browser_contextual_action_conversation.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+C:\Users\PC\AppData\Local\Programs\Python\Python313\Lib\importlib\__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+integration_tests\test_mission23_9_browser_contextual_action_conversation.py:7: in <module>
+    from playwright.sync_api import sync_playwright
+E   ModuleNotFoundError: No module named 'playwright'
+_ ERROR collecting integration_tests/test_mission25_4_browser_frontend_auto_repair.py _
+ImportError while importing test module 'C:\cnc\Viettel\CNC19\CNC190\integration_tests\test_mission25_4_browser_frontend_auto_repair.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+C:\Users\PC\AppData\Local\Programs\Python\Python313\Lib\importlib\__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+integration_tests\test_mission25_4_browser_frontend_auto_repair.py:9: in <module>
+    from playwright.sync_api import sync_playwright
+E   ModuleNotFoundError: No module named 'playwright'
+=========================== short test summary info ===========================
+ERROR integration_tests/test_mission23_17_browser_clarification_options.py
+ERROR integration_tests/test_mission23_7_25_6_browser_paste_review_collision_repair.py
+ERROR integration_tests/test_mission23_8_continuous_chat_frontend.py
+ERROR integration_tests/test_mission23_9_browser_contextual_action_conversation.py
+ERROR integration_tests/test_mission25_4_browser_frontend_auto_repair.py
+!!!!!!!!!!!!!!!!!!! Interrupted: 5 errors during collection !!!!!!!!!!!!!!!!!!!
+============================== 5 errors in 2.82s ==============================
+
+
+# STDERR

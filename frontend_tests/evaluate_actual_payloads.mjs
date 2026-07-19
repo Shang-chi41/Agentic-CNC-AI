@@ -1,0 +1,10 @@
+import fs from 'node:fs';
+import { evaluateIntentContract, verifyIntentPayloadHashes } from '../frontend/js/intent_contract_gate.js';
+const payloads = JSON.parse(fs.readFileSync('/mnt/data/MISSION25_3_FRONTEND_ACTUAL_PAYLOADS.json', 'utf8'));
+const blocked = evaluateIntentContract(payloads.blocked);
+const verified = evaluateIntentContract(payloads.verified);
+const verifiedHashes = await verifyIntentPayloadHashes(payloads.verified);
+const report = { blocked, verified, verifiedHashes };
+fs.writeFileSync('/mnt/data/MISSION25_3_FRONTEND_GATE_ACTUAL_EVIDENCE.json', JSON.stringify(report, null, 2));
+console.log(JSON.stringify(report, null, 2));
+if (blocked.confirmable !== false || verified.confirmable !== true || verified.actionEligible !== true || verifiedHashes.valid !== true) process.exit(1);

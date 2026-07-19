@@ -1,0 +1,13 @@
+﻿# STDOUT
+== Bug #1: model KHONG duoc Start ==
+  drained=0/21  finished=False  -> HMI se thay 'da mo MATLAB' nhung khong co frame nao tra ve.
+== Bug #1 da va: model duoc Start ==
+  drained=21/21  finished=True  finish_time=0.700s
+== Bug #2: .env cu (0.500s/dong), 100 dong G-code ==
+  finish_time=50.033s (bridge tu lam cham, khong lien quan Simulink)
+== Bug #2 da va: .env moi (0.030s/dong), 100 dong G-code ==
+  finish_time=3.368s (~bang nhip that cua model = 0.03335s/dong)
+== Speedup: 14.85x ==
+
+
+# STDERR

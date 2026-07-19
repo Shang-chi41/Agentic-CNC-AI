@@ -1,0 +1,406 @@
+{
+  "summary": {
+    "generated_at": "2026-07-14T03:44:10.878047+00:00",
+    "mode": "safe-live",
+    "profile": "all",
+    "counts": {
+      "PASS": 20,
+      "WARN": 1,
+      "UNKNOWN": 3,
+      "SKIP": 1
+    },
+    "required_failure_count": 0,
+    "critical_or_blocker_count": 0,
+    "overall": "PASS"
+  },
+  "checks": [
+    {
+      "check_id": "S001",
+      "layer": "static",
+      "component": "project_inventory",
+      "verification_level": "static",
+      "status": "PASS",
+      "severity": "NOTE",
+      "required": true,
+      "summary": "Required architecture files present",
+      "evidence": {
+        "missing": []
+      }
+    },
+    {
+      "check_id": "S002",
+      "layer": "config",
+      "component": "env_contract",
+      "verification_level": "static",
+      "status": "PASS",
+      "severity": "NOTE",
+      "required": true,
+      "summary": "`.env` and `.env.example` key parity",
+      "evidence": {
+        "env_key_count": 103,
+        "example_key_count": 103,
+        "only_env": [],
+        "only_example": []
+      }
+    },
+    {
+      "check_id": "S003",
+      "layer": "config",
+      "component": "required_env",
+      "verification_level": "static",
+      "status": "PASS",
+      "severity": "NOTE",
+      "required": true,
+      "summary": "Required connection configuration is present",
+      "evidence": {
+        "missing_or_empty": []
+      }
+    },
+    {
+      "check_id": "S004",
+      "layer": "safety",
+      "component": "runtime_profiles",
+      "verification_level": "static",
+      "status": "PASS",
+      "severity": "NOTE",
+      "required": true,
+      "summary": "Machine and simulation launch profiles remain separated",
+      "evidence": {
+        "machine_missing": [],
+        "sim_missing": []
+      }
+    },
+    {
+      "check_id": "S005",
+      "layer": "safety",
+      "component": "direct_env_profile",
+      "verification_level": "static",
+      "status": "PASS",
+      "severity": "NOTE",
+      "required": false,
+      "summary": "Direct environment does not combine machine target with disabled gate",
+      "evidence": {
+        "run_gcode_target": "machine",
+        "run_permission_gate": "1",
+        "effective_machine_launcher": "scripts/RUN_70_MAIN_MACHINE.ps1"
+      }
+    },
+    {
+      "check_id": "S006",
+      "layer": "frontend",
+      "component": "unified_status_consumer",
+      "verification_level": "static",
+      "status": "PASS",
+      "severity": "NOTE",
+      "required": true,
+      "summary": "Frontend renders the unified system status contract",
+      "evidence": {
+        "frontend/js/monitor.js": {
+          "uses_unified_status": true,
+          "uses_legacy_monitor_connection": false
+        },
+        "frontend/js/control.js": {
+          "uses_unified_status": true,
+          "uses_legacy_monitor_connection": false
+        }
+      }
+    },
+    {
+      "check_id": "S007",
+      "layer": "cloud",
+      "component": "system_status_source_contract",
+      "verification_level": "static",
+      "status": "PASS",
+      "severity": "NOTE",
+      "required": true,
+      "summary": "Cloud status separates connection/runtime/dataflow/gate",
+      "evidence": {
+        "missing_contract_tokens": []
+      }
+    },
+    {
+      "check_id": "S008",
+      "layer": "edge",
+      "component": "runtime_snapshot_contract",
+      "verification_level": "static",
+      "status": "PASS",
+      "severity": "NOTE",
+      "required": true,
+      "summary": "main and main_sim_only report separate connection truth",
+      "evidence": {
+        "main_missing": [],
+        "sim_missing": []
+      }
+    },
+    {
+      "check_id": "S009",
+      "layer": "config",
+      "component": "port_contract",
+      "verification_level": "static",
+      "status": "PASS",
+      "severity": "NOTE",
+      "required": true,
+      "summary": "Core TCP ports are distinct and match the MATLAB/NX contract",
+      "evidence": {
+        "ports": {
+          "MATLAB_SEND_PORT": 5000,
+          "MATLAB_RECV_PORT": 5001,
+          "SIMULINK_GCODE_PORT": 5100,
+          "SIMULINK_FRAME_PORT": 5101,
+          "NX_PORT": 6001,
+          "FLUIDNC_PORT": 23,
+          "MQTT_PORT": 1883
+        },
+        "expected": {
+          "MATLAB_SEND_PORT": 5000,
+          "MATLAB_RECV_PORT": 5001,
+          "SIMULINK_GCODE_PORT": 5100,
+          "SIMULINK_FRAME_PORT": 5101,
+          "NX_PORT": 6001
+        },
+        "distinct": true
+      }
+    },
+    {
+      "check_id": "S010",
+      "layer": "matlab",
+      "component": "bridge_env_contract",
+      "verification_level": "static",
+      "status": "PASS",
+      "severity": "NOTE",
+      "required": true,
+      "summary": "MATLAB bridge reads the same four port variables",
+      "evidence": {
+        "missing": []
+      }
+    },
+    {
+      "check_id": "S011",
+      "layer": "mcp",
+      "component": "stdio_tool_server",
+      "verification_level": "sandbox",
+      "status": "PASS",
+      "severity": "NOTE",
+      "required": true,
+      "summary": "MCP stdio tools/list returns exactly 8 tools",
+      "evidence": {
+        "exit_code": 0,
+        "tools": [
+          "check_gcode_simulation",
+          "get_gcode_result",
+          "get_latest_alarms",
+          "get_machine_status",
+          "get_neo4j_context",
+          "get_sensor_history",
+          "get_simulation_data",
+          "validate_gcode"
+        ],
+        "stdout_tail": "MCP SMOKE PASS\nTools: get_machine_status, get_latest_alarms, get_sensor_history, get_simulation_data, validate_gcode, check_gcode_simulation, get_gcode_result, get_neo4j_context\nServer: {'name': 'cnc-tools-server', 'version': '1.0.0'}\n",
+        "stderr_tail": ""
+      }
+    },
+    {
+      "check_id": "S012",
+      "layer": "ai",
+      "component": "provider_configuration",
+      "verification_level": "static",
+      "status": "PASS",
+      "severity": "NOTE",
+      "required": true,
+      "summary": "Configured AI provider has its required connection setting",
+      "evidence": {
+        "provider": "openrouter",
+        "required_setting": "OPENROUTER_API_KEY",
+        "setting_present": true
+      }
+    },
+    {
+      "check_id": "S013",
+      "layer": "sync",
+      "component": "edge_cloud_sync",
+      "verification_level": "static",
+      "status": "PASS",
+      "severity": "NOTE",
+      "required": true,
+      "summary": "Edge→Cloud sync authentication and runtime heartbeat paths align",
+      "evidence": {
+        "sync_key_present": true,
+        "route_missing": [],
+        "worker_missing": []
+      }
+    },
+    {
+      "check_id": "S014",
+      "layer": "frontend_cloud",
+      "component": "pose_relay_contract",
+      "verification_level": "static",
+      "status": "PASS",
+      "severity": "NOTE",
+      "required": true,
+      "summary": "Pose HTTP publish and authenticated WebSocket relay are wired",
+      "evidence": {
+        "cloud_missing": [],
+        "frontend_missing": []
+      }
+    },
+    {
+      "check_id": "S015",
+      "layer": "deployment",
+      "component": "docker_contract",
+      "verification_level": "static",
+      "status": "WARN",
+      "severity": "MAJOR",
+      "required": false,
+      "summary": "Docker comments describe Atlas/Aura while current `.env` points to local services",
+      "evidence": {
+        "docker_ok": true,
+        "mongo_local": true,
+        "neo4j_local": true,
+        "docker_comments_cloud_mongo": true,
+        "docker_comments_cloud_neo4j": true
+      }
+    },
+    {
+      "check_id": "L001",
+      "layer": "cloud",
+      "component": "cloud_health",
+      "verification_level": "safe-live",
+      "status": "PASS",
+      "severity": "NOTE",
+      "required": true,
+      "summary": "Cloud health endpoint reachable",
+      "evidence": {
+        "url": "http://127.0.0.1:8000/health",
+        "http_status": 200
+      }
+    },
+    {
+      "check_id": "L002",
+      "layer": "database",
+      "component": "mongodb",
+      "verification_level": "safe-live",
+      "status": "PASS",
+      "severity": "NOTE",
+      "required": true,
+      "summary": "MongoDB ping",
+      "evidence": {
+        "uri": "mongodb://localhost:27017/cnc_db"
+      }
+    },
+    {
+      "check_id": "L003",
+      "layer": "database",
+      "component": "neo4j",
+      "verification_level": "safe-live",
+      "status": "PASS",
+      "severity": "NOTE",
+      "required": true,
+      "summary": "Neo4j connectivity and read query",
+      "evidence": {
+        "uri": "neo4j://127.0.0.1:7687",
+        "database": "neo4j"
+      }
+    },
+    {
+      "check_id": "P8000",
+      "layer": "passive_port",
+      "component": "cloud_8000",
+      "verification_level": "safe-live",
+      "status": "PASS",
+      "severity": "NOTE",
+      "required": false,
+      "summary": "TCP listener detected on port 8000",
+      "evidence": {
+        "port": 8000,
+        "passive_only": true
+      }
+    },
+    {
+      "check_id": "P5000",
+      "layer": "passive_port",
+      "component": "matlab_edge_in_5000",
+      "verification_level": "safe-live",
+      "status": "UNKNOWN",
+      "severity": "MAJOR",
+      "required": false,
+      "summary": "TCP listener not detected on port 5000",
+      "evidence": {
+        "port": 5000,
+        "passive_only": true
+      }
+    },
+    {
+      "check_id": "P5001",
+      "layer": "passive_port",
+      "component": "edge_matlab_recv_5001",
+      "verification_level": "safe-live",
+      "status": "PASS",
+      "severity": "NOTE",
+      "required": false,
+      "summary": "TCP listener detected on port 5001",
+      "evidence": {
+        "port": 5001,
+        "passive_only": true
+      }
+    },
+    {
+      "check_id": "P5100",
+      "layer": "passive_port",
+      "component": "simulink_gcode_5100",
+      "verification_level": "safe-live",
+      "status": "UNKNOWN",
+      "severity": "MAJOR",
+      "required": false,
+      "summary": "TCP listener not detected on port 5100",
+      "evidence": {
+        "port": 5100,
+        "passive_only": true
+      }
+    },
+    {
+      "check_id": "P5101",
+      "layer": "passive_port",
+      "component": "simulink_frame_5101",
+      "verification_level": "safe-live",
+      "status": "UNKNOWN",
+      "severity": "MAJOR",
+      "required": false,
+      "summary": "TCP listener not detected on port 5101",
+      "evidence": {
+        "port": 5101,
+        "passive_only": true
+      }
+    },
+    {
+      "check_id": "P6001",
+      "layer": "passive_port",
+      "component": "edge_nxmcd_6001",
+      "verification_level": "safe-live",
+      "status": "PASS",
+      "severity": "NOTE",
+      "required": false,
+      "summary": "TCP listener detected on port 6001",
+      "evidence": {
+        "port": 6001,
+        "passive_only": true
+      }
+    },
+    {
+      "check_id": "L004",
+      "layer": "runtime",
+      "component": "unified_system_status",
+      "verification_level": "safe-live",
+      "status": "SKIP",
+      "severity": "NOTE",
+      "required": false,
+      "summary": "JWT not provided; device connection truth cannot be read from Cloud",
+      "evidence": {
+        "hint": "Set CONNECTION_AUDIT_JWT or pass --jwt"
+      }
+    }
+  ],
+  "security": {
+    "secrets_included": false,
+    "env_values_logged": false
+  }
+}

@@ -1,0 +1,186 @@
+{
+  "suite": "cnc-technical-assistant-generation-v2",
+  "scope": "L2 service-free with mocked external context/validator transport",
+  "total": 18,
+  "passed": 18,
+  "failed": 0,
+  "pass_rate": 1.0,
+  "machine_commands_issued": 0,
+  "rows": [
+    {
+      "id": "GEN-OUT-01",
+      "question": "phay contour ngoài 60x60x6",
+      "passed": true,
+      "failures": [],
+      "tool_order": [
+        "get_neo4j_context",
+        "validate_gcode"
+      ]
+    },
+    {
+      "id": "GEN-OUT-02",
+      "question": "phay biên ngoài 60×60 xuống 6",
+      "passed": true,
+      "failures": [],
+      "tool_order": [
+        "get_neo4j_context",
+        "validate_gcode"
+      ]
+    },
+    {
+      "id": "GEN-OUT-03",
+      "question": "profile OD 60 60 sâu 6",
+      "passed": true,
+      "failures": [],
+      "tool_order": [
+        "get_neo4j_context",
+        "validate_gcode"
+      ]
+    },
+    {
+      "id": "GEN-OUT-04",
+      "question": "chạy bao ngoài 60x60x6",
+      "passed": true,
+      "failures": [],
+      "tool_order": [
+        "get_neo4j_context",
+        "validate_gcode"
+      ]
+    },
+    {
+      "id": "GEN-OUT-05",
+      "question": "phay ngoài chữ nhật 60x60 sâu 6",
+      "passed": true,
+      "failures": [],
+      "tool_order": [
+        "get_neo4j_context",
+        "validate_gcode"
+      ]
+    },
+    {
+      "id": "GEN-OUT-06",
+      "question": "phay ngoài vuông 60 sâu 6",
+      "passed": true,
+      "failures": [],
+      "tool_order": [
+        "get_neo4j_context",
+        "validate_gcode"
+      ]
+    },
+    {
+      "id": "GEN-OUT-07",
+      "question": "mill outside profile 60x60x6",
+      "passed": true,
+      "failures": [],
+      "tool_order": [
+        "get_neo4j_context",
+        "validate_gcode"
+      ]
+    },
+    {
+      "id": "GEN-OUT-08",
+      "question": "cắt chu vi ngoài 60x60 sâu 6",
+      "passed": true,
+      "failures": [],
+      "tool_order": [
+        "get_neo4j_context",
+        "validate_gcode"
+      ]
+    },
+    {
+      "id": "GEN-IN-01",
+      "question": "phay contour trong chữ nhật 60x40x3",
+      "passed": true,
+      "failures": [],
+      "tool_order": [
+        "get_neo4j_context",
+        "validate_gcode"
+      ]
+    },
+    {
+      "id": "GEN-CIRCLE-01",
+      "question": "phay contour ngoài tròn phi 40 sâu 2",
+      "passed": true,
+      "failures": [],
+      "tool_order": [
+        "get_neo4j_context",
+        "validate_gcode"
+      ]
+    },
+    {
+      "id": "GEN-POCKET-01",
+      "question": "phay túi chữ nhật 20x10x5",
+      "passed": true,
+      "failures": [],
+      "tool_order": [
+        "get_neo4j_context",
+        "validate_gcode"
+      ]
+    },
+    {
+      "id": "GEN-POCKET-CIRCLE-01",
+      "question": "phay túi tròn bán kính 15 sâu 5",
+      "passed": true,
+      "failures": [],
+      "tool_order": [
+        "get_neo4j_context",
+        "validate_gcode"
+      ]
+    },
+    {
+      "id": "GEN-SLOT-01",
+      "question": "phay rãnh 50x10x3",
+      "passed": true,
+      "failures": [],
+      "tool_order": [
+        "get_neo4j_context",
+        "validate_gcode"
+      ]
+    },
+    {
+      "id": "GEN-FACE-01",
+      "question": "phay mặt 80x50x0.5",
+      "passed": true,
+      "failures": [],
+      "tool_order": [
+        "get_neo4j_context",
+        "validate_gcode"
+      ]
+    },
+    {
+      "id": "GEN-INCH-01",
+      "question": "mill outside contour 2x2x0.25 inch",
+      "passed": true,
+      "failures": [],
+      "tool_order": [
+        "get_neo4j_context",
+        "validate_gcode"
+      ]
+    },
+    {
+      "id": "CLARIFY-PROJECT-01",
+      "question": "phay contour ngoài 60x60x6",
+      "passed": true,
+      "failures": [],
+      "tool_order": [
+        "get_neo4j_context"
+      ]
+    },
+    {
+      "id": "CONFLICT-TOOL-01",
+      "question": "phay contour ngoài 60x60x6 dao D10 G54 gốc trái dưới safe 10",
+      "passed": true,
+      "failures": [],
+      "tool_order": [
+        "get_neo4j_context"
+      ]
+    },
+    {
+      "id": "AMBIGUOUS-01",
+      "question": "phay ngoài 60",
+      "passed": true,
+      "failures": [],
+      "tool_order": []
+    }
+  ]
+}

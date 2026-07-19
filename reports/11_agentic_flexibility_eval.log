@@ -1,0 +1,22 @@
+﻿# STDOUT
+AGENTIC FLEXIBILITY EVAL
+Scenarios: 20
+Passed: 20
+Failed: 0
+Score: 1.000
+generation: 4/4 = 1.000
+image: 1/1 = 1.000
+intent: 3/3 = 1.000
+optimization: 1/1 = 1.000
+routing: 5/5 = 1.000
+safety: 1/1 = 1.000
+semantics: 3/3 = 1.000
+tool_workflow: 2/2 = 1.000
+Report: reports\agentic_flexibility_eval.json
+
+
+# STDERR
+[2026-07-16 14:57:46,885] edge_backend.ai.agentic_response_harness INFO: Agentic harness route=generate_gcode reason=machining generation intent
+[2026-07-16 14:57:46,926] edge_backend.ai.agentic_response_harness INFO: Agentic harness route=image_to_gcode reason=image attached with machining request
+[2026-07-16 14:57:46,931] edge_backend.ai.agentic_response_harness INFO: Agentic harness route=generate_gcode reason=machining generation intent
+

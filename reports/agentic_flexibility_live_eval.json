@@ -1,0 +1,57 @@
+{
+  "generated_at": "2026-07-11T14:15:51.027284+00:00",
+  "verification_level": "operator-machine live services",
+  "safety": {
+    "machine_commands_sent": false,
+    "matlab_nx_check_called": false,
+    "fluidnc_called": false
+  },
+  "evaluated": 4,
+  "passed": 4,
+  "failed": 0,
+  "overall": "PASS",
+  "results": [
+    {
+      "id": "LIVE_NEO4J",
+      "passed": true,
+      "detail": {
+        "tool": "T1",
+        "material": "Nhôm 6061",
+        "range_id": "OR1",
+        "error": null
+      }
+    },
+    {
+      "id": "LIVE_RECT",
+      "passed": true,
+      "detail": {
+        "has_gcode": true,
+        "response_tail": " sâu: 5 mm; các mức sâu: Z-3, Z-5.\n- WCS: G54; gốc: lower_left; safe Z=5 mm.\n- Tool workflow: Neo4j → generator → validator.\n- Validate nhanh: PASS. MATLAB/NX CHECK chưa chạy; chạy máy thật vẫn phải qua CHECK/Confirm.\n\n```gcode\n(RECTANGULAR POCKET 20x10 MM - Nhôm 6061 - T1)\n(ORIGIN: G54 AT LOWER_LEFT, Z0 = STOCK TOP)\n(TOOL DIAMETER: D6 MM)\n(TOTAL DEPTH: 5 MM; STEP-DOWN MAX: 3 MM)\n(NEO4J RANGE: OR1; F1050; S17000)\nG21\nG90\nG17\nG40\nG49\nG80\nG54\nT1 M6\nS17000 M3\nG0 Z5\nG0 X3 Y3\n(PASS 1 - Z-3)\nG1 Z-3 F1050\nG1 X17 Y3 F1050\nG1 X3 Y6.6 F1050\nG1 X17 Y7 F1050\nG1 X17 Y3 F1050\nG1 X17 Y7 F1050\nG1 X3 Y7 F1050\nG1 X3 Y3 F1050\nG0 Z5\nG0 X3 Y3\n(PASS 2 - Z-5)\nG1 Z-5 F1050\nG1 X17 Y3 F1050\nG1 X3 Y6.6 F1050\nG1 X17 Y7 F1050\nG1 X17 Y3 F1050\nG1 X17 Y7 F1050\nG1 X3 Y7 F1050\nG1 X3 Y3 F1050\nG0 Z5\nG0 X3 Y3\nM5\nG0 Z5\nM30\n```"
+      }
+    },
+    {
+      "id": "LIVE_CIRCLE_NO_ACCENT",
+      "passed": true,
+      "detail": {
+        "has_gcode": true,
+        "response_tail": "CHECK chưa chạy; chạy máy thật vẫn phải qua CHECK/Confirm.\n\n```gcode\n(CIRCULAR POCKET R15 MM - Nhôm 6061 - T1)\n(ORIGIN: G54 AT LOWER_LEFT, Z0 = STOCK TOP)\n(TOOL DIAMETER: D6 MM)\n(TOTAL DEPTH: 5 MM; STEP-DOWN MAX: 3 MM)\n(NEO4J RANGE: OR1; F1050; S17000)\nG21\nG90\nG17\nG40\nG49\nG80\nG54\nT1 M6\nS17000 M3\nG0 Z5\n(CIRCLE CENTER: X15 Y15)\n(PASS 1 - Z-3)\nG0 X15 Y15\nG1 Z-3 F1050\nG1 X16.5 Y15 F1050\nG2 X16.5 Y15 I-1.5 J0 F1050\nG1 X20.1 Y15 F1050\nG2 X20.1 Y15 I-5.1 J0 F1050\nG1 X23.7 Y15 F1050\nG2 X23.7 Y15 I-8.7 J0 F1050\nG1 X27 Y15 F1050\nG2 X27 Y15 I-12 J0 F1050\nG0 Z5\n(PASS 2 - Z-5)\nG0 X15 Y15\nG1 Z-5 F1050\nG1 X16.5 Y15 F1050\nG2 X16.5 Y15 I-1.5 J0 F1050\nG1 X20.1 Y15 F1050\nG2 X20.1 Y15 I-5.1 J0 F1050\nG1 X23.7 Y15 F1050\nG2 X23.7 Y15 I-8.7 J0 F1050\nG1 X27 Y15 F1050\nG2 X27 Y15 I-12 J0 F1050\nG0 Z5\nM5\nG0 Z5\nM30\n```"
+      }
+    },
+    {
+      "id": "LIVE_SLOT",
+      "passed": true,
+      "detail": {
+        "has_gcode": true,
+        "response_tail": "Đã đủ thông tin và đã sinh Rãnh 50x10 mm.\n\nNguồn thông số:\n- Dao: T1; vật liệu: Nhôm 6061.\n- Feed: F1050 mm/min; spindle: S17000 rpm.\n- Tổng sâu: 3 mm; các mức sâu: Z-3.\n- WCS: G54; gốc: lower_left; safe Z=5 mm.\n- Tool workflow: Neo4j → generator → validator.\n- Validate nhanh: PASS. MATLAB/NX CHECK chưa chạy; chạy máy thật vẫn phải qua CHECK/Confirm.\n\n```gcode\n(SLOT 50x10 MM - Nhôm 6061 - T1)\n(ORIGIN: G54 AT LOWER_LEFT, Z0 = STOCK TOP)\n(TOOL DIAMETER: D6 MM)\n(TOTAL DEPTH: 3 MM; STEP-DOWN MAX: 3 MM)\n(NEO4J RANGE: OR1; F1050; S17000)\nG21\nG90\nG17\nG40\nG49\nG80\nG54\nT1 M6\nS17000 M3\nG0 Z5\nG0 X3 Y3\n(PASS 1 - Z-3)\nG1 Z-3 F1050\nG1 X47 Y3 F1050\nG1 X3 Y6.6 F1050\nG1 X47 Y7 F1050\nG1 X47 Y3 F1050\nG1 X47 Y7 F1050\nG1 X3 Y7 F1050\nG1 X3 Y3 F1050\nG0 Z5\nG0 X3 Y3\nM5\nG0 Z5\nM30\n```"
+      }
+    },
+    {
+      "id": "LIVE_PROVIDER_MIXED",
+      "passed": null,
+      "detail": {
+        "status": "SKIP",
+        "reason": "Pass --allow-provider-calls to permit an external/configured LLM call."
+      }
+    }
+  ]
+}

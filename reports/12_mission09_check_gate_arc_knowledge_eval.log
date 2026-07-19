@@ -1,0 +1,12 @@
+﻿# STDOUT
+MISSION 09 EVAL
+Scenarios: 10
+Passed: 10
+Failed: 0
+Score: 1.000
+Report: C:\cnc\Viettel\CNC19\CNC190\reports\mission09_check_gate_arc_knowledge_eval.json
+
+
+# STDERR
+[2026-07-16 14:57:48,029] edge_backend.ai.agentic_response_harness INFO: Agentic harness route=generate_gcode reason=machining generation intent
+

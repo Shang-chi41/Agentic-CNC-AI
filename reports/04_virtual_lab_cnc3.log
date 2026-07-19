@@ -1,0 +1,13 @@
+﻿# STDOUT
+PASS CNC3 virtual lab
+  queued lines      : 6
+  motion blocks     : 3
+  CNC3 frames       : 372 x 116 bytes
+  NX frames         : 372 x 96 bytes
+  max X/Y/Z         : 30.000, 10.000, 5.000 mm
+  min Z             : 0.000 mm
+  max send Hz       : 30.000 Hz
+  report            : reports\virtual_lab_report.json
+
+
+# STDERR

@@ -1,0 +1,22 @@
+﻿# STDOUT
+PASS frontend\js\ai_chat.js
+PASS frontend\js\api.js
+PASS frontend\js\auth.js
+PASS frontend\js\charts.js
+PASS frontend\js\cnc_kinematics_multi_group.js
+PASS frontend\js\control.js
+PASS frontend\js\dashboard.js
+PASS frontend\js\digital_twin.js
+PASS frontend\js\gcode_toolpath_parser.js
+PASS frontend\js\history.js
+PASS frontend\js\hmi_core.js
+PASS frontend\js\hmi_redesign_v2.js
+PASS frontend\js\hmi_state_presenter_v5.js
+PASS frontend\js\monitor.js
+PASS frontend\js\settings.js
+PASS frontend\js\theme.js
+Checked 16 JS files; failed=0
+NODE CHECK PASS
+
+
+# STDERR

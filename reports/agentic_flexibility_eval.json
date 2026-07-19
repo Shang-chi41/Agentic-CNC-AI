@@ -1,0 +1,528 @@
+{
+  "scenario_count": 20,
+  "passed": 20,
+  "failed": 0,
+  "overall_score": 1.0,
+  "metrics": {
+    "routing": {
+      "passed": 5,
+      "total": 5,
+      "score": 1.0
+    },
+    "intent": {
+      "passed": 3,
+      "total": 3,
+      "score": 1.0
+    },
+    "generation": {
+      "passed": 4,
+      "total": 4,
+      "score": 1.0
+    },
+    "semantics": {
+      "passed": 3,
+      "total": 3,
+      "score": 1.0
+    },
+    "tool_workflow": {
+      "passed": 2,
+      "total": 2,
+      "score": 1.0
+    },
+    "optimization": {
+      "passed": 1,
+      "total": 1,
+      "score": 1.0
+    },
+    "image": {
+      "passed": 1,
+      "total": 1,
+      "score": 1.0
+    },
+    "safety": {
+      "passed": 1,
+      "total": 1,
+      "score": 1.0
+    }
+  },
+  "results": [
+    {
+      "id": "F01",
+      "metric": "routing",
+      "passed": true,
+      "error": "",
+      "evidence": {
+        "actual": "generate_gcode"
+      }
+    },
+    {
+      "id": "F02",
+      "metric": "routing",
+      "passed": true,
+      "error": "",
+      "evidence": {
+        "actual": "generate_gcode"
+      }
+    },
+    {
+      "id": "F03",
+      "metric": "routing",
+      "passed": true,
+      "error": "",
+      "evidence": {
+        "actual": "optimize_gcode"
+      }
+    },
+    {
+      "id": "F04",
+      "metric": "routing",
+      "passed": true,
+      "error": "",
+      "evidence": {
+        "actual": "simulate_gcode"
+      }
+    },
+    {
+      "id": "F05",
+      "metric": "routing",
+      "passed": true,
+      "error": "",
+      "evidence": {
+        "actual": "general"
+      }
+    },
+    {
+      "id": "F06",
+      "metric": "intent",
+      "passed": true,
+      "error": "",
+      "evidence": {
+        "actual": {
+          "operation": "milling",
+          "geometry": "slot",
+          "width_mm": 50.0,
+          "height_mm": 10.0,
+          "radius_mm": null,
+          "diameter_mm": null,
+          "material_name": "Nhôm 6061",
+          "tool_name": "T1",
+          "tool_diameter_mm": null,
+          "total_depth_mm": 3.0,
+          "wcs": "G54",
+          "origin": "lower_left",
+          "safe_z_mm": 5.0,
+          "contour_side": "",
+          "strategy": "",
+          "direction": "",
+          "unit_system": "mm",
+          "hole_count": null,
+          "hole_positions": [],
+          "provenance": [
+            [
+              "dimensions",
+              "operator_dimension_pair"
+            ],
+            [
+              "geometry",
+              "operator_language"
+            ],
+            [
+              "material_name",
+              "current"
+            ],
+            [
+              "operation",
+              "operator_language"
+            ],
+            [
+              "origin",
+              "operator_language"
+            ],
+            [
+              "safe_z_mm",
+              "operator_language"
+            ],
+            [
+              "tool_name",
+              "current"
+            ],
+            [
+              "total_depth_mm",
+              "current"
+            ],
+            [
+              "wcs",
+              "operator_language"
+            ]
+          ],
+          "confidence": [
+            [
+              "dimensions",
+              0.97
+            ],
+            [
+              "geometry",
+              0.98
+            ],
+            [
+              "operation",
+              0.99
+            ],
+            [
+              "origin",
+              0.98
+            ],
+            [
+              "safe_z_mm",
+              0.99
+            ],
+            [
+              "wcs",
+              0.99
+            ]
+          ]
+        },
+        "expected": {
+          "geometry": "slot",
+          "width_mm": 50,
+          "height_mm": 10
+        }
+      }
+    },
+    {
+      "id": "F07",
+      "metric": "intent",
+      "passed": true,
+      "error": "",
+      "evidence": {
+        "actual": {
+          "operation": "drilling",
+          "geometry": "drilling",
+          "width_mm": null,
+          "height_mm": null,
+          "radius_mm": null,
+          "diameter_mm": null,
+          "material_name": "Nhôm 6061",
+          "tool_name": "T1",
+          "tool_diameter_mm": null,
+          "total_depth_mm": 5.0,
+          "wcs": "G54",
+          "origin": "lower_left",
+          "safe_z_mm": 5.0,
+          "contour_side": "",
+          "strategy": "",
+          "direction": "",
+          "unit_system": "mm",
+          "hole_count": null,
+          "hole_positions": [
+            [
+              10.0,
+              20.0
+            ],
+            [
+              30.0,
+              20.0
+            ]
+          ],
+          "provenance": [
+            [
+              "geometry",
+              "operator_language"
+            ],
+            [
+              "hole_positions",
+              "current"
+            ],
+            [
+              "material_name",
+              "current"
+            ],
+            [
+              "operation",
+              "operator_language"
+            ],
+            [
+              "origin",
+              "operator_language"
+            ],
+            [
+              "safe_z_mm",
+              "operator_language"
+            ],
+            [
+              "tool_name",
+              "current"
+            ],
+            [
+              "total_depth_mm",
+              "current"
+            ],
+            [
+              "wcs",
+              "operator_language"
+            ]
+          ],
+          "confidence": [
+            [
+              "geometry",
+              0.98
+            ],
+            [
+              "operation",
+              0.99
+            ],
+            [
+              "origin",
+              0.98
+            ],
+            [
+              "safe_z_mm",
+              0.99
+            ],
+            [
+              "wcs",
+              0.99
+            ]
+          ]
+        },
+        "expected": {
+          "geometry": "drilling",
+          "hole_count_parsed": 2
+        }
+      }
+    },
+    {
+      "id": "F08",
+      "metric": "intent",
+      "passed": true,
+      "error": "",
+      "evidence": {
+        "actual": {
+          "operation": "milling",
+          "geometry": "slot",
+          "width_mm": 50.0,
+          "height_mm": 10.0,
+          "radius_mm": null,
+          "diameter_mm": null,
+          "material_name": "Nhôm 6061",
+          "tool_name": "T1",
+          "tool_diameter_mm": null,
+          "total_depth_mm": 3.0,
+          "wcs": "G55",
+          "origin": "lower_left",
+          "safe_z_mm": 5.0,
+          "contour_side": "",
+          "strategy": "",
+          "direction": "",
+          "unit_system": "mm",
+          "hole_count": null,
+          "hole_positions": [],
+          "provenance": [
+            [
+              "dimensions",
+              "history_3"
+            ],
+            [
+              "material_name",
+              "history_3"
+            ],
+            [
+              "origin",
+              "history_1"
+            ],
+            [
+              "safe_z_mm",
+              "history_1"
+            ],
+            [
+              "tool_name",
+              "history_2"
+            ],
+            [
+              "total_depth_mm",
+              "history_2"
+            ],
+            [
+              "wcs",
+              "operator_language"
+            ]
+          ],
+          "confidence": [
+            [
+              "dimensions",
+              0.97
+            ],
+            [
+              "wcs",
+              0.99
+            ]
+          ]
+        },
+        "expected": {
+          "geometry": "slot",
+          "wcs": "G55",
+          "width_mm": 50
+        }
+      }
+    },
+    {
+      "id": "F09",
+      "metric": "generation",
+      "passed": true,
+      "error": "",
+      "evidence": {
+        "response_tail": "ông tin và đã sinh Túi chữ nhật 20x10 mm.\n\nNguồn thông số:\n- Dao: T1; vật liệu: Nhôm 6061.\n- Feed XY: F1050 mm/min; plunge: F600 mm/min; spindle: S17000 rpm.\n- Tổng sâu: 5 mm; các mức sâu: Z-3, Z-5.\n- WCS: G54; gốc: lower_left; safe Z=5 mm.\n- Tool workflow: Neo4j → generator → validator.\n- Validate nhanh: PASS. MATLAB/NX CHECK chưa chạy; chạy máy thật vẫn phải qua CHECK/Confirm.\n\n```gcode\n(RECTANGULAR POCKET 20x10 MM - Nhôm 6061 - T1)\n(ORIGIN: G54 AT LOWER_LEFT, Z0 = STOCK TOP)\n(TOOL DIAMETER: D6 MM)\n(TOTAL DEPTH: 5 MM; STEP-DOWN MAX: 3 MM)\n(NEO4J RANGE: OR1; F1050; S17000)\n(PROCESS: BALANCED; DIRECTION: CLIMB)\nG21\nG90\nG17\nG40\nG49\nG80\nG54\nT1 M6\nS17000 M3\nG0 Z5\nG0 X3 Y3\n(PASS 1 - Z-3)\nG1 Z-3 F600\nG1 X17 Y3 F1050\nG1 X3 Y6.6 F1050\nG1 X17 Y7 F1050\nG1 X17 Y3 F1050\nG1 X17 Y7 F1050\nG1 X3 Y7 F1050\nG1 X3 Y3 F1050\nG0 Z5\nG0 X3 Y3\n(PASS 2 - Z-5)\nG1 Z-5 F600\nG1 X17 Y3 F1050\nG1 X3 Y6.6 F1050\nG1 X17 Y7 F1050\nG1 X17 Y3 F1050\nG1 X17 Y7 F1050\nG1 X3 Y7 F1050\nG1 X3 Y3 F1050\nG0 Z5\nG0 X3 Y3\nM5\nG0 Z5\nM30\n```"
+      }
+    },
+    {
+      "id": "F10",
+      "metric": "generation",
+      "passed": true,
+      "error": "",
+      "evidence": {
+        "response_tail": " Tổng sâu: 5 mm; các mức sâu: Z-3, Z-5.\n- WCS: G54; gốc: lower_left; safe Z=5 mm.\n- Tool workflow: Neo4j → generator → validator.\n- Validate nhanh: PASS. MATLAB/NX CHECK chưa chạy; chạy máy thật vẫn phải qua CHECK/Confirm.\n\n```gcode\n(CIRCULAR POCKET R15 MM - Nhôm 6061 - T1)\n(ORIGIN: G54 AT LOWER_LEFT, Z0 = STOCK TOP)\n(TOOL DIAMETER: D6 MM)\n(TOTAL DEPTH: 5 MM; STEP-DOWN MAX: 3 MM)\n(NEO4J RANGE: OR1; F1050; S17000)\n(PROCESS: BALANCED; DIRECTION: CLIMB)\nG21\nG90\nG17\nG40\nG49\nG80\nG54\nT1 M6\nS17000 M3\nG0 Z5\n(CIRCLE CENTER: X15 Y15)\n(PASS 1 - Z-3)\nG0 X15 Y15\nG1 Z-3 F600\nG1 X16.5 Y15 F1050\nG2 X16.5 Y15 I-1.5 J0 F1050\nG1 X20.1 Y15 F1050\nG2 X20.1 Y15 I-5.1 J0 F1050\nG1 X23.7 Y15 F1050\nG2 X23.7 Y15 I-8.7 J0 F1050\nG1 X27 Y15 F1050\nG2 X27 Y15 I-12 J0 F1050\nG0 Z5\n(PASS 2 - Z-5)\nG0 X15 Y15\nG1 Z-5 F600\nG1 X16.5 Y15 F1050\nG2 X16.5 Y15 I-1.5 J0 F1050\nG1 X20.1 Y15 F1050\nG2 X20.1 Y15 I-5.1 J0 F1050\nG1 X23.7 Y15 F1050\nG2 X23.7 Y15 I-8.7 J0 F1050\nG1 X27 Y15 F1050\nG2 X27 Y15 I-12 J0 F1050\nG0 Z5\nM5\nG0 Z5\nM30\n```"
+      }
+    },
+    {
+      "id": "F11",
+      "metric": "generation",
+      "passed": true,
+      "error": "",
+      "evidence": {
+        "response_tail": "Trạng thái: VALIDATED_DRAFT.\nArtifact SHA256: `d140f950c25b803ba2a42fc818c44d8bbd08bf22266e72d04a0d709436997511`.\nĐã đủ thông tin và đã sinh Rãnh 50x10 mm.\n\nNguồn thông số:\n- Dao: T1; vật liệu: Nhôm 6061.\n- Feed XY: F1050 mm/min; plunge: F600 mm/min; spindle: S17000 rpm.\n- Tổng sâu: 3 mm; các mức sâu: Z-3.\n- WCS: G54; gốc: lower_left; safe Z=5 mm.\n- Tool workflow: Neo4j → generator → validator.\n- Validate nhanh: PASS. MATLAB/NX CHECK chưa chạy; chạy máy thật vẫn phải qua CHECK/Confirm.\n\n```gcode\n(SLOT 50x10 MM - Nhôm 6061 - T1)\n(ORIGIN: G54 AT LOWER_LEFT, Z0 = STOCK TOP)\n(TOOL DIAMETER: D6 MM)\n(TOTAL DEPTH: 3 MM; STEP-DOWN MAX: 3 MM)\n(NEO4J RANGE: OR1; F1050; S17000)\n(PROCESS: BALANCED; DIRECTION: CLIMB)\nG21\nG90\nG17\nG40\nG49\nG80\nG54\nT1 M6\nS17000 M3\nG0 Z5\nG0 X3 Y3\n(PASS 1 - Z-3)\nG1 Z-3 F600\nG1 X47 Y3 F1050\nG1 X3 Y6.6 F1050\nG1 X47 Y7 F1050\nG1 X47 Y3 F1050\nG1 X47 Y7 F1050\nG1 X3 Y7 F1050\nG1 X3 Y3 F1050\nG0 Z5\nG0 X3 Y3\nM5\nG0 Z5\nM30\n```"
+      }
+    },
+    {
+      "id": "F12",
+      "metric": "generation",
+      "passed": true,
+      "error": "",
+      "evidence": {
+        "response": "Mình đã hiểu: pocket, sâu tổng 5 mm.\n\nMình chưa sinh G-code vì còn thiếu thông tin ảnh hưởng trực tiếp đến đường chạy dao.\n\nCần bổ sung:\n- hình dạng túi\n\nVí dụ cùng loại yêu cầu: `Phay túi chữ nhật 20x10 mm, nhôm 6061, dao T1, sâu 5 mm, gốc G54 tại góc trái dưới, safe Z=5 mm.`"
+      }
+    },
+    {
+      "id": "F13",
+      "metric": "semantics",
+      "passed": true,
+      "error": "",
+      "evidence": {
+        "validation": {
+          "valid": true,
+          "passed": true,
+          "severity": "PASS",
+          "errors": [],
+          "warnings": [
+            "Không lấy được OperatingRange từ Neo4j — chỉ kiểm cú pháp và giới hạn trục"
+          ],
+          "issues": [],
+          "parsed": {
+            "feeds": [],
+            "spindles": [],
+            "z_values": [
+              5.0
+            ],
+            "cutting_depths": []
+          },
+          "operating_range": {}
+        },
+        "normalized": "G21\nG90\nG17\nG0 X0 Y0 Z5\nM30"
+      }
+    },
+    {
+      "id": "F14",
+      "metric": "semantics",
+      "passed": true,
+      "error": "",
+      "evidence": {}
+    },
+    {
+      "id": "F15",
+      "metric": "semantics",
+      "passed": true,
+      "error": "",
+      "evidence": {
+        "codes": [
+          "AXIS_OUT_OF_RANGE",
+          "FEED_OUT_OF_RANGE",
+          "FORBIDDEN_M112",
+          "SPINDLE_OUT_OF_RANGE",
+          "STEPDOWN_OUT_OF_RANGE"
+        ]
+      }
+    },
+    {
+      "id": "F16",
+      "metric": "tool_workflow",
+      "passed": true,
+      "error": "",
+      "evidence": {
+        "calls": [
+          "get_neo4j_context",
+          "validate_gcode",
+          "validate_gcode"
+        ],
+        "model_count": 2,
+        "response": "Trạng thái: VALIDATED_DRAFT.\nĐã sinh G-code bằng workflow bắt buộc `Neo4j → teacher rubric → student generation → validator → repair×1`.\nArtifact SHA256: `49d85bbe38b3c653d58dbdf2041e3ecd9604095cba6bfac5001cce7240d6bf72`.\nMATLAB/NX CHECK chưa chạy; chạy máy thật vẫn phải qua CHECK/Confirm.\n\n```gcode\nG21\nG90\nG17\nG54\nT1 M6\nS17000 M3\nG0 Z5\nG1 Z-3 F1050\nM30\n```"
+      }
+    },
+    {
+      "id": "F17",
+      "metric": "tool_workflow",
+      "passed": true,
+      "error": "",
+      "evidence": {
+        "calls": [
+          "get_neo4j_context",
+          "validate_gcode",
+          "validate_gcode",
+          "validate_gcode"
+        ],
+        "model_count": 3,
+        "response": "G-code chưa đạt static validator sau tối đa 2 vòng sửa:\n- F outside range"
+      }
+    },
+    {
+      "id": "F18",
+      "metric": "optimization",
+      "passed": true,
+      "error": "",
+      "evidence": {
+        "response": "Đã phân tích chương trình hiện tại; không coi đây là yêu cầu sinh hình học mới.\n\n- Static validator bản gốc: PASS.\n- Static validator bản đề xuất: PASS.\n- Geometry invariants: BLOCKER.\n- Từ chối bản tối ưu từ model vì làm thay đổi mục tiêu:\n  - cutter swept envelope changed: (0.0, 20.0, 0.0, 10.0) -> (0.0, 30.0, 0.0, 10.0)\n\nChỉ áp dụng chuẩn hóa xác định, không đổi hình học.\n```gcode\n(RECTANGULAR POCKET 20x10 MM)\n(TOOL DIAMETER: D6 MM)\nG21\nG90\nG17\nG54\nT1 M6\nG0 X3 Y3\nG1 Z-3 F1050\nG1 X17 Y3 F1050\nG1 X17 Y7 F1050\nG1 X3 Y7 F1050\nG1 X3 Y3 F1050\nM30\n```\n\nMATLAB/NX CHECK chưa chạy; chạy máy thật vẫn phải qua CHECK/Confirm."
+      }
+    },
+    {
+      "id": "F19",
+      "metric": "image",
+      "passed": true,
+      "error": "",
+      "evidence": {
+        "action": {
+          "action": "image_to_gcode",
+          "material": "Nhôm 6061",
+          "tool_name": "T1",
+          "depth": 5.0,
+          "feed_rate": 1050,
+          "plunge_feed_rate": 600,
+          "spindle": 17000,
+          "safe_z": 5.0,
+          "wcs": "G54",
+          "agentic_tool_trace": [
+            "get_neo4j_context"
+          ],
+          "workflow_session_id": "generate-1783875223333-964dd34a"
+        }
+      }
+    },
+    {
+      "id": "F20",
+      "metric": "safety",
+      "passed": true,
+      "error": "",
+      "evidence": {
+        "response_tail": "6 MM)\n(TOTAL DEPTH: 5 MM; STEP-DOWN MAX: 3 MM)\n(NEO4J RANGE: OR1; F1050; S17000)\n(PROCESS: BALANCED; DIRECTION: CLIMB)\nG21\nG90\nG17\nG40\nG49\nG80\nG54\nT1 M6\nS17000 M3\nG0 Z5\nG0 X3 Y3\n(PASS 1 - Z-3)\nG1 Z-3 F600\nG1 X17 Y3 F1050\nG1 X3 Y6.6 F1050\nG1 X17 Y7 F1050\nG1 X17 Y3 F1050\nG1 X17 Y7 F1050\nG1 X3 Y7 F1050\nG1 X3 Y3 F1050\nG0 Z5\nG0 X3 Y3\n(PASS 2 - Z-5)\nG1 Z-5 F600\nG1 X17 Y3 F1050\nG1 X3 Y6.6 F1050\nG1 X17 Y7 F1050\nG1 X17 Y3 F1050\nG1 X17 Y7 F1050\nG1 X3 Y7 F1050\nG1 X3 Y3 F1050\nG0 Z5\nG0 X3 Y3\nM5\nG0 Z5\nM30\n```"
+      }
+    }
+  ],
+  "claim_scope": "sandbox/mock evaluation; not live LLM/hardware certification"
+}
